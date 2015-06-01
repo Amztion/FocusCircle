@@ -147,8 +147,8 @@
 			children = (
 				B3B7B4CC1B1419EC00B96A01 /* Main.storyboard */,
 				B3B7B4CF1B1419EC00B96A01 /* Images.xcassets */,
-				B3B7B4D11B1419EC00B96A01 /* LaunchScreen.xib */,
 				B3B7B4C61B1419EC00B96A01 /* RememberMe.xcdatamodeld */,
+				B3B7B4D11B1419EC00B96A01 /* LaunchScreen.xib */,
 			);
 			name = Resource;
 			sourceTree = "<group>";

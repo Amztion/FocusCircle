@@ -8,8 +8,8 @@
 
 #import "ItemsNavigationController.h"
 
-@interface ItemsNavigationController ()
 
+@interface ItemsNavigationController ()
 
 @end
 
@@ -29,15 +29,18 @@
 - (void)configureNavigationBar{
     self.navigationBar.barTintColor = [UIColor colorWithRed:0.67 green:0.25 blue:0.22 alpha:1];
     self.navigationBar.tintColor = [UIColor whiteColor];
-    
     [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-    
     [self setNeedsStatusBarAppearanceUpdate];
 }
+
+
 
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
+
+
+
 
 /*
 #pragma mark - Navigation

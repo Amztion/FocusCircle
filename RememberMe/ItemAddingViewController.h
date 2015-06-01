@@ -10,4 +10,8 @@
 
 @interface ItemAddingViewController : UITableViewController
 
+@property (strong, nonatomic) NSString *nameLabel;
+@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *createDate;
+
 @end
