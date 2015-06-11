@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		B3B7B4C21B1419EC00B96A01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B7B4C11B1419EC00B96A01 /* main.m */; };
 		B3B7B4C51B1419EC00B96A01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B7B4C41B1419EC00B96A01 /* AppDelegate.m */; };
-		B3B7B4C81B1419EC00B96A01 /* FocusCircle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3B7B4C61B1419EC00B96A01 /* FocusCircle.xcdatamodeld */; };
 		B3B7B4CE1B1419EC00B96A01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3B7B4CC1B1419EC00B96A01 /* Main.storyboard */; };
 		B3B7B4D01B1419EC00B96A01 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3B7B4CF1B1419EC00B96A01 /* Images.xcassets */; };
 		B3B7B4D31B1419EC00B96A01 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3B7B4D11B1419EC00B96A01 /* LaunchScreen.xib */; };
 		B3B7B4DF1B1419EC00B96A01 /* FocusCircleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B7B4DE1B1419EC00B96A01 /* FocusCircleTests.m */; };
 		B3D4152D1B1D7C9000BAC7A3 /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4152C1B1D7C9000BAC7A3 /* SettingTableViewController.m */; };
 		B3D415301B1D7F2300BAC7A3 /* PauseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4152F1B1D7F2300BAC7A3 /* PauseButton.m */; };
+		B3E5B1121B29D5E5003162D4 /* FocusCircle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3E5B1101B29D5E5003162D4 /* FocusCircle.xcdatamodeld */; };
 		B3EB21D31B1803D60045010D /* ItemsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB21D21B1803D60045010D /* ItemsTableViewController.m */; };
 		B3EB21D61B1804CB0045010D /* ItemsNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB21D51B1804CB0045010D /* ItemsNavigationController.m */; };
 		B3EB21DD1B18093D0045010D /* ItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB21DC1B18093D0045010D /* ItemModel.m */; };
@@ -38,7 +38,6 @@
 		B3B7B4C11B1419EC00B96A01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B3B7B4C31B1419EC00B96A01 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B3B7B4C41B1419EC00B96A01 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B3B7B4C71B1419EC00B96A01 /* FocusCircle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FocusCircle.xcdatamodel; sourceTree = "<group>"; };
 		B3B7B4CD1B1419EC00B96A01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B3B7B4CF1B1419EC00B96A01 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B3B7B4D21B1419EC00B96A01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		B3D4152C1B1D7C9000BAC7A3 /* SettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
 		B3D4152E1B1D7F2300BAC7A3 /* PauseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseButton.h; sourceTree = "<group>"; };
 		B3D4152F1B1D7F2300BAC7A3 /* PauseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseButton.m; sourceTree = "<group>"; };
+		B3E5B1111B29D5E5003162D4 /* FocusCircle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FocusCircle.xcdatamodel; sourceTree = "<group>"; };
 		B3EB21D11B1803D60045010D /* ItemsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsTableViewController.h; sourceTree = "<group>"; };
 		B3EB21D21B1803D60045010D /* ItemsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsTableViewController.m; sourceTree = "<group>"; };
 		B3EB21D41B1804CB0045010D /* ItemsNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsNavigationController.h; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 			children = (
 				B3B7B4CC1B1419EC00B96A01 /* Main.storyboard */,
 				B3B7B4CF1B1419EC00B96A01 /* Images.xcassets */,
-				B3B7B4C61B1419EC00B96A01 /* FocusCircle.xcdatamodeld */,
+				B3E5B1101B29D5E5003162D4 /* FocusCircle.xcdatamodeld */,
 				B3B7B4D11B1419EC00B96A01 /* LaunchScreen.xib */,
 			);
 			name = Resource;
@@ -283,11 +283,11 @@
 				B3B7B4C51B1419EC00B96A01 /* AppDelegate.m in Sources */,
 				B3B7B4C21B1419EC00B96A01 /* main.m in Sources */,
 				B3EB21D61B1804CB0045010D /* ItemsNavigationController.m in Sources */,
+				B3E5B1121B29D5E5003162D4 /* FocusCircle.xcdatamodeld in Sources */,
 				B3D4152D1B1D7C9000BAC7A3 /* SettingTableViewController.m in Sources */,
 				B3EB21E01B180F790045010D /* ItemAddingViewController.m in Sources */,
 				B3EB21D31B1803D60045010D /* ItemsTableViewController.m in Sources */,
 				B3D415301B1D7F2300BAC7A3 /* PauseButton.m in Sources */,
-				B3B7B4C81B1419EC00B96A01 /* FocusCircle.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,12 +496,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B3B7B4C61B1419EC00B96A01 /* FocusCircle.xcdatamodeld */ = {
+		B3E5B1101B29D5E5003162D4 /* FocusCircle.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				B3B7B4C71B1419EC00B96A01 /* FocusCircle.xcdatamodel */,
+				B3E5B1111B29D5E5003162D4 /* FocusCircle.xcdatamodel */,
 			);
-			currentVersion = B3B7B4C71B1419EC00B96A01 /* FocusCircle.xcdatamodel */;
+			currentVersion = B3E5B1111B29D5E5003162D4 /* FocusCircle.xcdatamodel */;
 			path = FocusCircle.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
