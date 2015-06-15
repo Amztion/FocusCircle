@@ -10,8 +10,9 @@
 
 @interface ItemModel : NSObject
 
-@property (strong, nonatomic) NSString *itemName;
-@property (strong, nonatomic) NSDate *time;
+@property (strong, nonatomic) NSString *titleOfItem;
+@property (nonatomic) double duration;
+@property (strong, nonatomic) NSDate *lastUsedTime;
 
 
 @end
