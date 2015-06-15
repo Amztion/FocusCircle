@@ -62,18 +62,24 @@
     ItemsTableViewController *sourceViewController = (ItemsTableViewController *)nav.topViewController;
     [sourceViewController setNeedUpdateData:YES];
     
-    if(self.titleField.text && self.durationField.text){
+    if((![self.titleField.text isEqualToString:@""]) && (![self.durationField.text isEqualToString:@""])){
         
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc]init];
         formatter.numberStyle = NSNumberFormatterDecimalStyle;
         NSNumber *dutation = [formatter numberFromString:self.durationField.text]; //Convert NSString to NSNumber
         [self insertDataWithTitle:self.titleField.text andDurationTime:dutation];
-        
+        [self dismissViewControllerAnimated:YES completion:nil];
     }else{
         NSLog(@"Empty");
+        
+        UIAlertController *emptyAlert = [UIAlertController alertControllerWithTitle:@"输入为空" message:@"请输入有效值" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAlert = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:nil];
+        [emptyAlert addAction:cancelAlert];
+        [self presentViewController:emptyAlert animated:YES completion:nil];
+        
     }
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 -(void)insertDataWithTitle: (NSString *)titleOfItem andDurationTime: (NSNumber *)duration{
