@@ -30,7 +30,7 @@
     self.titleField = [[UITextField alloc]init];
     self.durationField = [[UITextField alloc]init];
     self.titleField.placeholder = @"Name";
-    self.durationField.placeholder = @"Dutation";
+    self.durationField.placeholder = @"Duration";
 
     [self configureNavigationBar];
     
@@ -70,8 +70,7 @@
         [self insertDataWithTitle:self.titleField.text andDurationTime:dutation];
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
-        NSLog(@"Empty");
-        
+
         UIAlertController *emptyAlert = [UIAlertController alertControllerWithTitle:@"输入为空" message:@"请输入有效值" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *cancelAlert = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:nil];
         [emptyAlert addAction:cancelAlert];
