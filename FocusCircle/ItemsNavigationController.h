@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
 @interface ItemsNavigationController : UINavigationController
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

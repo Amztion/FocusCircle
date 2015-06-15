@@ -2,17 +2,21 @@
 //  ItemModel.h
 //  FocusCircle
 //
-//  Created by Liang Zhao on 15/5/29.
-//  Copyright (c) 2015年 Liang Zhao. All rights reserved.
+//  Created by Liang Zhao on 15/6/15.
+//  Copyright © 2015年 Liang Zhao. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface ItemModel : NSObject
+NS_ASSUME_NONNULL_BEGIN
 
-@property (strong, nonatomic) NSString *titleOfItem;
-@property (nonatomic) double duration;
-@property (strong, nonatomic) NSDate *lastUsedTime;
+@interface ItemModel : NSManagedObject
 
+// Insert code here to declare functionality of your managed object subclass
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#import "ItemModel+CoreDataProperties.h"

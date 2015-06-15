@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8118.17" systemVersion="14D136" minimumToolsVersion="Automatic">
-    <entity name="ItemModel" syncable="YES">
+    <entity name="ItemModel" representedClassName="ItemModel" syncable="YES">
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="lastUsedTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="titleOfItem" optional="YES" attributeType="String" syncable="YES"/>
+        <fetchedProperty name="fetchedDuration" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="ItemModel"/>
+        </fetchedProperty>
+        <fetchedProperty name="fetchedLastUsedTime" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="ItemModel"/>
+        </fetchedProperty>
+        <fetchedProperty name="fetchedTitleOfItem" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="ItemModel"/>
+        </fetchedProperty>
     </entity>
     <elements>
-        <element name="ItemModel" positionX="-2277" positionY="-711" width="128" height="90"/>
+        <element name="ItemModel" positionX="-3456" positionY="-1350" width="128" height="146"/>
     </elements>
 </model>

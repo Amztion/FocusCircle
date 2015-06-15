@@ -17,8 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"选项";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(closeButtonTapped:)];
+
+    
+    [self configureNavigationBar];
     
     
     // Uncomment the following line to preserve selection between presentations.
@@ -31,6 +32,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)configureNavigationBar{
+    self.navigationItem.title = @"选项";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(closeButtonTapped:)];
 }
 
 - (void)closeButtonTapped:(id)sender{

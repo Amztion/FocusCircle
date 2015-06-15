@@ -10,4 +10,6 @@
 
 @interface ItemsTableViewController : UITableViewController
 
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 @end

@@ -7,13 +7,13 @@
 //
 
 #import "ItemsTableViewController.h"
-#import "ItemAddingViewController.h"
 #import "ItemsNavigationController.h"
 
 @interface ItemsTableViewController ()
 
 @property (strong, nonatomic) NSArray *tableItems;
 @property (strong, retain, nonatomic) UISegmentedControl *segmentedControl;
+
 
 //列表数据
 @property NSArray *timers;
@@ -25,23 +25,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self configureNavigationBar];
     [self configureToolBar];
     self.timers = [[NSArray alloc]initWithObjects:@"数据一", @"数据二", nil];//测试的数据
     self.archives = [[NSArray alloc]initWithObjects:@"存档数据一", @"存档数据三", nil];
     self.tableItems = [[NSArray alloc]initWithArray:self.timers];
     
+
     
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-     self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addingButtonTapped:)];
-    self.navigationItem.leftBarButtonItem = leftButton;
-    self.navigationItem.title = @"Timers";
-    self.editButtonItem.title = @"编辑";
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,6 +41,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)configureNavigationBar{
+    self.clearsSelectionOnViewWillAppear = NO;
+    
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addingButtonTapped:)];
+    self.navigationItem.leftBarButtonItem = leftButton;
+    self.navigationItem.title = @"Timers";
+    self.editButtonItem.title = @"编辑";
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
 
 
 - (void)configureToolBar{
@@ -204,6 +205,11 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+#pragma mark - Core Data
+
+
 
 
 

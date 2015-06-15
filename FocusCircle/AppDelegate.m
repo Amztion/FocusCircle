@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ItemsNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+    
     return YES;
 }
 
@@ -99,6 +103,7 @@
     if (_managedObjectContext != nil) {
         return _managedObjectContext;
     }
+    
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (!coordinator) {
