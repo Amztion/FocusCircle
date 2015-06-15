@@ -10,7 +10,8 @@
 
 @interface ItemTextInputViewController : UITableViewController
 
-@property (strong, nonatomic) NSString *nameLabel;
+@property (strong, nonatomic) NSString *titleOfItem;
+@property (strong,nonatomic) NSString *duration;
 @property (strong, nonatomic) NSString *createDate;
 
 @end

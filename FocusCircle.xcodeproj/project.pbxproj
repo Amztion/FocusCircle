@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B32216811B2E69BB000A72D7 /* ItemEditingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32216801B2E69BB000A72D7 /* ItemEditingViewController.m */; };
 		B3B7B4C21B1419EC00B96A01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B7B4C11B1419EC00B96A01 /* main.m */; };
 		B3B7B4C51B1419EC00B96A01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B7B4C41B1419EC00B96A01 /* AppDelegate.m */; };
 		B3B7B4CE1B1419EC00B96A01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3B7B4CC1B1419EC00B96A01 /* Main.storyboard */; };
@@ -33,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B322167F1B2E69BB000A72D7 /* ItemEditingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemEditingViewController.h; sourceTree = "<group>"; };
+		B32216801B2E69BB000A72D7 /* ItemEditingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemEditingViewController.m; sourceTree = "<group>"; };
 		B3B7B4BC1B1419EC00B96A01 /* FocusCircle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FocusCircle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3B7B4C01B1419EC00B96A01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3B7B4C11B1419EC00B96A01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -146,6 +149,8 @@
 				B3D4152C1B1D7C9000BAC7A3 /* SettingTableViewController.m */,
 				B3EB21DE1B180F790045010D /* ItemTextInputViewController.h */,
 				B3EB21DF1B180F790045010D /* ItemTextInputViewController.m */,
+				B322167F1B2E69BB000A72D7 /* ItemEditingViewController.h */,
+				B32216801B2E69BB000A72D7 /* ItemEditingViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 				B3EB21D61B1804CB0045010D /* ItemsNavigationController.m in Sources */,
 				B3E5B1121B29D5E5003162D4 /* FocusCircle.xcdatamodeld in Sources */,
 				B3D4152D1B1D7C9000BAC7A3 /* SettingTableViewController.m in Sources */,
+				B32216811B2E69BB000A72D7 /* ItemEditingViewController.m in Sources */,
 				B3EB21E01B180F790045010D /* ItemTextInputViewController.m in Sources */,
 				B3EB21D31B1803D60045010D /* ItemsTableViewController.m in Sources */,
 				B3D415301B1D7F2300BAC7A3 /* PauseButton.m in Sources */,
