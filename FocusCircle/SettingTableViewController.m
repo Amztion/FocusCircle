@@ -36,12 +36,8 @@
 
 -(void)configureNavigationBar{
     self.navigationItem.title = @"选项";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(closeButtonTapped:)];
 }
 
-- (void)closeButtonTapped:(id)sender{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 #pragma mark - Table view data source
 

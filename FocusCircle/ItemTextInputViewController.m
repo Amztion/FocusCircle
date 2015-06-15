@@ -14,6 +14,8 @@
 @property (nonatomic, strong) UITextField *titleField;
 @property (nonatomic, strong) UITextField *durationField;
 
+@property (nonatomic, strong) UIViewController *sourceViewController;
+
 @end
 
 @implementation ItemTextInputViewController
@@ -42,23 +44,22 @@
 -(void)configureNavigationBar{
     self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonTapped)];
     self.navigationItem.title = @"添加新项目";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonTapped)];
 }
 
 - (void)cancelButtonTapped{
-    ItemsTableViewController *sourceViewController = (ItemsTableViewController *)self.presentingViewController.presentingViewController;
-    [sourceViewController setNeedUpdateData:NO];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)doneButtonTapped{
-    ItemsTableViewController *sourceViewController = (ItemsTableViewController *)self.presentingViewController.presentingViewController;
+    UITabBarController *tab = (UITabBarController*)self.navigationController.presentingViewController;
+    
+    UINavigationController *nav = tab.viewControllers[0];
+    
+    ItemsTableViewController *sourceViewController = (ItemsTableViewController *)nav.topViewController;
     [sourceViewController setNeedUpdateData:YES];
     
     if(self.titleField.text && self.durationField.text){
@@ -71,9 +72,6 @@
     }else{
         NSLog(@"Empty");
     }
-    
-    
-    
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -123,7 +121,7 @@
 
 //    textFiled.translatesAutoresizingMaskIntoConstraints = YES;
 
-        [cell.contentView addSubview:textField];
+    [cell.contentView addSubview:textField];
 
     
     return cell;

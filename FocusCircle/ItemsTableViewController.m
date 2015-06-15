@@ -36,18 +36,17 @@
     
     
     [self configureNavigationBar];
-    [self configureToolBar];
     [self loadData];
-//    self.timers = [[NSArray alloc]initWithObjects:@"数据一", @"数据二", nil];//测试的数据
     self.archives = [[NSArray alloc]initWithObjects:@"存档数据一", @"存档数据三", nil];
     
 
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    [self loadData];
+
     if (self.needsUpdateData) {
-        NSLog(@"hi");
+        [self loadData];
+        self.needsUpdateData = NO;
     }
     [self.tableView reloadData];
 }
@@ -87,56 +86,17 @@
 }
 
 
-- (void)configureToolBar{
-    
-    
-    self.segmentedControl = [[UISegmentedControl alloc]initWithItems:[[NSArray alloc]initWithObjects:@"使用中", @"已存档", nil]];
-    [self.segmentedControl sizeToFit];
-    self.segmentedControl.tintColor = [UIColor colorWithRed:0.67 green:0.25 blue:0.22 alpha:1];
-    self.segmentedControl.selectedSegmentIndex = 0;
-    [self.segmentedControl addTarget:self action:@selector(segmentedControlDidChanged) forControlEvents:UIControlEventValueChanged];
-    
-    
-    UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithCustomView:self.segmentedControl];
-    
-    UIBarButtonItem *optionItem = [[UIBarButtonItem alloc]initWithTitle:@"选项" style:UIBarButtonItemStylePlain target:self action:@selector(settingButtonTapped:)];
-    
-    optionItem.tintColor = [UIColor colorWithRed:0.67 green:0.25 blue:0.22 alpha:1];
-    
-    UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    
-    
-    
-    self.toolbarItems = [[NSArray alloc]initWithObjects:spaceItem, barItem,spaceItem, optionItem, nil];
-    
-}
-
 -(void)setNeedUpdateData:(BOOL)needUpdateData{ //Mark if need reload data;
     self.needsUpdateData = needUpdateData;
 }
 
 #pragma mark - Actions of Controllers
 
-- (void)segmentedControlDidChanged{
-
-    switch (self.segmentedControl.selectedSegmentIndex) {
-        case 0:
-            self.tableItems = [[NSArray alloc]initWithArray:self.timers];
-            [self.tableView reloadData];
-            break;
-            
-        case 1:
-            self.tableItems = [[NSArray alloc]initWithArray:self.archives];
-            [self.tableView reloadData];
-            
-        default:
-            break;
-    }
-}
 
 
 - (void)addingButtonTapped:(id)sender{
     ItemsNavigationController *nvc = [self.storyboard instantiateViewControllerWithIdentifier:@"addingNavigation"];
+
     //添加NavigationBar
     
     //[nvc presentViewController:addingViewController animated:YES completion:nil];
@@ -183,10 +143,13 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell" forIndexPath:indexPath];
     ItemModel *item =  (ItemModel *)self.timers[indexPath.row];
     
     cell.textLabel.text = item.titleOfItem;
+    cell.detailTextLabel.text = item.duration.stringValue;
+    
     
     // Configure the cell...
     
