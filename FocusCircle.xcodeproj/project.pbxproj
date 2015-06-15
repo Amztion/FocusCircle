@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B301C06B1B2EFA46007FA6BE /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B301C06A1B2EFA46007FA6BE /* ItemTableViewCell.m */; };
 		B32216811B2E69BB000A72D7 /* ItemEditingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32216801B2E69BB000A72D7 /* ItemEditingViewController.m */; };
 		B3B7B4C21B1419EC00B96A01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B7B4C11B1419EC00B96A01 /* main.m */; };
 		B3B7B4C51B1419EC00B96A01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B7B4C41B1419EC00B96A01 /* AppDelegate.m */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B301C0691B2EFA46007FA6BE /* ItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTableViewCell.h; sourceTree = "<group>"; };
+		B301C06A1B2EFA46007FA6BE /* ItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableViewCell.m; sourceTree = "<group>"; };
 		B322167F1B2E69BB000A72D7 /* ItemEditingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemEditingViewController.h; sourceTree = "<group>"; };
 		B32216801B2E69BB000A72D7 /* ItemEditingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemEditingViewController.m; sourceTree = "<group>"; };
 		B3B7B4BC1B1419EC00B96A01 /* FocusCircle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FocusCircle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +173,8 @@
 		B3EB21D91B1805400045010D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B301C0691B2EFA46007FA6BE /* ItemTableViewCell.h */,
+				B301C06A1B2EFA46007FA6BE /* ItemTableViewCell.m */,
 				B3D4152E1B1D7F2300BAC7A3 /* PauseButton.h */,
 				B3D4152F1B1D7F2300BAC7A3 /* PauseButton.m */,
 			);
@@ -291,6 +296,7 @@
 				B3EB21D61B1804CB0045010D /* ItemsNavigationController.m in Sources */,
 				B3E5B1121B29D5E5003162D4 /* FocusCircle.xcdatamodeld in Sources */,
 				B3D4152D1B1D7C9000BAC7A3 /* SettingTableViewController.m in Sources */,
+				B301C06B1B2EFA46007FA6BE /* ItemTableViewCell.m in Sources */,
 				B32216811B2E69BB000A72D7 /* ItemEditingViewController.m in Sources */,
 				B3C06D961B2E9A8F00AF59A2 /* ItemModel.m in Sources */,
 				B3EB21E01B180F790045010D /* ItemTextInputViewController.m in Sources */,

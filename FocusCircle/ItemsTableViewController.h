@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "ItemTableViewCell.h"
 
 @interface ItemsTableViewController : UITableViewController
 

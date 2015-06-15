@@ -11,14 +11,14 @@
 
 @interface ItemsTableViewController ()
 
-@property (strong, nonatomic) NSArray *tableItems;
-@property (strong, retain, nonatomic) UISegmentedControl *segmentedControl;
+@property (nonatomic, strong) NSArray *timers;
 
 @property (nonatomic) BOOL needsUpdateData;
 
 
+
+
 //列表数据
-@property NSArray *timers;
 @property NSArray *archives;
 
 @end
@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self setNeedUpdateData:NO];
+    [self setNeedUpdateData:NO];
     
     AppDelegate *appdelegate = [[UIApplication sharedApplication]delegate];
     
@@ -127,7 +127,6 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
@@ -144,14 +143,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell" forIndexPath:indexPath];
-    ItemModel *item =  (ItemModel *)self.timers[indexPath.row];
+    ItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = item.titleOfItem;
-    cell.detailTextLabel.text = item.duration.stringValue;
-    
-    
-    // Configure the cell...
+    if (self.timers != 0) {
+        ItemModel *item =  (ItemModel *)self.timers[indexPath.row];
+        cell.titleOfItemLabel.text = item.titleOfItem;
+        
+        
+        cell.durationTimeLabel.text = item.duration.stringValue;
+        
+        [cell.titleOfItemLabel sizeToFit];
+        [cell.durationTimeLabel sizeToFit];
+    }
+
     
     return cell;
 }
@@ -190,9 +194,6 @@
 
 #pragma mark - Apperance of Table View
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 65;
-}
 
 #pragma mark - Action of Table View
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
