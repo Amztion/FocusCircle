@@ -22,50 +22,36 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="94"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4Q-sB-Gh3">
-                                            <rect key="frame" x="135" y="17" width="38" height="23"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="00:00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdQ-Ac-FtX">
-                                            <rect key="frame" x="17" y="16" width="108" height="60"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                            <rect key="frame" x="24" y="8" width="120" height="34"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015年6月15日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mF8-PO-cWR">
-                                            <rect key="frame" x="135" y="56" width="72" height="12"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="miP-As-SHu">
-                                            <rect key="frame" x="477" y="8" width="78" height="78"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="miP-As-SHu">
+                                            <rect key="frame" x="487" y="8" width="78" height="65"/>
                                             <color key="backgroundColor" red="0.70979324494949503" green="0.70979324494949503" blue="0.70979324494949503" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上一次使用时间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrA-QV-vKa">
-                                            <rect key="frame" x="223" y="56" width="70" height="12"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4Q-sB-Gh3">
+                                            <rect key="frame" x="106" y="67" width="38" height="23"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="v4Q-sB-Gh3" firstAttribute="leading" secondItem="mF8-PO-cWR" secondAttribute="leading" id="1cT-yZ-FGV"/>
-                                        <constraint firstItem="qrA-QV-vKa" firstAttribute="leading" secondItem="mF8-PO-cWR" secondAttribute="trailing" constant="16" id="4En-1x-JDY"/>
-                                        <constraint firstItem="v4Q-sB-Gh3" firstAttribute="top" secondItem="PuQ-Tf-rRN" secondAttribute="topMargin" constant="9" id="8SN-va-qpH"/>
-                                        <constraint firstItem="v4Q-sB-Gh3" firstAttribute="leading" secondItem="VdQ-Ac-FtX" secondAttribute="trailing" constant="10" id="KdL-qc-dbo"/>
-                                        <constraint firstItem="VdQ-Ac-FtX" firstAttribute="top" secondItem="PuQ-Tf-rRN" secondAttribute="topMargin" constant="8" id="PE3-qx-tyc"/>
-                                        <constraint firstItem="VdQ-Ac-FtX" firstAttribute="leading" secondItem="PuQ-Tf-rRN" secondAttribute="leadingMargin" constant="9" id="RKq-J9-GxU"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="VdQ-Ac-FtX" secondAttribute="bottom" constant="10" id="RXy-c9-ZS1"/>
-                                        <constraint firstItem="qrA-QV-vKa" firstAttribute="centerY" secondItem="mF8-PO-cWR" secondAttribute="centerY" id="fHc-Kh-TPY"/>
-                                        <constraint firstItem="mF8-PO-cWR" firstAttribute="top" secondItem="v4Q-sB-Gh3" secondAttribute="bottom" constant="16" id="oSK-BB-pcm"/>
+                                        <constraint firstItem="miP-As-SHu" firstAttribute="top" secondItem="VdQ-Ac-FtX" secondAttribute="top" id="10G-as-zQn"/>
+                                        <constraint firstItem="v4Q-sB-Gh3" firstAttribute="trailing" secondItem="VdQ-Ac-FtX" secondAttribute="trailing" id="8gi-WK-gr3"/>
+                                        <constraint firstItem="v4Q-sB-Gh3" firstAttribute="top" secondItem="VdQ-Ac-FtX" secondAttribute="bottom" constant="25" id="FUR-Op-nmG"/>
+                                        <constraint firstItem="miP-As-SHu" firstAttribute="leading" secondItem="PuQ-Tf-rRN" secondAttribute="leading" constant="487" id="WLN-vP-4bT"/>
+                                        <constraint firstItem="VdQ-Ac-FtX" firstAttribute="leading" secondItem="PuQ-Tf-rRN" secondAttribute="leadingMargin" constant="16" id="ZFn-S5-EzR"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="miP-As-SHu" secondAttribute="trailing" constant="27" id="cQe-c4-Y6f"/>
+                                        <constraint firstItem="miP-As-SHu" firstAttribute="bottom" secondItem="v4Q-sB-Gh3" secondAttribute="bottom" constant="-17" id="pVg-cI-s5U"/>
+                                        <constraint firstAttribute="topMargin" secondItem="VdQ-Ac-FtX" secondAttribute="top" id="zzt-qY-XrV"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="durationTimeLabel" destination="VdQ-Ac-FtX" id="xOx-zB-69K"/>
-                                    <outlet property="lastUsedTimeLabel" destination="mF8-PO-cWR" id="jU8-iG-b8h"/>
                                     <outlet property="titleOfItemLabel" destination="v4Q-sB-Gh3" id="06r-jr-nf3"/>
                                 </connections>
                             </tableViewCell>

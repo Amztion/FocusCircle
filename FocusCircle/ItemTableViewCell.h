@@ -10,7 +10,6 @@
 
 @interface ItemTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *durationTimeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *lastUsedTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleOfItemLabel;
 
 @end
