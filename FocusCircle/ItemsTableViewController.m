@@ -16,7 +16,7 @@
 @property (strong, retain, nonatomic) UISegmentedControl *segmentedControl;
 
 //列表数据
-@property NSArray *ongoing;
+@property NSArray *timers;
 @property NSArray *archives;
 
 @end
@@ -26,9 +26,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configureToolBar];
-    self.ongoing = [[NSArray alloc]initWithObjects:@"数据一", @"数据二", nil];//测试的数据
+    self.timers = [[NSArray alloc]initWithObjects:@"数据一", @"数据二", nil];//测试的数据
     self.archives = [[NSArray alloc]initWithObjects:@"存档数据一", @"存档数据三", nil];
-    self.tableItems = [[NSArray alloc]initWithArray:self.ongoing];
+    self.tableItems = [[NSArray alloc]initWithArray:self.timers];
     
     
     
@@ -81,7 +81,7 @@
 
     switch (self.segmentedControl.selectedSegmentIndex) {
         case 0:
-            self.tableItems = [[NSArray alloc]initWithArray:self.ongoing];
+            self.tableItems = [[NSArray alloc]initWithArray:self.timers];
             [self.tableView reloadData];
             break;
             
