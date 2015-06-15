@@ -14,6 +14,8 @@
 @property (strong, nonatomic) NSArray *tableItems;
 @property (strong, retain, nonatomic) UISegmentedControl *segmentedControl;
 
+@property (nonatomic) BOOL needsUpdateData;
+
 
 //列表数据
 @property NSArray *timers;
@@ -25,20 +27,53 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    [self setNeedUpdateData:NO];
+    
+    AppDelegate *appdelegate = [[UIApplication sharedApplication]delegate];
+    
+    self.managedObjectContext = appdelegate.managedObjectContext;
+    
+    
+    
     [self configureNavigationBar];
     [self configureToolBar];
-    self.timers = [[NSArray alloc]initWithObjects:@"数据一", @"数据二", nil];//测试的数据
+    [self loadData];
+//    self.timers = [[NSArray alloc]initWithObjects:@"数据一", @"数据二", nil];//测试的数据
     self.archives = [[NSArray alloc]initWithObjects:@"存档数据一", @"存档数据三", nil];
-    self.tableItems = [[NSArray alloc]initWithArray:self.timers];
-    
-
     
 
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [self loadData];
+    if (self.needsUpdateData) {
+        NSLog(@"hi");
+    }
+    [self.tableView reloadData];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)loadData{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    NSString *failureReason = @"There was an error creating or loading the application's saved data.";
+    NSError *error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
+    dict[NSLocalizedDescriptionKey] = @"Failed to initialize the application's saved data";
+    dict[NSLocalizedFailureReasonErrorKey] = failureReason;
+    dict[NSUnderlyingErrorKey] = error;
+    
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"ItemModel" inManagedObjectContext:self.managedObjectContext];
+    
+    [fetchRequest setEntity:entityDescription];
+    
+    self.timers = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
 }
 
 - (void)configureNavigationBar{
@@ -74,6 +109,10 @@
     
     self.toolbarItems = [[NSArray alloc]initWithObjects:spaceItem, barItem,spaceItem, optionItem, nil];
     
+}
+
+-(void)setNeedUpdateData:(BOOL)needUpdateData{ //Mark if need reload data;
+    self.needsUpdateData = needUpdateData;
 }
 
 #pragma mark - Actions of Controllers
@@ -138,15 +177,16 @@
     // Return the number of rows in the section.
     NSInteger numberOfRow;
     
-    numberOfRow = self.tableItems.count;
+    numberOfRow = self.timers.count;
     
     return numberOfRow;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell" forIndexPath:indexPath];
+    ItemModel *item =  (ItemModel *)self.timers[indexPath.row];
     
-    cell.textLabel.text = self.tableItems[indexPath.row];
+    cell.textLabel.text = item.titleOfItem;
     
     // Configure the cell...
     

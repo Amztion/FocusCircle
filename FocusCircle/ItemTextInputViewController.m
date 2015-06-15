@@ -8,8 +8,11 @@
 
 #import "ItemTextInputViewController.h"
 
+
 @interface ItemTextInputViewController ()
 
+@property (nonatomic, strong) UITextField *titleField;
+@property (nonatomic, strong) UITextField *durationField;
 
 @end
 
@@ -17,6 +20,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    
+    self.managedObjectContext = appDelegate.managedObjectContext;
+    
+    self.titleField = [[UITextField alloc]init];
+    self.durationField = [[UITextField alloc]init];
+    self.titleField.placeholder = @"Name";
+    self.durationField.placeholder = @"Dutation";
 
     [self configureNavigationBar];
     
@@ -39,11 +51,46 @@
 }
 
 - (void)cancelButtonTapped{
+    ItemsTableViewController *sourceViewController = (ItemsTableViewController *)self.presentingViewController.presentingViewController;
+    [sourceViewController setNeedUpdateData:NO];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)doneButtonTapped{
+    ItemsTableViewController *sourceViewController = (ItemsTableViewController *)self.presentingViewController.presentingViewController;
+    [sourceViewController setNeedUpdateData:YES];
+    
+    if(self.titleField.text && self.durationField.text){
+        
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc]init];
+        formatter.numberStyle = NSNumberFormatterDecimalStyle;
+        NSNumber *dutation = [formatter numberFromString:self.durationField.text]; //Convert NSString to NSNumber
+        [self insertDataWithTitle:self.titleField.text andDurationTime:dutation];
+        
+    }else{
+        NSLog(@"Empty");
+    }
+    
+    
+    
+    
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)insertDataWithTitle: (NSString *)titleOfItem andDurationTime: (NSNumber *)duration{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    NSString *failureReason = @"There was an error creating or loading the application's saved data.";
+    NSError *error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
+    dict[NSLocalizedDescriptionKey] = @"Failed to initialize the application's saved data";
+    dict[NSLocalizedFailureReasonErrorKey] = failureReason;
+    dict[NSUnderlyingErrorKey] = error;
+    
+    ItemModel *itemModel = [NSEntityDescription insertNewObjectForEntityForName:@"ItemModel" inManagedObjectContext:self.managedObjectContext];
+    
+    [itemModel setValue:titleOfItem forKey:@"titleOfItem"];
+    [itemModel setValue:duration forKey:@"duration"];
+    
 }
 
 #pragma mark - Table view data source
@@ -51,7 +98,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -65,18 +112,19 @@
     
     cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
     
-    UITextField *textFiled = [[UITextField alloc]init];
-    textFiled.frame = CGRectMake(cell.bounds.origin.x + 20, cell.bounds.origin.y + 10, cell.bounds.size.width - 20, cell.bounds.size.height - 10);
-    textFiled.placeholder = @"Test";
-//    textFiled.translatesAutoresizingMaskIntoConstraints = YES;
-    if (indexPath.section == 0 || indexPath.section == 2) {
-        [cell.contentView addSubview:textFiled];
+    UITextField *textField;
+    
+    if (indexPath.section == 0) {
+        textField = self.titleField;
+    }else{
+        textField = self.durationField;
     }
-    
-    
-    // Configure the cell...
-    
-    
+    textField.frame = CGRectMake(cell.bounds.origin.x + 20, cell.bounds.origin.y + 10, cell.bounds.size.width - 20, cell.bounds.size.height - 10);
+
+//    textFiled.translatesAutoresizingMaskIntoConstraints = YES;
+
+        [cell.contentView addSubview:textField];
+
     
     return cell;
 }

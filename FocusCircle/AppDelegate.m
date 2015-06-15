@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "ItemsNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -17,9 +16,45 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    
-    
+//    NSLog(@"before");
+//    // Override point for customization after application launch.
+//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+//    NSString *failureReason = @"There was an error creating or loading the application's saved data.";
+//    NSError *error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
+//    dict[NSLocalizedDescriptionKey] = @"Failed to initialize the application's saved data";
+//    dict[NSLocalizedFailureReasonErrorKey] = failureReason;
+//    dict[NSUnderlyingErrorKey] = error;
+//
+//    
+//    NSManagedObjectContext *context = [self managedObjectContext];
+//    
+//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
+//    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"ItemModel" inManagedObjectContext:context];
+//    
+//    [fetchRequest setEntity:entityDescription];
+//    
+//    NSArray *fetchedObjected = [context executeFetchRequest:fetchRequest error:&error];
+//    
+//    for(ItemModel *items in fetchedObjected){
+//        NSLog(@"Title %@, Duration %@, Last Used Time %@", [items titleOfItem], [items duration], [items lastUsedTime]);
+//    }
+//    
+//
+//    ItemModel *itemModel = [NSEntityDescription insertNewObjectForEntityForName:@"ItemModel" inManagedObjectContext:context];
+//    
+//    NSNumber *duration = [NSNumber numberWithDouble:20.0];
+//    NSDate *testDate = [NSDate date];
+//    [itemModel setValue:@"TestData" forKey:@"titleOfItem"];
+//    [itemModel setValue:duration forKey:@"duration"];
+//    [itemModel setValue:testDate forKey:@"lastUsedTime"];
+//    
+//    fetchedObjected = [context executeFetchRequest:fetchRequest error:&error];
+//    
+//    NSLog(@"After");
+//    
+//    for(ItemModel *items in fetchedObjected){
+//        NSLog(@"Title %@, Duration %@, Last Used Time %@", [items titleOfItem], [items duration], [items lastUsedTime]);
+//    }
     
     return YES;
 }
