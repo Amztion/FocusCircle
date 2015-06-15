@@ -16,11 +16,6 @@
 @property (nonatomic) BOOL needsUpdateData;
 
 
-
-
-//列表数据
-@property NSArray *archives;
-
 @end
 
 @implementation ItemsTableViewController
@@ -37,7 +32,6 @@
     
     [self configureNavigationBar];
     [self loadData];
-    self.archives = [[NSArray alloc]initWithObjects:@"存档数据一", @"存档数据三", nil];
     
 
 }
@@ -72,7 +66,6 @@
     [fetchRequest setEntity:entityDescription];
     
     self.timers = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
 }
 
 - (void)configureNavigationBar{
@@ -150,7 +143,13 @@
         cell.titleOfItemLabel.text = item.titleOfItem;
         
         
-        cell.durationTimeLabel.text = item.duration.stringValue;
+        NSInteger hours = item.duration.integerValue/3600;
+        NSInteger minutes = item.duration.integerValue/60%60;
+        NSInteger seconds = item.duration.integerValue%3600 - minutes * 60;
+        
+        
+        
+        cell.durationTimeLabel.text = [NSString stringWithFormat:@"%l02d:%l02d:%l02d", hours, minutes, seconds];
         
         [cell.titleOfItemLabel sizeToFit];
         [cell.durationTimeLabel sizeToFit];

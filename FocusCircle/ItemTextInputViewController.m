@@ -8,13 +8,24 @@
 
 #import "ItemTextInputViewController.h"
 
+typedef enum timePicker{
+    hours = 0,
+    minutes,
+    second
+}TimeComponent;
 
-@interface ItemTextInputViewController ()
+@interface ItemTextInputViewController ()<UIPickerViewDataSource, UIPickerViewDelegate, UIPickerViewAccessibilityDelegate>
 
 @property (nonatomic, strong) UITextField *titleField;
 @property (nonatomic, strong) UITextField *durationField;
 
-@property (nonatomic, strong) UIViewController *sourceViewController;
+@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+@property (weak, nonatomic) IBOutlet UIPickerView *durationPickerView;
+
+@property (nonatomic) NSNumber *hours;
+@property (nonatomic) NSNumber *minutes;
+@property (nonatomic) NSNumber *seconds;
+
 
 @end
 
@@ -27,10 +38,6 @@
     
     self.managedObjectContext = appDelegate.managedObjectContext;
     
-    self.titleField = [[UITextField alloc]init];
-    self.durationField = [[UITextField alloc]init];
-    self.titleField.placeholder = @"Name";
-    self.durationField.placeholder = @"Duration";
 
     [self configureNavigationBar];
     
@@ -41,6 +48,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Configure NavigationController
+
 -(void)configureNavigationBar{
     self.clearsSelectionOnViewWillAppear = NO;
     
@@ -49,12 +58,95 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonTapped)];
 }
 
+#pragma mark - Configure UIPickerView
+
+-(void)configurePickerView{
+    self.durationPickerView.showsSelectionIndicator = YES;
+    [self setDefaultValue:0 inComponent:hours];
+    [self setDefaultValue:0 inComponent:minutes];
+    [self setDefaultValue:0 inComponent:second];
+}
+
+-(void)setDefaultValue: (NSInteger)value inComponent:(TimeComponent)component{
+    [self.durationPickerView selectRow:value inComponent:component animated:YES];
+    [self pickerView:self.durationPickerView didSelectRow:value inComponent:component];
+}
+
+
+-(NSInteger)numberOfComponentsInPickerView:(nonnull UIPickerView *)pickerView{
+    return 3;
+}
+
+-(NSInteger)pickerView:(nonnull UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    switch (component) {
+        case 0:
+            return 24;
+            break;
+        case 1:
+            return 60;
+            break;
+        case 2:
+            return 60;
+            break;
+            
+        default:
+            break;
+    }
+    
+    return 0;
+}
+
+-(NSString *)pickerView:(nonnull UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    switch (component) {
+        case 0:
+            return [NSString stringWithFormat:@"%ld 小时", row];
+            break;
+        case 1:
+            return [NSString stringWithFormat:@"%ld 分钟", row];
+            break;
+        case 2:
+            return [NSString stringWithFormat:@"%ld 秒", row];
+            break;
+            
+        default:
+            break;
+    }
+    return nil;
+}
+
+-(CGFloat)pickerView:(nonnull UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component{
+    return 30;
+}
+
+-(void)pickerView:(nonnull UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    switch (component) {
+        case 0:
+            self.hours = [NSNumber numberWithInteger:row];
+            break;
+        case 1:
+            self.minutes = [NSNumber numberWithInteger:row];
+            break;
+        case 2:
+            self.seconds = [NSNumber numberWithInteger:row];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+
+#pragma mark - Button Action
+
 - (void)cancelButtonTapped{
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)doneButtonTapped{
+    
+    NSTimeInterval secondsDuration = self.hours.doubleValue * 60 * 60 + self.minutes.doubleValue * 60 + self.seconds.doubleValue;
+    
     UITabBarController *tab = (UITabBarController*)self.navigationController.presentingViewController;
     
     UINavigationController *nav = tab.viewControllers[0];
@@ -62,12 +154,13 @@
     ItemsTableViewController *sourceViewController = (ItemsTableViewController *)nav.topViewController;
     [sourceViewController setNeedUpdateData:YES];
     
-    if((![self.titleField.text isEqualToString:@""]) && (![self.durationField.text isEqualToString:@""])){
+    
+    if((![self.titleTextField.text isEqualToString:@""]) && (secondsDuration != 0)){
         
-        NSNumberFormatter *formatter = [[NSNumberFormatter alloc]init];
-        formatter.numberStyle = NSNumberFormatterDecimalStyle;
-        NSNumber *dutation = [formatter numberFromString:self.durationField.text]; //Convert NSString to NSNumber
-        [self insertDataWithTitle:self.titleField.text andDurationTime:dutation];
+        NSNumber *dutation = [NSNumber numberWithDouble:secondsDuration]; //Convert NSTimeInterval to NSNumber
+        
+        [self insertDataWithTitle:self.titleTextField.text andDurationTime:dutation];
+        
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
 
@@ -80,6 +173,8 @@
     
     
 }
+
+#pragma mark - Interact with Database
 
 -(void)insertDataWithTitle: (NSString *)titleOfItem andDurationTime: (NSNumber *)duration{
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -96,89 +191,6 @@
     
 }
 
-#pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 2;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 1;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"addingTableCell" forIndexPath:indexPath];
-    
-    cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
-    
-    UITextField *textField;
-    
-    if (indexPath.section == 0) {
-        textField = self.titleField;
-    }else{
-        textField = self.durationField;
-    }
-    textField.frame = CGRectMake(cell.bounds.origin.x + 20, cell.bounds.origin.y + 10, cell.bounds.size.width - 20, cell.bounds.size.height - 10);
-
-//    textFiled.translatesAutoresizingMaskIntoConstraints = YES;
-
-    [cell.contentView addSubview:textField];
-
-    
-    return cell;
-}
-
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
