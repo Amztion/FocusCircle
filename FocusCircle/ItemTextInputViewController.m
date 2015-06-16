@@ -186,8 +186,11 @@ typedef enum timePicker{
     
     ItemModel *itemModel = [NSEntityDescription insertNewObjectForEntityForName:@"ItemModel" inManagedObjectContext:self.managedObjectContext];
     
+    NSNumber *createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
+    
     [itemModel setValue:titleOfItem forKey:@"titleOfItem"];
     [itemModel setValue:duration forKey:@"duration"];
+    [itemModel setValue:createdDate forKey:@"createdDate"];
     
 }
 

@@ -62,8 +62,13 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"ItemModel" inManagedObjectContext:self.managedObjectContext];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"createdDate" ascending:NO];
     
     [fetchRequest setEntity:entityDescription];
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+    
+    
     
     self.timers = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 }
