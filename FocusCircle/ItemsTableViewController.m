@@ -12,10 +12,6 @@
 
 @interface ItemsTableViewController ()
 
-@property (nonatomic, strong) NSArray *timers;
-
-@property (nonatomic) BOOL needsUpdateData;
-
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultController;
 
 
@@ -25,7 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNeedUpdateData:NO];
     
     AppDelegate *appdelegate = [[UIApplication sharedApplication]delegate];
     
@@ -46,11 +41,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-//
-//    if (self.needsUpdateData) {
-//        [self loadData];
-//        self.needsUpdateData = NO;
-//    }
+
     [self.tableView reloadData];
 }
 
@@ -80,27 +71,6 @@
     return _fetchedResultController;
 }
 
-//-(void)loadData{
-//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    NSString *failureReason = @"There was an error creating or loading the application's saved data.";
-//    NSError *error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
-//    dict[NSLocalizedDescriptionKey] = @"Failed to initialize the application's saved data";
-//    dict[NSLocalizedFailureReasonErrorKey] = failureReason;
-//    dict[NSUnderlyingErrorKey] = error;
-//    
-//    
-//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
-//    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"ItemModel" inManagedObjectContext:self.managedObjectContext];
-//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-//                                        initWithKey:@"sortValue" ascending:NO];
-//    
-//    [fetchRequest setEntity:entityDescription];
-//    [fetchRequest setSortDescriptors:@[sortDescriptor]];
-//    
-//    
-//    
-//    self.timers = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-//}
 
 - (void)configureNavigationBar{
     self.clearsSelectionOnViewWillAppear = NO;
@@ -110,11 +80,6 @@
     self.navigationItem.title = @"Timers";
     self.editButtonItem.title = @"编辑";
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-
--(void)setNeedUpdateData:(BOOL)needUpdateData{ //Mark if need reload data;
-    self.needsUpdateData = needUpdateData;
 }
 
 #pragma mark - Actions of Controllers
@@ -198,10 +163,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        
         [self.fetchedResultController.managedObjectContext deleteObject:[self.fetchedResultController objectAtIndexPath:indexPath]];
-//        
 
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -232,8 +194,6 @@
     else if(type == NSFetchedResultsChangeUpdate){
         
     }
-
-    
     
 }
 
