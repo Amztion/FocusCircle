@@ -14,6 +14,6 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
--(void)setNeedUpdateData:(BOOL)needUpdateData;
+
 
 @end

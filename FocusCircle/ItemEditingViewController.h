@@ -8,6 +8,14 @@
 
 #import "ItemTextInputViewController.h"
 
-@interface ItemEditingViewController : ItemTextInputViewController
+@interface ItemEditingViewController : ItemTextInputViewController<UIPickerViewDataSource,UIPickerViewDelegate,UIPickerViewAccessibilityDelegate>
+
+@property (nonatomic, strong) NSIndexPath *indexPath;
+@property (nonatomic, strong) NSString *titleOfItem;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResulesController;
+
+@property (nonatomic) NSNumber *hours;
+@property (nonatomic) NSNumber *minutes;
+@property (nonatomic) NSNumber *seconds;
 
 @end

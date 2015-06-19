@@ -9,6 +9,7 @@
 #import "ItemsTableViewController.h"
 #import "ItemsNavigationController.h"
 #import "ItemTextInputViewController.h"
+#import "ItemEditingViewController.h"
 
 @interface ItemsTableViewController ()
 
@@ -21,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.allowsSelectionDuringEditing = YES;
     
     AppDelegate *appdelegate = [[UIApplication sharedApplication]delegate];
     
@@ -173,7 +175,31 @@
 
 #pragma mark - Action of Table View
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if(self.editing){
+        
+        ItemModel *item =  (ItemModel *)[self.fetchedResultController objectAtIndexPath:indexPath];
+        
+        NSInteger hours = item.duration.integerValue/3600;
+        NSInteger minutes = item.duration.integerValue/60%60;
+        NSInteger seconds = item.duration.integerValue%3600 - minutes * 60;
+        
+        ItemsNavigationController *nvc = [self.storyboard instantiateViewControllerWithIdentifier:@"editingNavigation"];
+        ItemEditingViewController *editingViewController = (ItemEditingViewController *)nvc.topViewController;
+        editingViewController.managedObjectContext = self.managedObjectContext;
+        editingViewController.titleOfItem = item.titleOfItem;
+        editingViewController.hours = [NSNumber numberWithInteger:hours];
+        editingViewController.minutes = [NSNumber numberWithInteger:minutes];
+        editingViewController.seconds = [NSNumber numberWithInteger:seconds];
+        editingViewController.indexPath = indexPath;
+        editingViewController.fetchedResulesController = self.fetchedResultController;
+        
+        [self presentViewController:nvc animated:YES completion:nil];
+        
+        
+    }else{
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+
 }
 
 
@@ -192,7 +218,7 @@
         [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     else if(type == NSFetchedResultsChangeUpdate){
-        
+        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     
 }
