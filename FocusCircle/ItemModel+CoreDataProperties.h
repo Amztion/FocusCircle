@@ -15,10 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ItemModel (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSNumber *duration;
+@property (nonatomic, retain) NSNumber *duration;
 @property (nullable, nonatomic, retain) NSDate *lastUsedTime;
-@property (nullable, nonatomic, retain) NSString *titleOfItem;
-@property (nullable, nonatomic, retain) NSNumber *createdDate;
+@property (nonatomic, retain) NSString *titleOfItem;
+@property (nonatomic, retain) NSNumber *sortValue;
 
 @end
 

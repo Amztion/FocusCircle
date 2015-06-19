@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 #import "ItemTableViewCell.h"
 
-@interface ItemsTableViewController : UITableViewController
+@interface ItemsTableViewController : UITableViewController<NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 

@@ -147,14 +147,6 @@ typedef enum timePicker{
     
     NSTimeInterval secondsDuration = self.hours.doubleValue * 60 * 60 + self.minutes.doubleValue * 60 + self.seconds.doubleValue;
     
-    UITabBarController *tab = (UITabBarController*)self.navigationController.presentingViewController;
-    
-    UINavigationController *nav = tab.viewControllers[0];
-    
-    ItemsTableViewController *sourceViewController = (ItemsTableViewController *)nav.topViewController;
-    [sourceViewController setNeedUpdateData:YES];
-    
-    
     if((![self.titleTextField.text isEqualToString:@""]) && (secondsDuration != 0)){
         
         NSNumber *dutation = [NSNumber numberWithDouble:secondsDuration]; //Convert NSTimeInterval to NSNumber
@@ -177,21 +169,13 @@ typedef enum timePicker{
 #pragma mark - Interact with Database
 
 -(void)insertDataWithTitle: (NSString *)titleOfItem andDurationTime: (NSNumber *)duration{
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    NSString *failureReason = @"There was an error creating or loading the application's saved data.";
-    NSError *error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
-    dict[NSLocalizedDescriptionKey] = @"Failed to initialize the application's saved data";
-    dict[NSLocalizedFailureReasonErrorKey] = failureReason;
-    dict[NSUnderlyingErrorKey] = error;
-    
     ItemModel *itemModel = [NSEntityDescription insertNewObjectForEntityForName:@"ItemModel" inManagedObjectContext:self.managedObjectContext];
     
     NSNumber *createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
     
     [itemModel setValue:titleOfItem forKey:@"titleOfItem"];
     [itemModel setValue:duration forKey:@"duration"];
-    [itemModel setValue:createdDate forKey:@"createdDate"];
-    
+    [itemModel setValue:createdDate forKey:@"sortValue"];
 }
 
 

@@ -8,12 +8,15 @@
 
 #import "ItemsTableViewController.h"
 #import "ItemsNavigationController.h"
+#import "ItemTextInputViewController.h"
 
 @interface ItemsTableViewController ()
 
 @property (nonatomic, strong) NSArray *timers;
 
 @property (nonatomic) BOOL needsUpdateData;
+
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultController;
 
 
 @end
@@ -28,20 +31,26 @@
     
     self.managedObjectContext = appdelegate.managedObjectContext;
     
-    
-    
     [self configureNavigationBar];
-    [self loadData];
     
-
+    
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    NSString *failureReason = @"There was an error creating or loading the application's saved data.";
+    NSError *error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
+    dict[NSLocalizedDescriptionKey] = @"Failed to initialize the application's saved data";
+    dict[NSLocalizedFailureReasonErrorKey] = failureReason;
+    dict[NSUnderlyingErrorKey] = error;
+    
+    [self.fetchedResultController performFetch:&error];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-
-    if (self.needsUpdateData) {
-        [self loadData];
-        self.needsUpdateData = NO;
-    }
+//
+//    if (self.needsUpdateData) {
+//        [self loadData];
+//        self.needsUpdateData = NO;
+//    }
     [self.tableView reloadData];
 }
 
@@ -51,27 +60,47 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)loadData{
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    NSString *failureReason = @"There was an error creating or loading the application's saved data.";
-    NSError *error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
-    dict[NSLocalizedDescriptionKey] = @"Failed to initialize the application's saved data";
-    dict[NSLocalizedFailureReasonErrorKey] = failureReason;
-    dict[NSUnderlyingErrorKey] = error;
-    
+-(NSFetchedResultsController *)fetchedResultController{
+    if (_fetchedResultController != nil) {
+        return _fetchedResultController;
+    }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"ItemModel" inManagedObjectContext:self.managedObjectContext];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                                        initWithKey:@"createdDate" ascending:NO];
+                                        initWithKey:@"sortValue" ascending:NO];
     
     [fetchRequest setEntity:entityDescription];
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     
+    _fetchedResultController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     
+    _fetchedResultController.delegate = self;
     
-    self.timers = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    return _fetchedResultController;
 }
+
+//-(void)loadData{
+//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+//    NSString *failureReason = @"There was an error creating or loading the application's saved data.";
+//    NSError *error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
+//    dict[NSLocalizedDescriptionKey] = @"Failed to initialize the application's saved data";
+//    dict[NSLocalizedFailureReasonErrorKey] = failureReason;
+//    dict[NSUnderlyingErrorKey] = error;
+//    
+//    
+//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
+//    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"ItemModel" inManagedObjectContext:self.managedObjectContext];
+//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+//                                        initWithKey:@"sortValue" ascending:NO];
+//    
+//    [fetchRequest setEntity:entityDescription];
+//    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+//    
+//    
+//    
+//    self.timers = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+//}
 
 - (void)configureNavigationBar{
     self.clearsSelectionOnViewWillAppear = NO;
@@ -95,16 +124,11 @@
 - (void)addingButtonTapped:(id)sender{
     ItemsNavigationController *nvc = [self.storyboard instantiateViewControllerWithIdentifier:@"addingNavigation"];
 
-    //添加NavigationBar
+    ItemTextInputViewController *nvcRoot = (ItemTextInputViewController *)[nvc topViewController];
     
-    //[nvc presentViewController:addingViewController animated:YES completion:nil];
+    nvcRoot.managedObjectContext = self.managedObjectContext;
+    
     [self presentViewController:nvc animated:YES completion:nil];
-    
-    //ItemAddingViewController *addV = [[ItemAddingViewController alloc]init];
-    //addV.view.frame = [[UIScreen mainScreen]bounds];
-    //addV.definesPresentationContext = YES;
-    
-    //[self presentViewController:addV animated:YES completion:nil];
 }
 
 - (void)settingButtonTapped:(id)sender{
@@ -130,21 +154,18 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    NSInteger numberOfRow;
     
-    numberOfRow = self.timers.count;
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultController sections]objectAtIndex:section];
     
-    return numberOfRow;
+    return [sectionInfo numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     ItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell" forIndexPath:indexPath];
     
-    if (self.timers != 0) {
-        ItemModel *item =  (ItemModel *)self.timers[indexPath.row];
+        ItemModel *item =  (ItemModel *)[self.fetchedResultController objectAtIndexPath:indexPath];
         cell.titleOfItemLabel.text = item.titleOfItem;
         
         
@@ -158,7 +179,6 @@
         
         [cell.titleOfItemLabel sizeToFit];
         [cell.durationTimeLabel sizeToFit];
-    }
 
     
     return cell;
@@ -166,43 +186,62 @@
 
 
 
-// Override to support conditional editing of the table view.
+#pragma mark - Editing Table View Cell
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
 
-// Override to support editing the table view.
+-(UITableViewCellEditingStyle)tableView:(nonnull UITableView *)tableView editingStyleForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    return UITableViewCellEditingStyleDelete;
+}
+
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+        [self.fetchedResultController.managedObjectContext deleteObject:[self.fetchedResultController objectAtIndexPath:indexPath]];
+//        
+
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Apperance of Table View
 
 
 #pragma mark - Action of Table View
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+
+#pragma mark - Delegeate of NSFetchedResultController
+-(void)controllerWillChangeContent:(nonnull NSFetchedResultsController *)controller{
+    [self.tableView beginUpdates];
+}
+
+-(void)controller:(nonnull NSFetchedResultsController *)controller didChangeObject:(nonnull __kindof NSManagedObject *)anObject atIndexPath:(nullable NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(nullable NSIndexPath *)newIndexPath{
+    
+    
+    if (type == NSFetchedResultsChangeDelete) {
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    else if(type == NSFetchedResultsChangeInsert){
+        [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    else if(type == NSFetchedResultsChangeUpdate){
+        
+    }
+
+    
+    
+}
+
+-(void)controllerDidChangeContent:(nonnull NSFetchedResultsController *)controller{
+    [self.tableView endUpdates];
+}
+
+
 
 /*
 #pragma mark - Navigation
@@ -213,11 +252,6 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-
-#pragma mark - Core Data
-
-
 
 
 

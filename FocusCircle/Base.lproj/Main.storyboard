@@ -28,6 +28,12 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4Q-sB-Gh3">
+                                            <rect key="frame" x="106" y="67" width="38" height="23"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="miP-As-SHu">
                                             <rect key="frame" x="487" y="8" width="78" height="65"/>
                                             <color key="backgroundColor" red="0.70979324494949503" green="0.70979324494949503" blue="0.70979324494949503" alpha="1" colorSpace="calibratedRGB"/>
@@ -35,18 +41,12 @@
                                                 <constraint firstAttribute="width" constant="78" id="k0v-lK-KD5"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4Q-sB-Gh3">
-                                            <rect key="frame" x="106" y="67" width="38" height="23"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="miP-As-SHu" firstAttribute="top" secondItem="VdQ-Ac-FtX" secondAttribute="top" id="10G-as-zQn"/>
                                         <constraint firstItem="v4Q-sB-Gh3" firstAttribute="trailing" secondItem="VdQ-Ac-FtX" secondAttribute="trailing" id="8gi-WK-gr3"/>
                                         <constraint firstItem="v4Q-sB-Gh3" firstAttribute="top" secondItem="VdQ-Ac-FtX" secondAttribute="bottom" constant="25" id="FUR-Op-nmG"/>
-                                        <constraint firstItem="miP-As-SHu" firstAttribute="leading" secondItem="PuQ-Tf-rRN" secondAttribute="leading" constant="487" id="WLN-vP-4bT"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="miP-As-SHu" secondAttribute="trailing" constant="27" id="ILg-bu-2Dp"/>
                                         <constraint firstItem="VdQ-Ac-FtX" firstAttribute="leading" secondItem="PuQ-Tf-rRN" secondAttribute="leadingMargin" constant="16" id="ZFn-S5-EzR"/>
                                         <constraint firstItem="miP-As-SHu" firstAttribute="bottom" secondItem="v4Q-sB-Gh3" secondAttribute="bottom" constant="-17" id="pVg-cI-s5U"/>
                                         <constraint firstAttribute="topMargin" secondItem="VdQ-Ac-FtX" secondAttribute="top" id="zzt-qY-XrV"/>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8118.17" systemVersion="14D136" minimumToolsVersion="Automatic">
     <entity name="ItemModel" representedClassName="ItemModel" syncable="YES">
-        <attribute name="createdDate" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="duration" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="lastUsedTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="titleOfItem" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sortValue" attributeType="Double" defaultValueString="0.0" indexed="YES" syncable="YES"/>
+        <attribute name="titleOfItem" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="ItemModel" positionX="-3456" positionY="-1350" width="128" height="103"/>
