@@ -22,6 +22,7 @@
 		B3EB21D61B1804CB0045010D /* ItemsNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB21D51B1804CB0045010D /* ItemsNavigationController.m */; };
 		B3EB21E01B180F790045010D /* ItemTextInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB21DF1B180F790045010D /* ItemTextInputViewController.m */; };
 		B3FEA09E1B2FC60400F9D051 /* ItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FEA09D1B2FC60400F9D051 /* ItemModel.m */; };
+		B3FEA0A11B34F87D00F9D051 /* ItemsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FEA0A01B34F87D00F9D051 /* ItemsTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		B3FEA09B1B2FC60400F9D051 /* ItemModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ItemModel+CoreDataProperties.h"; sourceTree = "<group>"; };
 		B3FEA09C1B2FC60400F9D051 /* ItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemModel.h; sourceTree = "<group>"; };
 		B3FEA09D1B2FC60400F9D051 /* ItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemModel.m; sourceTree = "<group>"; };
+		B3FEA09F1B34F87D00F9D051 /* ItemsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsTableView.h; sourceTree = "<group>"; };
+		B3FEA0A01B34F87D00F9D051 /* ItemsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,12 +152,12 @@
 				B3EB21D51B1804CB0045010D /* ItemsNavigationController.m */,
 				B3EB21D11B1803D60045010D /* ItemsTableViewController.h */,
 				B3EB21D21B1803D60045010D /* ItemsTableViewController.m */,
-				B3D4152B1B1D7C9000BAC7A3 /* SettingTableViewController.h */,
-				B3D4152C1B1D7C9000BAC7A3 /* SettingTableViewController.m */,
 				B3EB21DE1B180F790045010D /* ItemTextInputViewController.h */,
 				B3EB21DF1B180F790045010D /* ItemTextInputViewController.m */,
 				B322167F1B2E69BB000A72D7 /* ItemEditingViewController.h */,
 				B32216801B2E69BB000A72D7 /* ItemEditingViewController.m */,
+				B3D4152B1B1D7C9000BAC7A3 /* SettingTableViewController.h */,
+				B3D4152C1B1D7C9000BAC7A3 /* SettingTableViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -173,6 +176,8 @@
 		B3EB21D91B1805400045010D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B3FEA09F1B34F87D00F9D051 /* ItemsTableView.h */,
+				B3FEA0A01B34F87D00F9D051 /* ItemsTableView.m */,
 				B301C0691B2EFA46007FA6BE /* ItemTableViewCell.h */,
 				B301C06A1B2EFA46007FA6BE /* ItemTableViewCell.m */,
 				B3D4152E1B1D7F2300BAC7A3 /* PauseButton.h */,
@@ -295,6 +300,7 @@
 				B3B7B4C21B1419EC00B96A01 /* main.m in Sources */,
 				B3EB21D61B1804CB0045010D /* ItemsNavigationController.m in Sources */,
 				B3FEA09E1B2FC60400F9D051 /* ItemModel.m in Sources */,
+				B3FEA0A11B34F87D00F9D051 /* ItemsTableView.m in Sources */,
 				B3E5B1121B29D5E5003162D4 /* FocusCircle.xcdatamodeld in Sources */,
 				B3D4152D1B1D7C9000BAC7A3 /* SettingTableViewController.m in Sources */,
 				B301C06B1B2EFA46007FA6BE /* ItemTableViewCell.m in Sources */,

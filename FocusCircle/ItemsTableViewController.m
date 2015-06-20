@@ -22,7 +22,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.tableView.separatorColor = [UIColor blackColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.allowsSelectionDuringEditing = YES;
+    
     
     AppDelegate *appdelegate = [[UIApplication sharedApplication]delegate];
     
@@ -131,6 +135,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     ItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell" forIndexPath:indexPath];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    cell.shouldIndentWhileEditing = YES;
+    cell.expanded = NO;
+    
     
         ItemModel *item =  (ItemModel *)[self.fetchedResultController objectAtIndexPath:indexPath];
         cell.titleOfItemLabel.text = item.titleOfItem;
@@ -142,7 +150,7 @@
         
         
         
-        cell.durationTimeLabel.text = [NSString stringWithFormat:@"%l02d:%l02d:%l02d", hours, minutes, seconds];
+        cell.durationTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", hours, minutes, seconds];
         
         [cell.titleOfItemLabel sizeToFit];
         [cell.durationTimeLabel sizeToFit];
@@ -151,6 +159,21 @@
     return cell;
 }
 
+-(CGFloat)tableView:(nonnull UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+//    if ([indexPath isEqual:[tableView ]) {
+//        ItemTableViewCell *selectedCell = (ItemTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+//        
+//        if (selectedCell.expanded) {
+//            return 150;
+//        }else{
+//            return 95;
+//        }
+//    }else{
+//        return 95;
+//    }
+
+    return 95;
+}
 
 
 #pragma mark - Editing Table View Cell
@@ -168,15 +191,15 @@
         [self.fetchedResultController.managedObjectContext deleteObject:[self.fetchedResultController objectAtIndexPath:indexPath]];
 
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        
     }   
 }
 
 
 #pragma mark - Action of Table View
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(self.editing){
-        
+//    if(self.editing){
+    
         ItemModel *item =  (ItemModel *)[self.fetchedResultController objectAtIndexPath:indexPath];
         
         NSInteger hours = item.duration.integerValue/3600;
@@ -195,13 +218,24 @@
         
         [self presentViewController:nvc animated:YES completion:nil];
         
-        
-    }else{
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    }
+//        
+//    }else{
+//        ItemTableViewCell *selectedCell = (ItemTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+//        
+//        
+//        if (selectedCell.expanded) {
+//            selectedCell.expanded = NO;
+//            [self tableView:tableView heightForRowAtIndexPath:indexPath];
+//        }else{
+//            selectedCell.expanded = YES;
+//            [self tableView:tableView heightForRowAtIndexPath:indexPath];
+//        }
+//
+//        [tableView beginUpdates];
+//        [tableView endUpdates];
+//    }
 
 }
-
 
 #pragma mark - Delegeate of NSFetchedResultController
 -(void)controllerWillChangeContent:(nonnull NSFetchedResultsController *)controller{

@@ -16,6 +16,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [self insertDemoData];
 
     return YES;
 }
@@ -23,6 +25,37 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+}
+
+-(void)insertDemoData{
+    ItemModel *item = [NSEntityDescription insertNewObjectForEntityForName:@"ItemModel" inManagedObjectContext:self.managedObjectContext];
+    
+    NSNumber *createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
+    NSNumber *duration = [NSNumber numberWithInteger:34563];
+    
+    [item setValue:@"testData1" forKey:@"titleOfItem"];
+    [item setValue:duration forKey:@"duration"];
+    [item setValue:createdDate forKey:@"sortValue"];
+    
+    item = [NSEntityDescription insertNewObjectForEntityForName:@"ItemModel" inManagedObjectContext:self.managedObjectContext];
+    
+    createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
+    duration = [NSNumber numberWithInteger:34567];
+    
+    [item setValue:@"testData1" forKey:@"titleOfItem"];
+    [item setValue:duration forKey:@"duration"];
+    [item setValue:createdDate forKey:@"sortValue"];
+    
+    
+    item = [NSEntityDescription insertNewObjectForEntityForName:@"ItemModel" inManagedObjectContext:self.managedObjectContext];
+    
+    createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
+    duration = [NSNumber numberWithInteger:34566];
+    
+    [item setValue:@"testData1" forKey:@"titleOfItem"];
+    [item setValue:duration forKey:@"duration"];
+    [item setValue:createdDate forKey:@"sortValue"];
+    
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
