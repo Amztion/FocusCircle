@@ -14,7 +14,7 @@
 @interface ItemsTableViewController ()
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultController;
-
+@property (nonatomic, strong) NSIndexPath *expandedIndexPath;
 
 @end
 
@@ -159,7 +159,7 @@
 }
 
 -(CGFloat)tableView:(nonnull UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
-    if ([indexPath isEqual:tableView.indexPathForSelectedRow]) {
+    if ([indexPath compare:self.expandedIndexPath] == NSOrderedSame) {
             return 150;
     }else{
         return 95;
@@ -209,9 +209,12 @@
         
         [self presentViewController:nvc animated:YES completion:nil];
     }else{
-
-
         [tableView beginUpdates];
+        if ([indexPath compare:self.expandedIndexPath] == NSOrderedSame) {
+            self.expandedIndexPath = nil;
+        }else{
+            self.expandedIndexPath = indexPath;
+        }
         [tableView endUpdates];
     }
 
@@ -234,7 +237,7 @@
     else if(type == NSFetchedResultsChangeUpdate){
         [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
-    
+
 }
 
 -(void)controllerDidChangeContent:(nonnull NSFetchedResultsController *)controller{
