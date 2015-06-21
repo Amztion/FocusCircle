@@ -137,7 +137,6 @@
     ItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell" forIndexPath:indexPath];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     cell.shouldIndentWhileEditing = YES;
-    cell.expanded = NO;
     
     
         ItemModel *item =  (ItemModel *)[self.fetchedResultController objectAtIndexPath:indexPath];
@@ -160,19 +159,11 @@
 }
 
 -(CGFloat)tableView:(nonnull UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
-//    if ([indexPath isEqual:[tableView ]) {
-//        ItemTableViewCell *selectedCell = (ItemTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-//        
-//        if (selectedCell.expanded) {
-//            return 150;
-//        }else{
-//            return 95;
-//        }
-//    }else{
-//        return 95;
-//    }
-
-    return 95;
+    if ([indexPath isEqual:tableView.indexPathForSelectedRow]) {
+            return 150;
+    }else{
+        return 95;
+    }
 }
 
 
@@ -198,7 +189,7 @@
 
 #pragma mark - Action of Table View
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if(self.editing){
+    if(self.editing){
     
         ItemModel *item =  (ItemModel *)[self.fetchedResultController objectAtIndexPath:indexPath];
         
@@ -217,23 +208,12 @@
         editingViewController.fetchedResulesController = self.fetchedResultController;
         
         [self presentViewController:nvc animated:YES completion:nil];
-        
-//        
-//    }else{
-//        ItemTableViewCell *selectedCell = (ItemTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-//        
-//        
-//        if (selectedCell.expanded) {
-//            selectedCell.expanded = NO;
-//            [self tableView:tableView heightForRowAtIndexPath:indexPath];
-//        }else{
-//            selectedCell.expanded = YES;
-//            [self tableView:tableView heightForRowAtIndexPath:indexPath];
-//        }
-//
-//        [tableView beginUpdates];
-//        [tableView endUpdates];
-//    }
+    }else{
+
+
+        [tableView beginUpdates];
+        [tableView endUpdates];
+    }
 
 }
 

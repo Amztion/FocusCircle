@@ -12,5 +12,4 @@
 @property (weak, nonatomic) IBOutlet UILabel *durationTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleOfItemLabel;
 
-@property (nonatomic) BOOL expanded;
 @end
