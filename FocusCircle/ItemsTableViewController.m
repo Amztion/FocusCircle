@@ -14,7 +14,6 @@
 @interface ItemsTableViewController ()
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultController;
-@property (nonatomic, strong) NSIndexPath *expandedIndexPath;
 
 @end
 
@@ -26,6 +25,7 @@
     self.tableView.separatorColor = [UIColor blackColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.allowsSelectionDuringEditing = YES;
+    self.tableView.allowsMultipleSelection = YES;
     
     
     AppDelegate *appdelegate = [[UIApplication sharedApplication]delegate];
@@ -159,8 +159,12 @@
 }
 
 -(CGFloat)tableView:(nonnull UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
-    if ([indexPath compare:self.expandedIndexPath] == NSOrderedSame) {
+    if(tableView.indexPathsForSelectedRows.count){
+        if ([tableView.indexPathsForSelectedRows indexOfObject:indexPath] != NSNotFound){
             return 150;
+        }else{
+            return 95;
+        }
     }else{
         return 95;
     }
@@ -209,15 +213,13 @@
         
         [self presentViewController:nvc animated:YES completion:nil];
     }else{
-        [tableView beginUpdates];
-        if ([indexPath compare:self.expandedIndexPath] == NSOrderedSame) {
-            self.expandedIndexPath = nil;
-        }else{
-            self.expandedIndexPath = indexPath;
-        }
-        [tableView endUpdates];
+        [self updateTableView:tableView];
     }
 
+}
+
+-(void)tableView:(nonnull UITableView *)tableView didDeselectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    [self updateTableView:tableView];
 }
 
 #pragma mark - Delegeate of NSFetchedResultController
@@ -245,6 +247,10 @@
 }
 
 
+-(void)updateTableView:(UITableView *)tableView{
+    [tableView beginUpdates];
+    [tableView endUpdates];
+}
 
 /*
 #pragma mark - Navigation
