@@ -17,13 +17,13 @@
 		B3B7B4D31B1419EC00B96A01 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3B7B4D11B1419EC00B96A01 /* LaunchScreen.xib */; };
 		B3B7B4DF1B1419EC00B96A01 /* FocusCircleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B7B4DE1B1419EC00B96A01 /* FocusCircleTests.m */; };
 		B3D4152D1B1D7C9000BAC7A3 /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4152C1B1D7C9000BAC7A3 /* SettingTableViewController.m */; };
-		B3D415301B1D7F2300BAC7A3 /* PauseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4152F1B1D7F2300BAC7A3 /* PauseButton.m */; };
 		B3E5B1121B29D5E5003162D4 /* FocusCircle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3E5B1101B29D5E5003162D4 /* FocusCircle.xcdatamodeld */; };
 		B3EB21D31B1803D60045010D /* ItemsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB21D21B1803D60045010D /* ItemsTableViewController.m */; };
 		B3EB21D61B1804CB0045010D /* ItemsNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB21D51B1804CB0045010D /* ItemsNavigationController.m */; };
 		B3EB21E01B180F790045010D /* ItemTextInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB21DF1B180F790045010D /* ItemTextInputViewController.m */; };
 		B3FEA09E1B2FC60400F9D051 /* ItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FEA09D1B2FC60400F9D051 /* ItemModel.m */; };
 		B3FEA0A11B34F87D00F9D051 /* ItemsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FEA0A01B34F87D00F9D051 /* ItemsTableView.m */; };
+		B3FF7BB11B392EEC005F9D67 /* timerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FF7BB01B392EEC005F9D67 /* timerButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,8 +56,6 @@
 		B3B7B4DE1B1419EC00B96A01 /* FocusCircleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FocusCircleTests.m; sourceTree = "<group>"; };
 		B3D4152B1B1D7C9000BAC7A3 /* SettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewController.h; sourceTree = "<group>"; };
 		B3D4152C1B1D7C9000BAC7A3 /* SettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
-		B3D4152E1B1D7F2300BAC7A3 /* PauseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseButton.h; sourceTree = "<group>"; };
-		B3D4152F1B1D7F2300BAC7A3 /* PauseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseButton.m; sourceTree = "<group>"; };
 		B3E5B1111B29D5E5003162D4 /* FocusCircle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FocusCircle.xcdatamodel; sourceTree = "<group>"; };
 		B3EB21D11B1803D60045010D /* ItemsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsTableViewController.h; sourceTree = "<group>"; };
 		B3EB21D21B1803D60045010D /* ItemsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsTableViewController.m; sourceTree = "<group>"; };
@@ -70,6 +68,8 @@
 		B3FEA09D1B2FC60400F9D051 /* ItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemModel.m; sourceTree = "<group>"; };
 		B3FEA09F1B34F87D00F9D051 /* ItemsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsTableView.h; sourceTree = "<group>"; };
 		B3FEA0A01B34F87D00F9D051 /* ItemsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsTableView.m; sourceTree = "<group>"; };
+		B3FF7BAF1B392EEC005F9D67 /* timerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timerButton.h; sourceTree = "<group>"; };
+		B3FF7BB01B392EEC005F9D67 /* timerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = timerButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,12 +179,12 @@
 		B3EB21D91B1805400045010D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B3FF7BAF1B392EEC005F9D67 /* timerButton.h */,
+				B3FF7BB01B392EEC005F9D67 /* timerButton.m */,
 				B3FEA09F1B34F87D00F9D051 /* ItemsTableView.h */,
 				B3FEA0A01B34F87D00F9D051 /* ItemsTableView.m */,
 				B301C0691B2EFA46007FA6BE /* ItemTableViewCell.h */,
 				B301C06A1B2EFA46007FA6BE /* ItemTableViewCell.m */,
-				B3D4152E1B1D7F2300BAC7A3 /* PauseButton.h */,
-				B3D4152F1B1D7F2300BAC7A3 /* PauseButton.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -309,11 +309,11 @@
 				B3E5B1121B29D5E5003162D4 /* FocusCircle.xcdatamodeld in Sources */,
 				B3D4152D1B1D7C9000BAC7A3 /* SettingTableViewController.m in Sources */,
 				B301C06B1B2EFA46007FA6BE /* ItemTableViewCell.m in Sources */,
+				B3FF7BB11B392EEC005F9D67 /* timerButton.m in Sources */,
 				B32216811B2E69BB000A72D7 /* ItemEditingViewController.m in Sources */,
 				B3EB21E01B180F790045010D /* ItemTextInputViewController.m in Sources */,
 				B3EB21D31B1803D60045010D /* ItemsTableViewController.m in Sources */,
 				B34381371B3804FB001CD8DA /* TimeController.m in Sources */,
-				B3D415301B1D7F2300BAC7A3 /* PauseButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

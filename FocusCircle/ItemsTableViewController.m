@@ -107,21 +107,24 @@
     cell.shouldIndentWhileEditing = YES;
     
     
-        ItemModel *item =  (ItemModel *)[self.fetchedResultController objectAtIndexPath:indexPath];
-        cell.titleOfItemLabel.text = item.titleOfItem;
-        
-        
-        NSInteger hours = item.duration.integerValue/3600;
-        NSInteger minutes = item.duration.integerValue/60%60;
-        NSInteger seconds = item.duration.integerValue%3600 - minutes * 60;
-        
-        
-        
-        cell.durationTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", hours, minutes, seconds];
-        
-        [cell.titleOfItemLabel sizeToFit];
-        [cell.durationTimeLabel sizeToFit];
+    ItemModel *item =  (ItemModel *)[self.fetchedResultController objectAtIndexPath:indexPath];
+    
+    cell.titleOfItemLabel.text = item.titleOfItem;
+    [cell.titleOfItemLabel sizeToFit];
+    
 
+    NSInteger hours = item.duration.integerValue/3600;
+    NSInteger minutes = item.duration.integerValue/60%60;
+    NSInteger seconds = item.duration.integerValue%3600 - minutes * 60;
+    
+    cell.durationTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", hours, minutes, seconds];
+    [cell.durationTimeLabel sizeToFit];
+    
+    
+    UITapGestureRecognizer *tapReconizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(respondToTimerButtonTapped:)];
+    tapReconizer.numberOfTapsRequired = 1;
+    [cell.timerButtonView addGestureRecognizer:tapReconizer];
+    cell.timerButtonView.currentIndexPath = indexPath;
     
     return cell;
 }
@@ -249,6 +252,15 @@
     [tableView beginUpdates];
     [tableView endUpdates];
 }
+
+#pragma mark - Gesture Recognizer
+
+-(void)respondToTimerButtonTapped:(UITapGestureRecognizer *)sender{
+    timerButton *timerView = (timerButton *)[sender view];
+    NSLog(@"%@",timerView.currentIndexPath);
+}
+
+
 
 /*
 #pragma mark - Navigation

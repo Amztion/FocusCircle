@@ -8,7 +8,7 @@
 
 #import "ItemTextInputViewController.h"
 
-@interface ItemEditingViewController : ItemTextInputViewController<UIPickerViewDataSource,UIPickerViewDelegate,UIPickerViewAccessibilityDelegate>
+@interface ItemEditingViewController : ItemTextInputViewController
 
 @property (nonatomic, strong) NSIndexPath *indexPath;
 @property (nonatomic, strong) NSString *titleOfItem;

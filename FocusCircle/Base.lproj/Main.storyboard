@@ -35,9 +35,10 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="miP-As-SHu">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="miP-As-SHu" customClass="timerButton">
                                             <rect key="frame" x="487" y="8" width="78" height="65"/>
                                             <color key="backgroundColor" red="0.70979324494949503" green="0.70979324494949503" blue="0.70979324494949503" alpha="1" colorSpace="calibratedRGB"/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="78" id="k0v-lK-KD5"/>
                                             </constraints>
@@ -45,6 +46,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSv-5L-fNV">
                                             <rect key="frame" x="24" y="83" width="576" height="0.0"/>
                                             <color key="backgroundColor" red="0.69019609689999994" green="0.7019608021" blue="0.69803923369999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="0.29999999999999999" id="FHw-tn-I3h"/>
                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="1" id="XaC-0M-Oes"/>
@@ -62,6 +64,7 @@
                                             </variation>
                                         </view>
                                     </subviews>
+                                    <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstItem="miP-As-SHu" firstAttribute="top" secondItem="VdQ-Ac-FtX" secondAttribute="top" id="10G-as-zQn"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="dSv-5L-fNV" secondAttribute="trailing" id="66V-l6-myn"/>
@@ -105,6 +108,7 @@
                                 </variation>
                                 <connections>
                                     <outlet property="durationTimeLabel" destination="VdQ-Ac-FtX" id="xOx-zB-69K"/>
+                                    <outlet property="timerButtonView" destination="miP-As-SHu" id="tkN-19-efG"/>
                                     <outlet property="titleOfItemLabel" destination="v4Q-sB-Gh3" id="06r-jr-nf3"/>
                                 </connections>
                             </tableViewCell>

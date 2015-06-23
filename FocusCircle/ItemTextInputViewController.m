@@ -14,7 +14,7 @@ typedef enum timePicker{
     second
 }TimeComponent;
 
-@interface ItemTextInputViewController ()<UIPickerViewDataSource, UIPickerViewDelegate, UIPickerViewAccessibilityDelegate>
+@interface ItemTextInputViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *durationPickerView;

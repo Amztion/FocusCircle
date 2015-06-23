@@ -10,9 +10,8 @@
 #import "ItemsTableViewController.h"
 #import "AppDelegate.h"
 
-@interface ItemTextInputViewController : UITableViewController
+@interface ItemTextInputViewController : UITableViewController<UIPickerViewDataSource, UIPickerViewDelegate, UIPickerViewAccessibilityDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-
 
 @end
