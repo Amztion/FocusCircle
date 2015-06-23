@@ -22,15 +22,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.tableView.separatorColor = [UIColor blackColor];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.allowsSelectionDuringEditing = YES;
     self.tableView.allowsMultipleSelection = YES;
+
     
     
-    AppDelegate *appdelegate = [[UIApplication sharedApplication]delegate];
-    
-    self.managedObjectContext = appdelegate.managedObjectContext;
     
     [self configureNavigationBar];
     
@@ -47,7 +43,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-
+    
+    self.tableView.tableFooterView = [UIView new];
     [self.tableView reloadData];
 }
 
@@ -75,6 +72,14 @@
     _fetchedResultController.delegate = self;
     
     return _fetchedResultController;
+}
+
+-(NSManagedObjectContext *)managedObjectContext{
+    AppDelegate *appdelegate = [[UIApplication sharedApplication]delegate];
+    
+    _managedObjectContext = appdelegate.managedObjectContext;
+    
+    return _managedObjectContext;
 }
 
 

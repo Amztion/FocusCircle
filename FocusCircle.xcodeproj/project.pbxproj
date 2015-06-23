@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B301C06B1B2EFA46007FA6BE /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B301C06A1B2EFA46007FA6BE /* ItemTableViewCell.m */; };
 		B32216811B2E69BB000A72D7 /* ItemEditingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32216801B2E69BB000A72D7 /* ItemEditingViewController.m */; };
+		B34381371B3804FB001CD8DA /* TimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34381361B3804FB001CD8DA /* TimeController.m */; };
 		B3B7B4C21B1419EC00B96A01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B7B4C11B1419EC00B96A01 /* main.m */; };
 		B3B7B4C51B1419EC00B96A01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B7B4C41B1419EC00B96A01 /* AppDelegate.m */; };
 		B3B7B4CE1B1419EC00B96A01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3B7B4CC1B1419EC00B96A01 /* Main.storyboard */; };
@@ -40,6 +41,8 @@
 		B301C06A1B2EFA46007FA6BE /* ItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableViewCell.m; sourceTree = "<group>"; };
 		B322167F1B2E69BB000A72D7 /* ItemEditingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemEditingViewController.h; sourceTree = "<group>"; };
 		B32216801B2E69BB000A72D7 /* ItemEditingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemEditingViewController.m; sourceTree = "<group>"; };
+		B34381351B3804FB001CD8DA /* TimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeController.h; sourceTree = "<group>"; };
+		B34381361B3804FB001CD8DA /* TimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeController.m; sourceTree = "<group>"; };
 		B3B7B4BC1B1419EC00B96A01 /* FocusCircle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FocusCircle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3B7B4C01B1419EC00B96A01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3B7B4C11B1419EC00B96A01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -189,6 +192,8 @@
 		B3EB21DA1B18068B0045010D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B34381351B3804FB001CD8DA /* TimeController.h */,
+				B34381361B3804FB001CD8DA /* TimeController.m */,
 				B3FEA09B1B2FC60400F9D051 /* ItemModel+CoreDataProperties.h */,
 				B3FEA09C1B2FC60400F9D051 /* ItemModel.h */,
 				B3FEA09D1B2FC60400F9D051 /* ItemModel.m */,
@@ -307,6 +312,7 @@
 				B32216811B2E69BB000A72D7 /* ItemEditingViewController.m in Sources */,
 				B3EB21E01B180F790045010D /* ItemTextInputViewController.m in Sources */,
 				B3EB21D31B1803D60045010D /* ItemsTableViewController.m in Sources */,
+				B34381371B3804FB001CD8DA /* TimeController.m in Sources */,
 				B3D415301B1D7F2300BAC7A3 /* PauseButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
