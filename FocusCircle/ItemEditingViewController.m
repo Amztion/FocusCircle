@@ -27,14 +27,12 @@ typedef enum timePicker{
     [super viewDidLoad];
     
     self.titleTextField.text = self.titleOfItem;
-    [self configurePickerView];
     [self configureNavigationBar];
-    // Do any additional setup after loading the view.
+    [self configurePickerView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)configureNavigationBar{
@@ -94,6 +92,7 @@ typedef enum timePicker{
     [self setDefaultValue:self.minutes.integerValue inComponent:minutes];
     [self setDefaultValue:self.seconds.integerValue inComponent:second];
 }
+
 
 -(void)setDefaultValue: (NSInteger)value inComponent:(TimeComponent)component{
     [self.durationTimePickerView selectRow:value inComponent:component animated:YES];

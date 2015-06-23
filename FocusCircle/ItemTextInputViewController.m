@@ -30,13 +30,8 @@ typedef enum timePicker{
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-    
-    self.managedObjectContext = appDelegate.managedObjectContext;
-    
-
     [self configureNavigationBar];
+    [self configurePickerView];
     
 }
 
@@ -63,6 +58,13 @@ typedef enum timePicker{
     [self setDefaultValue:0 inComponent:minutes];
     [self setDefaultValue:0 inComponent:second];
 }
+
+-(NSManagedObjectContext *)managedObjectContext{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    _managedObjectContext = appDelegate.managedObjectContext;
+    return _managedObjectContext;
+}
+
 
 -(void)setDefaultValue: (NSInteger)value inComponent:(TimeComponent)component{
     [self.durationPickerView selectRow:value inComponent:component animated:YES];

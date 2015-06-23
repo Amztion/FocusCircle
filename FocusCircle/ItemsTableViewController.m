@@ -25,12 +25,7 @@
     self.tableView.allowsSelectionDuringEditing = YES;
     self.tableView.allowsMultipleSelection = YES;
 
-    
-    
-    
     [self configureNavigationBar];
-    
-    
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     NSString *failureReason = @"There was an error creating or loading the application's saved data.";
@@ -51,37 +46,9 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
--(NSFetchedResultsController *)fetchedResultController{
-    if (_fetchedResultController != nil) {
-        return _fetchedResultController;
-    }
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
-    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"ItemModel" inManagedObjectContext:self.managedObjectContext];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                                        initWithKey:@"sortValue" ascending:NO];
-    
-    [fetchRequest setEntity:entityDescription];
-    [fetchRequest setSortDescriptors:@[sortDescriptor]];
-    
-    _fetchedResultController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
-    
-    _fetchedResultController.delegate = self;
-    
-    return _fetchedResultController;
-}
-
--(NSManagedObjectContext *)managedObjectContext{
-    AppDelegate *appdelegate = [[UIApplication sharedApplication]delegate];
-    
-    _managedObjectContext = appdelegate.managedObjectContext;
-    
-    return _managedObjectContext;
-}
-
+#pragma mark - Configure View Controller and View
 
 - (void)configureNavigationBar{
     self.clearsSelectionOnViewWillAppear = NO;
@@ -93,9 +60,8 @@
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-#pragma mark - Actions of Controllers
 
-
+#pragma mark - Actions of Controls
 
 - (void)addingButtonTapped:(id)sender{
     ItemsNavigationController *nvc = [self.storyboard instantiateViewControllerWithIdentifier:@"addingNavigation"];
@@ -125,13 +91,10 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultController sections]objectAtIndex:section];
     
     return [sectionInfo numberOfObjects];
@@ -225,6 +188,36 @@
 
 -(void)tableView:(nonnull UITableView *)tableView didDeselectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     [self updateTableView:tableView];
+}
+
+#pragma mark - Configure Core Data
+
+-(NSFetchedResultsController *)fetchedResultController{
+    if (_fetchedResultController != nil) {
+        return _fetchedResultController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]init];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"ItemModel" inManagedObjectContext:self.managedObjectContext];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"sortValue" ascending:NO];
+    
+    [fetchRequest setEntity:entityDescription];
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+    
+    _fetchedResultController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    
+    _fetchedResultController.delegate = self;
+    
+    return _fetchedResultController;
+}
+
+-(NSManagedObjectContext *)managedObjectContext{
+    AppDelegate *appdelegate = [[UIApplication sharedApplication]delegate];
+    
+    _managedObjectContext = appdelegate.managedObjectContext;
+    
+    return _managedObjectContext;
 }
 
 #pragma mark - Delegeate of NSFetchedResultController
