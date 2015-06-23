@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "timerButton.h"
+#import "TimerButton.h"
+#import "TimeController.h"
 
 @interface ItemTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *durationTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleOfItemLabel;
-@property (weak, nonatomic) IBOutlet timerButton *timerButtonView;
+@property (weak, nonatomic) IBOutlet TimerButton *timerButtonView;
+
+@property (strong, nonatomic) TimeController *timeController;
 
 @end

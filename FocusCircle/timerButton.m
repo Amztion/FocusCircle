@@ -6,9 +6,9 @@
 //  Copyright © 2015年 Liang Zhao. All rights reserved.
 //
 
-#import "timerButton.h"
+#import "TimerButton.h"
 
-@implementation timerButton
+@implementation TimerButton
 
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -31,7 +31,7 @@
     ItemModel *item = [NSEntityDescription insertNewObjectForEntityForName:@"ItemModel" inManagedObjectContext:self.managedObjectContext];
     
     NSNumber *createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
-    NSNumber *duration = [NSNumber numberWithInteger:34563];
+    NSNumber *duration = [NSNumber numberWithInteger:17];
     
     [item setValue:@"testData1" forKey:@"titleOfItem"];
     [item setValue:duration forKey:@"duration"];
@@ -40,9 +40,9 @@
     item = [NSEntityDescription insertNewObjectForEntityForName:@"ItemModel" inManagedObjectContext:self.managedObjectContext];
     
     createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
-    duration = [NSNumber numberWithInteger:34567];
+    duration = [NSNumber numberWithInteger:13];
     
-    [item setValue:@"testData1" forKey:@"titleOfItem"];
+    [item setValue:@"testData2" forKey:@"titleOfItem"];
     [item setValue:duration forKey:@"duration"];
     [item setValue:createdDate forKey:@"sortValue"];
     
@@ -50,9 +50,9 @@
     item = [NSEntityDescription insertNewObjectForEntityForName:@"ItemModel" inManagedObjectContext:self.managedObjectContext];
     
     createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
-    duration = [NSNumber numberWithInteger:34566];
+    duration = [NSNumber numberWithInteger:19];
     
-    [item setValue:@"testData1" forKey:@"titleOfItem"];
+    [item setValue:@"testData3" forKey:@"titleOfItem"];
     [item setValue:duration forKey:@"duration"];
     [item setValue:createdDate forKey:@"sortValue"];
     

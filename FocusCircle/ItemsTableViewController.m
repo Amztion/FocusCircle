@@ -10,10 +10,12 @@
 #import "ItemsNavigationController.h"
 #import "ItemTextInputViewController.h"
 #import "ItemEditingViewController.h"
+#import "TimeController.h"
 
 @interface ItemsTableViewController ()
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultController;
+@property (nonatomic, strong) NSArray *runningTableViewCells;
 
 @end
 
@@ -39,7 +41,10 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     
-    self.tableView.tableFooterView = [UIView new];
+//    self.tableView.tableFooterView = [UIView new];
+    self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.tableFooterView.frame.size.width, self.tableView.tableFooterView.frame.size.height)];
+    self.tableView.tableFooterView.backgroundColor = [UIColor lightGrayColor];
+    
     [self.tableView reloadData];
 }
 
@@ -120,11 +125,15 @@
     cell.durationTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", hours, minutes, seconds];
     [cell.durationTimeLabel sizeToFit];
     
-    
+
     UITapGestureRecognizer *tapReconizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(respondToTimerButtonTapped:)];
     tapReconizer.numberOfTapsRequired = 1;
     [cell.timerButtonView addGestureRecognizer:tapReconizer];
     cell.timerButtonView.currentIndexPath = indexPath;
+    
+    
+    TimeController *timeController = [[TimeController alloc]initWithDurationTime:item.duration];
+    cell.timeController = timeController;
     
     return cell;
 }
@@ -256,22 +265,76 @@
 #pragma mark - Gesture Recognizer
 
 -(void)respondToTimerButtonTapped:(UITapGestureRecognizer *)sender{
-    timerButton *timerView = (timerButton *)[sender view];
-    NSLog(@"%@",timerView.currentIndexPath);
+    if (self.editing) {
+    }else{
+        TimerButton *timerView = (TimerButton *)[sender view];
+        ItemTableViewCell *tableViewCell = (ItemTableViewCell *)[self.tableView cellForRowAtIndexPath:timerView.currentIndexPath];
+        TimeController *timeController = tableViewCell.timeController;
+        switch (timeController.status) {
+            case TimerPausing:
+                break;
+            case TimerStopped:
+                timeController.status = TimerRunning;
+                timeController.startTime = [self getCurrentTime];
+                [self createTimerForTableViewCell:tableViewCell];
+                
+                break;
+            case TimerRunning:
+                break;
+            default:
+                break;
+        }
+    }
+
 }
 
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - Timer
+-(void)createTimerForTableViewCell: (ItemTableViewCell *)tableViewCell{
+    NSTimer *countdown = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countdownForTimer:) userInfo:tableViewCell repeats:YES];
+    tableViewCell.timeController.timer = countdown;
+    [countdown fire];
 }
-*/
 
+-(void)countdownForTimer: (NSTimer *)sender{
+    if (sender.valid) {
+        ItemTableViewCell *tableViewCell = (ItemTableViewCell *)sender.userInfo;
+        
+        if([tableViewCell.timeController.remainingTime isEqualToNumber:[NSNumber numberWithDouble:0.0]]){
+            [sender invalidate];
+            NSInteger hours = tableViewCell.timeController.durationTime.integerValue/3600;
+            NSInteger minutes = tableViewCell.timeController.durationTime.integerValue/60%60;
+            NSInteger seconds = tableViewCell.timeController.durationTime.integerValue%3600 - minutes * 60;
+            
+            tableViewCell.durationTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", hours, minutes, seconds];
+            [tableViewCell.durationTimeLabel sizeToFit];
+            tableViewCell.timeController.remainingTime = tableViewCell.timeController.durationTime;
+            tableViewCell.timeController.status = TimerStopped;
+            
+        }else if(tableViewCell.timeController.remainingTime.doubleValue > 0){
+            NSNumber *oldNumer = tableViewCell.timeController.remainingTime;
+            tableViewCell.timeController.remainingTime = [NSNumber numberWithDouble:oldNumer.doubleValue - 1];
+            oldNumer = nil;
+
+            NSInteger hours = tableViewCell.timeController.remainingTime.integerValue/3600;
+            NSInteger minutes = tableViewCell.timeController.remainingTime.integerValue/60%60;
+            NSInteger seconds = tableViewCell.timeController.remainingTime.integerValue%3600 - minutes * 60;
+            
+            tableViewCell.durationTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", hours, minutes, seconds];
+            [tableViewCell.durationTimeLabel sizeToFit];
+        }else{
+            
+        }
+    }
+}
+
+-(NSDate*)getCurrentTime{
+    NSDate *now = [NSDate date];
+    NSTimeZone *currentTimeZone = [NSTimeZone systemTimeZone];
+    NSInteger seconds = [currentTimeZone secondsFromGMTForDate:now];
+    NSDate *localTimeNow = [now dateByAddingTimeInterval:seconds];
+    
+    return localTimeNow;
+}
 
 
 @end

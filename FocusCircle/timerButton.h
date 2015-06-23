@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface timerButton : UIView
+@interface TimerButton : UIView
 
 @property (nonatomic, strong) NSIndexPath *currentIndexPath;
 

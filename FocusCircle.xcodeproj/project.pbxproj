@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B301C06B1B2EFA46007FA6BE /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B301C06A1B2EFA46007FA6BE /* ItemTableViewCell.m */; };
 		B32216811B2E69BB000A72D7 /* ItemEditingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32216801B2E69BB000A72D7 /* ItemEditingViewController.m */; };
-		B34381371B3804FB001CD8DA /* TimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = B34381361B3804FB001CD8DA /* TimeController.m */; };
 		B3B7B4C21B1419EC00B96A01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B7B4C11B1419EC00B96A01 /* main.m */; };
 		B3B7B4C51B1419EC00B96A01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B7B4C41B1419EC00B96A01 /* AppDelegate.m */; };
 		B3B7B4CE1B1419EC00B96A01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3B7B4CC1B1419EC00B96A01 /* Main.storyboard */; };
@@ -23,7 +22,8 @@
 		B3EB21E01B180F790045010D /* ItemTextInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB21DF1B180F790045010D /* ItemTextInputViewController.m */; };
 		B3FEA09E1B2FC60400F9D051 /* ItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FEA09D1B2FC60400F9D051 /* ItemModel.m */; };
 		B3FEA0A11B34F87D00F9D051 /* ItemsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FEA0A01B34F87D00F9D051 /* ItemsTableView.m */; };
-		B3FF7BB11B392EEC005F9D67 /* timerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FF7BB01B392EEC005F9D67 /* timerButton.m */; };
+		B3FF7BB11B392EEC005F9D67 /* TimerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FF7BB01B392EEC005F9D67 /* TimerButton.m */; };
+		B3FF7BB41B3948C6005F9D67 /* TimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FF7BB31B3948C6005F9D67 /* TimeController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +41,6 @@
 		B301C06A1B2EFA46007FA6BE /* ItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableViewCell.m; sourceTree = "<group>"; };
 		B322167F1B2E69BB000A72D7 /* ItemEditingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemEditingViewController.h; sourceTree = "<group>"; };
 		B32216801B2E69BB000A72D7 /* ItemEditingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemEditingViewController.m; sourceTree = "<group>"; };
-		B34381351B3804FB001CD8DA /* TimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeController.h; sourceTree = "<group>"; };
-		B34381361B3804FB001CD8DA /* TimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeController.m; sourceTree = "<group>"; };
 		B3B7B4BC1B1419EC00B96A01 /* FocusCircle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FocusCircle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3B7B4C01B1419EC00B96A01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3B7B4C11B1419EC00B96A01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -58,7 +56,7 @@
 		B3D4152C1B1D7C9000BAC7A3 /* SettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
 		B3E5B1111B29D5E5003162D4 /* FocusCircle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FocusCircle.xcdatamodel; sourceTree = "<group>"; };
 		B3EB21D11B1803D60045010D /* ItemsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsTableViewController.h; sourceTree = "<group>"; };
-		B3EB21D21B1803D60045010D /* ItemsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsTableViewController.m; sourceTree = "<group>"; };
+		B3EB21D21B1803D60045010D /* ItemsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsTableViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
 		B3EB21D41B1804CB0045010D /* ItemsNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsNavigationController.h; sourceTree = "<group>"; };
 		B3EB21D51B1804CB0045010D /* ItemsNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsNavigationController.m; sourceTree = "<group>"; };
 		B3EB21DE1B180F790045010D /* ItemTextInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTextInputViewController.h; sourceTree = "<group>"; };
@@ -68,8 +66,10 @@
 		B3FEA09D1B2FC60400F9D051 /* ItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemModel.m; sourceTree = "<group>"; };
 		B3FEA09F1B34F87D00F9D051 /* ItemsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsTableView.h; sourceTree = "<group>"; };
 		B3FEA0A01B34F87D00F9D051 /* ItemsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsTableView.m; sourceTree = "<group>"; };
-		B3FF7BAF1B392EEC005F9D67 /* timerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timerButton.h; sourceTree = "<group>"; };
-		B3FF7BB01B392EEC005F9D67 /* timerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = timerButton.m; sourceTree = "<group>"; };
+		B3FF7BAF1B392EEC005F9D67 /* TimerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerButton.h; sourceTree = "<group>"; };
+		B3FF7BB01B392EEC005F9D67 /* TimerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerButton.m; sourceTree = "<group>"; };
+		B3FF7BB21B3948C6005F9D67 /* TimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeController.h; sourceTree = "<group>"; };
+		B3FF7BB31B3948C6005F9D67 /* TimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,8 +179,8 @@
 		B3EB21D91B1805400045010D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B3FF7BAF1B392EEC005F9D67 /* timerButton.h */,
-				B3FF7BB01B392EEC005F9D67 /* timerButton.m */,
+				B3FF7BAF1B392EEC005F9D67 /* TimerButton.h */,
+				B3FF7BB01B392EEC005F9D67 /* TimerButton.m */,
 				B3FEA09F1B34F87D00F9D051 /* ItemsTableView.h */,
 				B3FEA0A01B34F87D00F9D051 /* ItemsTableView.m */,
 				B301C0691B2EFA46007FA6BE /* ItemTableViewCell.h */,
@@ -192,8 +192,8 @@
 		B3EB21DA1B18068B0045010D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B34381351B3804FB001CD8DA /* TimeController.h */,
-				B34381361B3804FB001CD8DA /* TimeController.m */,
+				B3FF7BB21B3948C6005F9D67 /* TimeController.h */,
+				B3FF7BB31B3948C6005F9D67 /* TimeController.m */,
 				B3FEA09B1B2FC60400F9D051 /* ItemModel+CoreDataProperties.h */,
 				B3FEA09C1B2FC60400F9D051 /* ItemModel.h */,
 				B3FEA09D1B2FC60400F9D051 /* ItemModel.m */,
@@ -309,11 +309,11 @@
 				B3E5B1121B29D5E5003162D4 /* FocusCircle.xcdatamodeld in Sources */,
 				B3D4152D1B1D7C9000BAC7A3 /* SettingTableViewController.m in Sources */,
 				B301C06B1B2EFA46007FA6BE /* ItemTableViewCell.m in Sources */,
-				B3FF7BB11B392EEC005F9D67 /* timerButton.m in Sources */,
+				B3FF7BB11B392EEC005F9D67 /* TimerButton.m in Sources */,
 				B32216811B2E69BB000A72D7 /* ItemEditingViewController.m in Sources */,
 				B3EB21E01B180F790045010D /* ItemTextInputViewController.m in Sources */,
+				B3FF7BB41B3948C6005F9D67 /* TimeController.m in Sources */,
 				B3EB21D31B1803D60045010D /* ItemsTableViewController.m in Sources */,
-				B34381371B3804FB001CD8DA /* TimeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
