@@ -16,6 +16,8 @@
 		B3B7B4D31B1419EC00B96A01 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3B7B4D11B1419EC00B96A01 /* LaunchScreen.xib */; };
 		B3B7B4DF1B1419EC00B96A01 /* FocusCircleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B7B4DE1B1419EC00B96A01 /* FocusCircleTests.m */; };
 		B3D4152D1B1D7C9000BAC7A3 /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4152C1B1D7C9000BAC7A3 /* SettingTableViewController.m */; };
+		B3E0A1CB1B3A9C7400C88B1A /* NSString+FCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E0A1CA1B3A9C7400C88B1A /* NSString+FCExtension.m */; };
+		B3E0A1CE1B3A9C8900C88B1A /* NSDate+FCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E0A1CD1B3A9C8900C88B1A /* NSDate+FCExtension.m */; };
 		B3E5B1121B29D5E5003162D4 /* FocusCircle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3E5B1101B29D5E5003162D4 /* FocusCircle.xcdatamodeld */; };
 		B3EB21D31B1803D60045010D /* ItemsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB21D21B1803D60045010D /* ItemsTableViewController.m */; };
 		B3EB21D61B1804CB0045010D /* ItemsNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB21D51B1804CB0045010D /* ItemsNavigationController.m */; };
@@ -54,6 +56,10 @@
 		B3B7B4DE1B1419EC00B96A01 /* FocusCircleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FocusCircleTests.m; sourceTree = "<group>"; };
 		B3D4152B1B1D7C9000BAC7A3 /* SettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewController.h; sourceTree = "<group>"; };
 		B3D4152C1B1D7C9000BAC7A3 /* SettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
+		B3E0A1C91B3A9C7400C88B1A /* NSString+FCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FCExtension.h"; sourceTree = "<group>"; };
+		B3E0A1CA1B3A9C7400C88B1A /* NSString+FCExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FCExtension.m"; sourceTree = "<group>"; };
+		B3E0A1CC1B3A9C8900C88B1A /* NSDate+FCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+FCExtension.h"; sourceTree = "<group>"; };
+		B3E0A1CD1B3A9C8900C88B1A /* NSDate+FCExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FCExtension.m"; sourceTree = "<group>"; };
 		B3E5B1111B29D5E5003162D4 /* FocusCircle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FocusCircle.xcdatamodel; sourceTree = "<group>"; };
 		B3EB21D11B1803D60045010D /* ItemsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsTableViewController.h; sourceTree = "<group>"; };
 		B3EB21D21B1803D60045010D /* ItemsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsTableViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
@@ -123,6 +129,10 @@
 		B3B7B4BF1B1419EC00B96A01 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B3E0A1CC1B3A9C8900C88B1A /* NSDate+FCExtension.h */,
+				B3E0A1CD1B3A9C8900C88B1A /* NSDate+FCExtension.m */,
+				B3E0A1C91B3A9C7400C88B1A /* NSString+FCExtension.h */,
+				B3E0A1CA1B3A9C7400C88B1A /* NSString+FCExtension.m */,
 				B3B7B4C31B1419EC00B96A01 /* AppDelegate.h */,
 				B3B7B4C41B1419EC00B96A01 /* AppDelegate.m */,
 				B3B7B4C01B1419EC00B96A01 /* Info.plist */,
@@ -309,11 +319,13 @@
 				B3E5B1121B29D5E5003162D4 /* FocusCircle.xcdatamodeld in Sources */,
 				B3D4152D1B1D7C9000BAC7A3 /* SettingTableViewController.m in Sources */,
 				B301C06B1B2EFA46007FA6BE /* ItemTableViewCell.m in Sources */,
+				B3E0A1CB1B3A9C7400C88B1A /* NSString+FCExtension.m in Sources */,
 				B3FF7BB11B392EEC005F9D67 /* TimerButton.m in Sources */,
 				B32216811B2E69BB000A72D7 /* ItemEditingViewController.m in Sources */,
 				B3EB21E01B180F790045010D /* ItemTextInputViewController.m in Sources */,
 				B3FF7BB41B3948C6005F9D67 /* TimeController.m in Sources */,
 				B3EB21D31B1803D60045010D /* ItemsTableViewController.m in Sources */,
+				B3E0A1CE1B3A9C8900C88B1A /* NSDate+FCExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

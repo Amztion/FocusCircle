@@ -40,12 +40,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FocusCircle/ItemsTableViewController.m"
-            timestampString = "456764620.74553"
+            timestampString = "456826200.798076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "293"
-            endingLineNumber = "293"
-            landmarkName = "-createTimerForTableViewCell:"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -55,13 +55,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FocusCircle/ItemsTableViewController.m"
-            timestampString = "456764620.74553"
+            filePath = "FocusCircle/NSString+ConvertToString.m"
+            timestampString = "456824379.48969"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "295"
-            endingLineNumber = "295"
-            landmarkName = "-createTimerForTableViewCell:"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "+stringWithSeconds:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

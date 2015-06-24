@@ -19,6 +19,10 @@ typedef enum timePicker{
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *durationTimePickerView;
 
+@property (nonatomic) NSNumber *hours;
+@property (nonatomic) NSNumber *minutes;
+@property (nonatomic) NSNumber *seconds;
+
 @end
 
 @implementation ItemEditingViewController
@@ -33,6 +37,16 @@ typedef enum timePicker{
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+-(void)setValueForTimes:(NSNumber *)time{
+    NSInteger hours = time.integerValue/3600;
+    NSInteger minutes = time.integerValue/60%60;
+    NSInteger seconds = time.integerValue % 3600 - minutes * 60;
+    
+    _hours = [NSNumber numberWithInteger:hours];;
+    _minutes = [NSNumber numberWithInteger:minutes];
+    _seconds = [NSNumber numberWithInteger:seconds];
 }
 
 -(void)configureNavigationBar{

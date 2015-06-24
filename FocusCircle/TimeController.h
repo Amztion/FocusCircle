@@ -19,7 +19,7 @@ typedef enum{
 @property (strong, nonatomic) NSDate *startTime;
 @property (strong, nonatomic) NSNumber *remainingTime;
 @property (strong, nonatomic) NSNumber *durationTime;
-@property (strong, nonatomic) NSTimer *timer;
+@property (weak, nonatomic) NSTimer *timer;
 @property (nonatomic) Status status;
 
 

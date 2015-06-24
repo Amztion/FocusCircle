@@ -14,8 +14,7 @@
 @property (nonatomic, strong) NSString *titleOfItem;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResulesController;
 
-@property (nonatomic) NSNumber *hours;
-@property (nonatomic) NSNumber *minutes;
-@property (nonatomic) NSNumber *seconds;
+
+-(void)setValueForTimes:(NSNumber *)time;
 
 @end

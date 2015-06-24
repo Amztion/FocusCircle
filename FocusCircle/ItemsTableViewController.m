@@ -11,11 +11,13 @@
 #import "ItemTextInputViewController.h"
 #import "ItemEditingViewController.h"
 #import "TimeController.h"
+#import "NSDate+FCExtension.h"
+#import "NSString+FCExtension.h"
 
 @interface ItemsTableViewController ()
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultController;
-@property (nonatomic, strong) NSArray *runningTableViewCells;
+@property (nonatomic, strong) NSArray *runningTableViewCell;
 
 @end
 
@@ -117,12 +119,7 @@
     cell.titleOfItemLabel.text = item.titleOfItem;
     [cell.titleOfItemLabel sizeToFit];
     
-
-    NSInteger hours = item.duration.integerValue/3600;
-    NSInteger minutes = item.duration.integerValue/60%60;
-    NSInteger seconds = item.duration.integerValue%3600 - minutes * 60;
-    
-    cell.durationTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", hours, minutes, seconds];
+    cell.durationTimeLabel.text = [NSString stringWithSeconds:item.duration];
     [cell.durationTimeLabel sizeToFit];
     
 
@@ -177,17 +174,13 @@
     
         ItemModel *item =  (ItemModel *)[self.fetchedResultController objectAtIndexPath:indexPath];
         
-        NSInteger hours = item.duration.integerValue/3600;
-        NSInteger minutes = item.duration.integerValue/60%60;
-        NSInteger seconds = item.duration.integerValue%3600 - minutes * 60;
+       
         
         ItemsNavigationController *nvc = [self.storyboard instantiateViewControllerWithIdentifier:@"editingNavigation"];
         ItemEditingViewController *editingViewController = (ItemEditingViewController *)nvc.topViewController;
         editingViewController.managedObjectContext = self.managedObjectContext;
         editingViewController.titleOfItem = item.titleOfItem;
-        editingViewController.hours = [NSNumber numberWithInteger:hours];
-        editingViewController.minutes = [NSNumber numberWithInteger:minutes];
-        editingViewController.seconds = [NSNumber numberWithInteger:seconds];
+        [editingViewController setValueForTimes:item.duration];
         editingViewController.indexPath = indexPath;
         editingViewController.fetchedResulesController = self.fetchedResultController;
         
@@ -272,14 +265,13 @@
         TimeController *timeController = tableViewCell.timeController;
         switch (timeController.status) {
             case TimerPausing:
+                [self resumeTimerForTableViewCell:tableViewCell];
                 break;
             case TimerStopped:
-                timeController.status = TimerRunning;
-                timeController.startTime = [self getCurrentTime];
                 [self createTimerForTableViewCell:tableViewCell];
-                
                 break;
             case TimerRunning:
+                [self pauseTimerForTableViewCell:tableViewCell];
                 break;
             default:
                 break;
@@ -291,7 +283,10 @@
 #pragma mark - Timer
 -(void)createTimerForTableViewCell: (ItemTableViewCell *)tableViewCell{
     NSTimer *countdown = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countdownForTimer:) userInfo:tableViewCell repeats:YES];
+    [[NSRunLoop currentRunLoop]addTimer:countdown forMode:NSDefaultRunLoopMode];
     tableViewCell.timeController.timer = countdown;
+    tableViewCell.timeController.status = TimerRunning;
+    tableViewCell.timeController.startTime = [NSDate getCurrentTimeInCurrentTimeZone];
     [countdown fire];
 }
 
@@ -301,40 +296,45 @@
         
         if([tableViewCell.timeController.remainingTime isEqualToNumber:[NSNumber numberWithDouble:0.0]]){
             [sender invalidate];
-            NSInteger hours = tableViewCell.timeController.durationTime.integerValue/3600;
-            NSInteger minutes = tableViewCell.timeController.durationTime.integerValue/60%60;
-            NSInteger seconds = tableViewCell.timeController.durationTime.integerValue%3600 - minutes * 60;
             
-            tableViewCell.durationTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", hours, minutes, seconds];
+            tableViewCell.durationTimeLabel.text = [NSString stringWithSeconds:tableViewCell.timeController.durationTime];
             [tableViewCell.durationTimeLabel sizeToFit];
+            
             tableViewCell.timeController.remainingTime = tableViewCell.timeController.durationTime;
             tableViewCell.timeController.status = TimerStopped;
+            ItemModel *item = [self.fetchedResultController objectAtIndexPath:[self.tableView indexPathForCell:tableViewCell]];
+            item.lastUsedTime = tableViewCell.timeController.startTime;
             
         }else if(tableViewCell.timeController.remainingTime.doubleValue > 0){
             NSNumber *oldNumer = tableViewCell.timeController.remainingTime;
             tableViewCell.timeController.remainingTime = [NSNumber numberWithDouble:oldNumer.doubleValue - 1];
             oldNumer = nil;
 
-            NSInteger hours = tableViewCell.timeController.remainingTime.integerValue/3600;
-            NSInteger minutes = tableViewCell.timeController.remainingTime.integerValue/60%60;
-            NSInteger seconds = tableViewCell.timeController.remainingTime.integerValue%3600 - minutes * 60;
-            
-            tableViewCell.durationTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", hours, minutes, seconds];
+            tableViewCell.durationTimeLabel.text = [NSString stringWithSeconds:tableViewCell.timeController.remainingTime];
             [tableViewCell.durationTimeLabel sizeToFit];
         }else{
-            
+            abort();
         }
     }
 }
 
--(NSDate*)getCurrentTime{
-    NSDate *now = [NSDate date];
-    NSTimeZone *currentTimeZone = [NSTimeZone systemTimeZone];
-    NSInteger seconds = [currentTimeZone secondsFromGMTForDate:now];
-    NSDate *localTimeNow = [now dateByAddingTimeInterval:seconds];
-    
-    return localTimeNow;
+-(void)pauseTimerForTableViewCell: (ItemTableViewCell *)tableViewCell{
+    NSTimer *timer = (NSTimer *)tableViewCell.timeController.timer;
+    timer.fireDate = [NSDate distantPast];
+    tableViewCell.timeController.status = TimerPausing;
 }
+
+-(void)resumeTimerForTableViewCell: (ItemTableViewCell *)tableViewCell{
+    NSTimer *timer = (NSTimer *)tableViewCell.timeController.timer;
+    timer.fireDate = [NSDate distantFuture];
+    tableViewCell.timeController.status = TimerRunning;
+}
+
+
+
+
+
+
 
 
 @end

@@ -10,7 +10,7 @@
 
 @interface NSDate (FCExtension)
 
-+(NSDate *)getCurrentTime;
++(NSDate *)getCurrentTimeInCurrentTimeZone;
 
 
 @end

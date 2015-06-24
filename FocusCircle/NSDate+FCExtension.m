@@ -10,7 +10,7 @@
 
 @implementation NSDate (FCExtension)
 
-+(NSDate*)getCurrentTime{
++(NSDate*)getCurrentTimeInCurrentTimeZone{
     NSDate *nowTimeInGMT = [NSDate date];
     NSTimeZone *currentTimeZone = [NSTimeZone systemTimeZone];
     NSInteger seconds = [currentTimeZone secondsFromGMTForDate:nowTimeInGMT];
