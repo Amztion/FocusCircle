@@ -19,6 +19,8 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
+@property (strong, retain, nonatomic) NSMutableArray *timersToSave;
+
 
 
 - (void)saveContext;

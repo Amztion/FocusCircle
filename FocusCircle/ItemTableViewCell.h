@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "TimerButton.h"
-#import "TimeController.h"
+
+@class TimeController;
 
 @interface ItemTableViewCell : UITableViewCell
 

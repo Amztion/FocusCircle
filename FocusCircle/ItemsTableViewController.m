@@ -17,7 +17,7 @@
 @interface ItemsTableViewController ()
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultController;
-@property (nonatomic, strong) NSArray *runningTableViewCell;
+@property (nonatomic, strong) NSMutableArray *runningTableViewCell;
 
 @end
 
@@ -25,6 +25,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    appDelegate.timersToSave = self.runningTableViewCell;
 
     self.tableView.allowsSelectionDuringEditing = YES;
     self.tableView.allowsMultipleSelection = YES;
@@ -53,6 +56,15 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (NSMutableArray *)runningTableViewCell{
+    if (_runningTableViewCell) {
+        return _runningTableViewCell;
+    }else{
+        _runningTableViewCell = [[NSMutableArray alloc]init];
+        return _runningTableViewCell;
+    }
 }
 
 #pragma mark - Configure View Controller and View
@@ -126,7 +138,8 @@
     UITapGestureRecognizer *tapReconizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(respondToTimerButtonTapped:)];
     tapReconizer.numberOfTapsRequired = 1;
     [cell.timerButtonView addGestureRecognizer:tapReconizer];
-    cell.timerButtonView.currentIndexPath = indexPath;
+//    cell.timerButtonView.currentIndexPath = indexPath;
+    cell.timerButtonView.currentTableViewCell = cell;
     
     
     TimeController *timeController = [[TimeController alloc]initWithDurationTime:item.duration];
@@ -261,7 +274,8 @@
     if (self.editing) {
     }else{
         TimerButton *timerView = (TimerButton *)[sender view];
-        ItemTableViewCell *tableViewCell = (ItemTableViewCell *)[self.tableView cellForRowAtIndexPath:timerView.currentIndexPath];
+//        ItemTableViewCell *tableViewCell = (ItemTableViewCell *)[self.tableView cellForRowAtIndexPath:timerView.currentIndexPath];
+        ItemTableViewCell *tableViewCell = timerView.currentTableViewCell;
         TimeController *timeController = tableViewCell.timeController;
         switch (timeController.status) {
             case TimerPausing:
@@ -284,9 +298,10 @@
 -(void)createTimerForTableViewCell: (ItemTableViewCell *)tableViewCell{
     tableViewCell.timeController.status = TimerRunning;
     tableViewCell.timeController.startTime = [NSDate getCurrentTimeInCurrentTimeZone];
+    [self.runningTableViewCell addObject:tableViewCell];
     NSTimer *countdown = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countdownForTimer:) userInfo:tableViewCell repeats:YES];
-    [[NSRunLoop currentRunLoop]addTimer:countdown forMode:NSDefaultRunLoopMode];
     tableViewCell.timeController.timer = countdown;
+    [[NSRunLoop currentRunLoop]addTimer:countdown forMode:NSDefaultRunLoopMode];
     [countdown fire];
 }
 
@@ -303,9 +318,11 @@
             
             tableViewCell.timeController.remainingTime = tableViewCell.timeController.durationTime;
             tableViewCell.timeController.status = TimerStopped;
-            ItemModel *item = [self.fetchedResultController objectAtIndexPath:[self.tableView indexPathForCell:tableViewCell]];
-            item.lastUsedTime = tableViewCell.timeController.startTime;
             
+            [self.runningTableViewCell removeObject:tableViewCell];
+            
+            ItemModel *item = [self.fetchedResultController objectAtIndexPath:[self.tableView indexPathForCell:tableViewCell]];
+            item.lastUsedTime = [NSDate getCurrentTimeInCurrentTimeZone];
         }else if(tableViewCell.timeController.remainingTime.doubleValue > 0){
             NSNumber *oldNumer = tableViewCell.timeController.remainingTime;
             tableViewCell.timeController.remainingTime = [NSNumber numberWithDouble:oldNumer.doubleValue - 1];
@@ -330,12 +347,5 @@
     NSTimer *timer = (NSTimer *)tableViewCell.timeController.timer;
     timer.fireDate = [NSDate distantPast];
 }
-
-
-
-
-
-
-
 
 @end

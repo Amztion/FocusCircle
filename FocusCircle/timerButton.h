@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class ItemTableViewCell;
+
 @interface TimerButton : UIView
 
-@property (nonatomic, strong) NSIndexPath *currentIndexPath;
+@property (nonatomic, weak) ItemTableViewCell *currentTableViewCell;
+
 
 @end
+
