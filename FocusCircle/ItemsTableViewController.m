@@ -282,20 +282,21 @@
 
 #pragma mark - Timer
 -(void)createTimerForTableViewCell: (ItemTableViewCell *)tableViewCell{
+    tableViewCell.timeController.status = TimerRunning;
+    tableViewCell.timeController.startTime = [NSDate getCurrentTimeInCurrentTimeZone];
     NSTimer *countdown = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countdownForTimer:) userInfo:tableViewCell repeats:YES];
     [[NSRunLoop currentRunLoop]addTimer:countdown forMode:NSDefaultRunLoopMode];
     tableViewCell.timeController.timer = countdown;
-    tableViewCell.timeController.status = TimerRunning;
-    tableViewCell.timeController.startTime = [NSDate getCurrentTimeInCurrentTimeZone];
     [countdown fire];
 }
 
 -(void)countdownForTimer: (NSTimer *)sender{
     if (sender.valid) {
         ItemTableViewCell *tableViewCell = (ItemTableViewCell *)sender.userInfo;
-        
         if([tableViewCell.timeController.remainingTime isEqualToNumber:[NSNumber numberWithDouble:0.0]]){
+            
             [sender invalidate];
+            sender = nil;
             
             tableViewCell.durationTimeLabel.text = [NSString stringWithSeconds:tableViewCell.timeController.durationTime];
             [tableViewCell.durationTimeLabel sizeToFit];
@@ -319,15 +320,15 @@
 }
 
 -(void)pauseTimerForTableViewCell: (ItemTableViewCell *)tableViewCell{
-    NSTimer *timer = (NSTimer *)tableViewCell.timeController.timer;
-    timer.fireDate = [NSDate distantPast];
     tableViewCell.timeController.status = TimerPausing;
+    NSTimer *timer = (NSTimer *)tableViewCell.timeController.timer;
+    timer.fireDate = [NSDate distantFuture];
 }
 
 -(void)resumeTimerForTableViewCell: (ItemTableViewCell *)tableViewCell{
-    NSTimer *timer = (NSTimer *)tableViewCell.timeController.timer;
-    timer.fireDate = [NSDate distantFuture];
     tableViewCell.timeController.status = TimerRunning;
+    NSTimer *timer = (NSTimer *)tableViewCell.timeController.timer;
+    timer.fireDate = [NSDate distantPast];
 }
 
 
