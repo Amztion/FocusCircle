@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "TimerController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TimerModel : NSManagedObject
 
-// Insert code here to declare functionality of your managed object subclass
+@property (readonly) TimerController *timerController;
+
 
 @end
 

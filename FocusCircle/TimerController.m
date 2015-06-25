@@ -10,12 +10,21 @@
 
 @implementation TimerController
 
--(instancetype)initWithTimerModel:(TimerModel *)timerModel{
+//-(instancetype)initWithTimerModel:(TimerModel *)timerModel{
+//    self = [super init];
+//    if(self){
+//        self.relatedTimerModel = timerModel;
+//        self.durationTime = timerModel.durationTime;
+//        self.remainingTime = timerModel.durationTime;
+//        self.currentStatus = TimerStopped;
+//    }
+//    return self;
+//}
+
+-(id)initWithDurationTime:(NSNumber *)durationTime{
     self = [super init];
-    if(self){
-        self.relatedTimerModel = timerModel;
-        self.durationTime = timerModel.durationTime;
-        self.remainingTime = timerModel.durationTime;
+    if (self) {
+        self.remainingTime = durationTime;
         self.currentStatus = TimerStopped;
     }
     return self;

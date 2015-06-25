@@ -8,7 +8,6 @@
 
 
 #import "TimersTableViewController.h"
-#import "TimerModel.h"
 
 @interface TimersTableViewController ()
 
@@ -107,24 +106,21 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     TimerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"timerCell" forIndexPath:indexPath];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     cell.shouldIndentWhileEditing = YES;
     
     TimerModel *timerModel =  (TimerModel *)[self.fetchedResultController objectAtIndexPath:indexPath];
-    TimerController *timerController = [[TimerController alloc]initWithTimerModel:timerModel];
-
+    TimerController *timerController = timerModel.timerController;
+    timerController.indexPath = indexPath;
     
-    cell.timerController = timerController;
-    
-    cell.titleOfTimerLabel.text = cell.timerController.relatedTimerModel.titleOfTimer;
-    cell.durationTimeLabel.text = [NSString stringWithSeconds:cell.timerController.relatedTimerModel.durationTime];
+    cell.titleOfTimerLabel.text = timerModel.titleOfTimer;
+    cell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
 
     UITapGestureRecognizer *tapReconizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(respondToTimerButtonTapped:)];
     tapReconizer.numberOfTapsRequired = 1;
     [cell.timerButtonView addGestureRecognizer:tapReconizer];
-    
+    cell.timerButtonView.relatedTimerController = timerController;
     
     return cell;
 }
@@ -144,6 +140,11 @@
 
 #pragma mark - Editing Table View Cell
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    TimerModel *timerModelToEdit = [self.fetchedResultController objectAtIndexPath:indexPath];
+    TimerController *currentTimerController = timerModelToEdit.timerController;
+    if (currentTimerController.currentStatus == TimerRunning) {
+        return NO;
+    }
     return YES;
 }
 
@@ -155,10 +156,10 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.fetchedResultController.managedObjectContext deleteObject:[self.fetchedResultController objectAtIndexPath:indexPath]];
-
+        [self.tableView reloadData];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         
-    }   
+    }
 }
 
 
@@ -222,12 +223,15 @@
     
     if (type == NSFetchedResultsChangeDelete) {
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView reloadData];
     }
     else if(type == NSFetchedResultsChangeInsert){
         [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadData];
     }
     else if(type == NSFetchedResultsChangeUpdate){
         [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadData];
     }
 
 }
@@ -245,81 +249,77 @@
 #pragma mark - Gesture Recognizer
 
 -(void)respondToTimerButtonTapped:(UITapGestureRecognizer *)sender{
-//    if (self.editing) {
-//    }else{
-//        TimerButton *timerView = (TimerButton *)[sender view];
-////        TimerTableViewCell *tableViewCell = timerView.currentTableViewCell;
-////        TimeController *timeController = tableViewCell.timerView.timeController;
-//        switch (timeController.status) {
-//            case TimerPausing:
-//                [self resumeTimerForTableViewCell:tableViewCell];
-//                break;
-//            case TimerStopped:
-//                [self createTimerForTableViewCell:tableViewCell];
-//                break;
-//            case TimerRunning:
-//                [self pauseTimerForTableViewCell:tableViewCell];
-//                break;
-//            default:
-//                break;
-//        }
-//    }
+    if (self.editing) {
+    }else{
+        TimerButton *currentTimerButtonView = (TimerButton *)sender.view;
+        TimerController *timerController = (TimerController *)currentTimerButtonView.relatedTimerController;
+        
+        switch (timerController.currentStatus) {
+            case TimerPausing:
+                [self resumeTimerForTimerController:timerController];
+                break;
+            case TimerStopped:
+                [self createTimerForTimerController:timerController];
+                break;
+            case TimerRunning:
+                [self pauseTimerForTimerController:timerController];
+                break;
+            default:
+                break;
+        }
+    }
 
 }
 
 #pragma mark - Timer
-//-(void)createTimerForTableViewCell: (TimerTableViewCell *)tableViewCell{
-////    tableViewCell.timerView.timeController.status = TimerRunning;
-////    tableViewCell.timerView.timeController.startTime = [NSDate getCurrentTimeInCurrentTimeZone];
-////    [self.runningTimerView addObject:tableViewCell.timerView];
-//    NSTimer *countdown = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countdownForTimer:) userInfo:tableViewCell.timerView repeats:YES];
-//    tableViewCell.timerView.timeController.timer = countdown;
-//    [[NSRunLoop currentRunLoop]addTimer:countdown forMode:NSDefaultRunLoopMode];
-//    [countdown fire];
-//}
-//
-//-(void)countdownForTimer: (NSTimer *)sender{
-//    if (sender.valid) {
-////        ItemTableViewCell *tableViewCell = (ItemTableViewCell *)sender.userInfo;
-//        TimerView *timerView = (TimerView *)sender.userInfo;
-//        if([timerView.timeController.remainingTime isEqualToNumber:[NSNumber numberWithDouble:0.0]]){
-//            
-//            [sender invalidate];
-//            sender = nil;
-//            
-//            timerView.durationTimeLabel.text = [NSString stringWithSeconds:timerView.timeController.durationTime];
-//            [timerView.durationTimeLabel sizeToFit];
-//            
-//            timerView.timeController.remainingTime = timerView.timeController.durationTime;
-//            timerView.timeController.status = TimerStopped;
-//            
-//            [self.runningTimerView removeObject:timerView];
-//            
-////            ItemModel *item = [self.fetchedResultController objectAtIndexPath:[self.tableView indexPathForCell:tableViewCell]];
-////            item.lastUsedTime = [NSDate getCurrentTimeInCurrentTimeZone];
-//        }else if(timerView.timeController.remainingTime.doubleValue > 0){
-//            NSNumber *oldNumer = timerView.timeController.remainingTime;
-//            timerView.timeController.remainingTime = [NSNumber numberWithDouble:oldNumer.doubleValue - 1];
-//            oldNumer = nil;
-//
-//            timerView.durationTimeLabel.text = [NSString stringWithSeconds:timerView.timeController.remainingTime];
-//            [timerView.durationTimeLabel sizeToFit];
-//        }else{
-//            abort();
-//        }
-//    }
-//}
-//
-//-(void)pauseTimerForTableViewCell: (TimerTableViewCell *)tableViewCell{
-//    tableViewCell.timerView.timeController.status = TimerPausing;
-//    NSTimer *timer = (NSTimer *)tableViewCell.timerView.timeController.timer;
-//    timer.fireDate = [NSDate distantFuture];
-//}
-//
-//-(void)resumeTimerForTableViewCell: (TimerTableViewCell *)tableViewCell{
-//    tableViewCell.timerView.timeController.status = TimerRunning;
-//    NSTimer *timer = (NSTimer *)tableViewCell.timerView.timeController.timer;
-//    timer.fireDate = [NSDate distantPast];
-//}
+-(void)createTimerForTimerController: (TimerController *)timerController{
+
+    NSTimer *countdownTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countdownForTimer:) userInfo:timerController repeats:YES];
+    
+    timerController.timer = countdownTimer;
+    timerController.currentStatus = TimerRunning;
+    [[NSRunLoop currentRunLoop]addTimer:countdownTimer forMode:NSDefaultRunLoopMode];
+    [countdownTimer fire];
+}
+
+-(void)countdownForTimer: (NSTimer *)sender{
+    if (sender.valid) {
+        TimerController *timerController = (TimerController *)sender.userInfo;
+        if([timerController.remainingTime isEqualToNumber:[NSNumber numberWithDouble:0.0]]){
+            
+            [sender invalidate];
+            sender = nil;
+            
+            timerController.currentStatus = TimerStopped;
+            timerController.remainingTime = ((TimerModel *)[self.fetchedResultController objectAtIndexPath:timerController.indexPath]).durationTime;
+            
+            TimerTableViewCell *currentCell = (TimerTableViewCell *)[self.tableView cellForRowAtIndexPath:timerController.indexPath];
+            currentCell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
+            
+
+        }else if(timerController.remainingTime.doubleValue > 0.0){
+            NSNumber *oldNumer = timerController.remainingTime;
+            timerController.remainingTime = [NSNumber numberWithDouble:oldNumer.doubleValue - 1];
+            oldNumer = nil;
+            
+            TimerTableViewCell *currentCell = (TimerTableViewCell *)[self.tableView cellForRowAtIndexPath:timerController.indexPath];
+            currentCell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
+            
+            
+        }else{
+            abort();
+        }
+    }
+}
+
+-(void)pauseTimerForTimerController: (TimerController *)timerController{
+    timerController.currentStatus = TimerPausing;
+    [timerController.timer setFireDate:[NSDate distantFuture]];
+}
+
+-(void)resumeTimerForTimerController: (TimerController *)timerController{
+    timerController.currentStatus = TimerRunning;
+    [timerController.timer setFireDate:[NSDate distantPast]];
+}
 
 @end

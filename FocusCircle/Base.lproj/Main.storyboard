@@ -52,14 +52,14 @@
                                     </subviews>
                                     <gestureRecognizers/>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="v4Q-sB-Gh3" secondAttribute="bottom" constant="5" id="3No-0x-JZe"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="v4Q-sB-Gh3" secondAttribute="bottom" constant="5" id="3No-0x-JZe"/>
                                         <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="VdQ-Ac-FtX" secondAttribute="trailing" constant="446" id="6ZS-CR-aCS"/>
                                         <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="v4Q-sB-Gh3" secondAttribute="trailing" constant="528" id="6w6-y2-SH8"/>
                                         <constraint firstItem="miP-As-SHu" firstAttribute="top" secondItem="PuQ-Tf-rRN" secondAttribute="topMargin" constant="7" id="SGD-kc-Hll"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="miP-As-SHu" secondAttribute="trailing" constant="29" id="VEO-Y2-zay"/>
                                         <constraint firstItem="VdQ-Ac-FtX" firstAttribute="top" secondItem="PuQ-Tf-rRN" secondAttribute="topMargin" constant="8" id="laT-2D-Bsb"/>
                                         <constraint firstItem="VdQ-Ac-FtX" firstAttribute="leading" secondItem="PuQ-Tf-rRN" secondAttribute="leadingMargin" constant="18" id="ngc-4r-svx"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="VdQ-Ac-FtX" secondAttribute="bottom" constant="36" id="pKm-Mh-cWj"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="VdQ-Ac-FtX" secondAttribute="bottom" constant="36" id="pKm-Mh-cWj"/>
                                         <constraint firstItem="v4Q-sB-Gh3" firstAttribute="leading" secondItem="PuQ-Tf-rRN" secondAttribute="leadingMargin" constant="18" id="qDW-BU-9rM"/>
                                         <constraint firstItem="v4Q-sB-Gh3" firstAttribute="top" secondItem="PuQ-Tf-rRN" secondAttribute="topMargin" constant="50" id="qtU-ub-phV"/>
                                     </constraints>

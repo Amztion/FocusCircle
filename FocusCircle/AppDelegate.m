@@ -36,7 +36,7 @@
     NSNumber *createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
     NSNumber *duration = [NSNumber numberWithInteger:17];
     
-    [timer setValue:@"testData1" forKey:@"titleOfTimer"];
+    [timer setValue:@"testData0" forKey:@"titleOfTimer"];
     [timer setValue:duration forKey:@"durationTime"];
     [timer setValue:createdDate forKey:@"sortValue"];
     
@@ -45,7 +45,7 @@
     createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
     duration = [NSNumber numberWithInteger:13];
     
-    [timer setValue:@"testData4" forKey:@"titleOfTimer"];
+    [timer setValue:@"testData1" forKey:@"titleOfTimer"];
     [timer setValue:duration forKey:@"durationTime"];
     [timer setValue:createdDate forKey:@"sortValue"];
     
@@ -55,9 +55,100 @@
     createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
     duration = [NSNumber numberWithInteger:19];
     
+    [timer setValue:@"testData2" forKey:@"titleOfTimer"];
+    [timer setValue:duration forKey:@"durationTime"];
+    [timer setValue:createdDate forKey:@"sortValue"];
+    
+    timer = [NSEntityDescription insertNewObjectForEntityForName:@"TimerModel" inManagedObjectContext:self.managedObjectContext];
+    
+    createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
+    duration = [NSNumber numberWithInteger:19];
+    
     [timer setValue:@"testData3" forKey:@"titleOfTimer"];
     [timer setValue:duration forKey:@"durationTime"];
     [timer setValue:createdDate forKey:@"sortValue"];
+    
+    timer = [NSEntityDescription insertNewObjectForEntityForName:@"TimerModel" inManagedObjectContext:self.managedObjectContext];
+    
+    createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
+    duration = [NSNumber numberWithInteger:19];
+    
+    [timer setValue:@"testData4" forKey:@"titleOfTimer"];
+    [timer setValue:duration forKey:@"durationTime"];
+    [timer setValue:createdDate forKey:@"sortValue"];
+    
+    timer = [NSEntityDescription insertNewObjectForEntityForName:@"TimerModel" inManagedObjectContext:self.managedObjectContext];
+    
+    createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
+    duration = [NSNumber numberWithInteger:19];
+    
+    [timer setValue:@"testData5" forKey:@"titleOfTimer"];
+    [timer setValue:duration forKey:@"durationTime"];
+    [timer setValue:createdDate forKey:@"sortValue"];
+    
+    timer = [NSEntityDescription insertNewObjectForEntityForName:@"TimerModel" inManagedObjectContext:self.managedObjectContext];
+    
+    createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
+    duration = [NSNumber numberWithInteger:19];
+    
+    [timer setValue:@"testData6" forKey:@"titleOfTimer"];
+    [timer setValue:duration forKey:@"durationTime"];
+    [timer setValue:createdDate forKey:@"sortValue"];
+    
+    timer = [NSEntityDescription insertNewObjectForEntityForName:@"TimerModel" inManagedObjectContext:self.managedObjectContext];
+    
+    createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
+    duration = [NSNumber numberWithInteger:19];
+    
+    [timer setValue:@"testData7" forKey:@"titleOfTimer"];
+    [timer setValue:duration forKey:@"durationTime"];
+    [timer setValue:createdDate forKey:@"sortValue"];
+    
+    timer = [NSEntityDescription insertNewObjectForEntityForName:@"TimerModel" inManagedObjectContext:self.managedObjectContext];
+    
+    createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
+    duration = [NSNumber numberWithInteger:19];
+    
+    [timer setValue:@"testData8" forKey:@"titleOfTimer"];
+    [timer setValue:duration forKey:@"durationTime"];
+    [timer setValue:createdDate forKey:@"sortValue"];
+    
+    timer = [NSEntityDescription insertNewObjectForEntityForName:@"TimerModel" inManagedObjectContext:self.managedObjectContext];
+    
+    createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
+    duration = [NSNumber numberWithInteger:19];
+    
+    [timer setValue:@"testData9" forKey:@"titleOfTimer"];
+    [timer setValue:duration forKey:@"durationTime"];
+    [timer setValue:createdDate forKey:@"sortValue"];
+    
+    timer = [NSEntityDescription insertNewObjectForEntityForName:@"TimerModel" inManagedObjectContext:self.managedObjectContext];
+    
+    createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
+    duration = [NSNumber numberWithInteger:19];
+    
+    [timer setValue:@"testData10" forKey:@"titleOfTimer"];
+    [timer setValue:duration forKey:@"durationTime"];
+    [timer setValue:createdDate forKey:@"sortValue"];
+    
+    timer = [NSEntityDescription insertNewObjectForEntityForName:@"TimerModel" inManagedObjectContext:self.managedObjectContext];
+    
+    createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
+    duration = [NSNumber numberWithInteger:19];
+    
+    [timer setValue:@"testData11" forKey:@"titleOfTimer"];
+    [timer setValue:duration forKey:@"durationTime"];
+    [timer setValue:createdDate forKey:@"sortValue"];
+    
+    timer = [NSEntityDescription insertNewObjectForEntityForName:@"TimerModel" inManagedObjectContext:self.managedObjectContext];
+    
+    createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
+    duration = [NSNumber numberWithInteger:19];
+    
+    [timer setValue:@"testData12" forKey:@"titleOfTimer"];
+    [timer setValue:duration forKey:@"durationTime"];
+    [timer setValue:createdDate forKey:@"sortValue"];
+    
     
 }
 

@@ -10,6 +10,15 @@
 
 @implementation TimerModel
 
-// Insert code here to add functionality to your managed object subclass
+@synthesize timerController;
+
+-(TimerController *)timerController{
+    if (timerController) {
+        return timerController;
+    }else{
+        timerController = [[TimerController alloc]initWithDurationTime:self.durationTime];
+        return timerController;
+    }
+}
 
 @end

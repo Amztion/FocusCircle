@@ -7,7 +7,6 @@
 //
 
 #import "TimerTextInputViewController.h"
-#import "TimerModel.h"
 
 @interface TimerEditingViewController : TimerTextInputViewController
 

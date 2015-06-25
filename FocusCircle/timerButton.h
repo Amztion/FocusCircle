@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class TimerController;
 
 @interface TimerButton : UIView
 
-
+@property (weak, nonatomic) TimerController *relatedTimerController;
 
 @end
 

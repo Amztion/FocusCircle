@@ -17,6 +17,5 @@
 
 @property (weak, nonatomic) IBOutlet TimerButton *timerButtonView;
 
-@property (strong, nonatomic) TimerController *timerController;
 
 @end
