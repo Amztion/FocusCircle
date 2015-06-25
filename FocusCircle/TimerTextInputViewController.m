@@ -1,12 +1,12 @@
 //
-//  ItemTextInputViewController.m
+//  TimerTextInputViewController.m
 //  FocusCircle
 //
 //  Created by Liang Zhao on 15/5/29.
 //  Copyright (c) 2015年 Liang Zhao. All rights reserved.
 //
 
-#import "ItemTextInputViewController.h"
+#import "TimerTextInputViewController.h"
 
 typedef enum timePicker{
     hours = 0,
@@ -14,19 +14,21 @@ typedef enum timePicker{
     second
 }TimeComponent;
 
-@interface ItemTextInputViewController ()
+@interface TimerTextInputViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+@property (weak, nonatomic) IBOutlet UITextField *titleOfTimerTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *durationPickerView;
 
 @property (nonatomic) NSNumber *hours;
 @property (nonatomic) NSNumber *minutes;
 @property (nonatomic) NSNumber *seconds;
 
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 
 @end
 
-@implementation ItemTextInputViewController
+@implementation TimerTextInputViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -59,11 +61,7 @@ typedef enum timePicker{
     [self setDefaultValue:0 inComponent:second];
 }
 
--(NSManagedObjectContext *)managedObjectContext{
-    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-    _managedObjectContext = appDelegate.managedObjectContext;
-    return _managedObjectContext;
-}
+
 
 
 -(void)setDefaultValue: (NSInteger)value inComponent:(TimeComponent)component{
@@ -144,13 +142,13 @@ typedef enum timePicker{
 
 - (void)doneButtonTapped{
     
-    NSTimeInterval secondsDuration = self.hours.doubleValue * 60 * 60 + self.minutes.doubleValue * 60 + self.seconds.doubleValue;
+    NSTimeInterval durationTimeInSeconds = self.hours.doubleValue * 60 * 60 + self.minutes.doubleValue * 60 + self.seconds.doubleValue;
     
-    if((![self.titleTextField.text isEqualToString:@""]) && (secondsDuration != 0)){
+    if((![self.titleOfTimerTextField.text isEqualToString:@""]) && (durationTimeInSeconds != 0)){
         
-        NSNumber *dutation = [NSNumber numberWithDouble:secondsDuration]; //Convert NSTimeInterval to NSNumber
+        NSNumber *dutation = [NSNumber numberWithDouble:durationTimeInSeconds]; //Convert NSTimeInterval to NSNumber
         
-        [self insertDataWithTitle:self.titleTextField.text andDurationTime:dutation];
+        [self insertDataWithTitle:self.titleOfTimerTextField.text andDurationTime:dutation];
         
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
@@ -167,14 +165,20 @@ typedef enum timePicker{
 
 #pragma mark - Interact with Database
 
--(void)insertDataWithTitle: (NSString *)titleOfItem andDurationTime: (NSNumber *)duration{
-    ItemModel *itemModel = [NSEntityDescription insertNewObjectForEntityForName:@"ItemModel" inManagedObjectContext:self.managedObjectContext];
+-(NSManagedObjectContext *)managedObjectContext{
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    _managedObjectContext = appDelegate.managedObjectContext;
+    return _managedObjectContext;
+}
+
+-(void)insertDataWithTitle: (NSString *)titleOfTimer andDurationTime: (NSNumber *)duration{
+    TimerModel *timerModel = [NSEntityDescription insertNewObjectForEntityForName:@"TimerModel" inManagedObjectContext:self.managedObjectContext];
     
     NSNumber *createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
     
-    [itemModel setValue:titleOfItem forKey:@"titleOfItem"];
-    [itemModel setValue:duration forKey:@"duration"];
-    [itemModel setValue:createdDate forKey:@"sortValue"];
+    [timerModel setValue:titleOfTimer forKey:@"titleOfTimer"];
+    [timerModel setValue:duration forKey:@"durationTime"];
+    [timerModel setValue:createdDate forKey:@"sortValue"];
 }
 
 

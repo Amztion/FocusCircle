@@ -1,8 +1,8 @@
 //
-//  ItemModel.h
+//  TimerModel.h
 //  FocusCircle
 //
-//  Created by Liang Zhao on 15/6/16.
+//  Created by Liang Zhao on 15/6/25.
 //  Copyright © 2015年 Liang Zhao. All rights reserved.
 //
 
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ItemModel : NSManagedObject
+@interface TimerModel : NSManagedObject
 
 // Insert code here to declare functionality of your managed object subclass
 
@@ -19,4 +19,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-#import "ItemModel+CoreDataProperties.h"
+#import "TimerModel+CoreDataProperties.h"

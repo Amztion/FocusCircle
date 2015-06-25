@@ -1,5 +1,5 @@
 //
-//  ItemsNavigationController.h
+//  NavigationController.h
 //  FocusCircle
 //
 //  Created by Liang Zhao on 15/5/29.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ItemsNavigationController : UINavigationController
+@interface NavigationController : UINavigationController
 
 
 @end

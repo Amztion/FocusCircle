@@ -1,12 +1,12 @@
 //
-//  ItemEditingViewController.m
+//  TimerEditingViewController.m
 //  FocusCircle
 //
 //  Created by Liang Zhao on 15/6/15.
 //  Copyright © 2015年 Liang Zhao. All rights reserved.
 //
 
-#import "ItemEditingViewController.h"
+#import "TimerEditingViewController.h"
 
 typedef enum timePicker{
     hours = 0,
@@ -14,10 +14,15 @@ typedef enum timePicker{
     second
 }TimeComponent;
 
-@interface ItemEditingViewController ()
+@interface TimerEditingViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+@property (weak, nonatomic) IBOutlet UITextField *titleOfTimerTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *durationTimePickerView;
+
+@property (nonatomic, copy) NSIndexPath *indexPath;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) TimerModel *currentTimerModel;
 
 @property (nonatomic) NSNumber *hours;
 @property (nonatomic) NSNumber *minutes;
@@ -25,12 +30,13 @@ typedef enum timePicker{
 
 @end
 
-@implementation ItemEditingViewController
+@implementation TimerEditingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.titleTextField.text = self.titleOfItem;
+    self.titleOfTimerTextField.text = self.currentTimerModel.titleOfTimer;
+    
     [self configureNavigationBar];
     [self configurePickerView];
 }
@@ -39,18 +45,21 @@ typedef enum timePicker{
     [super didReceiveMemoryWarning];
 }
 
--(void)setValueForTimes:(NSNumber *)time{
-    NSInteger hours = time.integerValue/3600;
-    NSInteger minutes = time.integerValue/60%60;
-    NSInteger seconds = time.integerValue % 3600 - minutes * 60;
+-(void)setValueForFetchedResultsController:(NSFetchedResultsController *)fetchedResultsController forTimerIndexPath:(NSIndexPath *)indexPath{
+    self.fetchedResultsController = fetchedResultsController;
+    self.indexPath = indexPath;
+    self.managedObjectContext = fetchedResultsController.managedObjectContext;
+    self.currentTimerModel = (TimerModel *)[fetchedResultsController objectAtIndexPath:indexPath];
     
-    _hours = [NSNumber numberWithInteger:hours];;
-    _minutes = [NSNumber numberWithInteger:minutes];
-    _seconds = [NSNumber numberWithInteger:seconds];
+    NSNumber *time = self.currentTimerModel.durationTime;
+    
+    self.hours = [NSNumber numberWithInteger:time.integerValue / 3600];
+    self.minutes = [NSNumber numberWithInteger:time.integerValue / 60 % 60];
+    self.seconds = [NSNumber numberWithInteger:time.integerValue%3600 - self.minutes.integerValue * 60];
+    
 }
 
 -(void)configureNavigationBar{
-//    self.clearsSelectionOnViewWillAppear = NO;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonTapped)];
     self.navigationItem.title = @"修改项目";
@@ -61,7 +70,7 @@ typedef enum timePicker{
     UIAlertController *deleteAlert = [UIAlertController alertControllerWithTitle:@"删除项目" message:@"确认删除？" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelAlert = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *confirmAlert = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-            [self.managedObjectContext deleteObject:[self.fetchedResulesController objectAtIndexPath:self.indexPath]];
+            [self.managedObjectContext deleteObject:[self.fetchedResultsController objectAtIndexPath:self.indexPath]];
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
     
@@ -77,14 +86,15 @@ typedef enum timePicker{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
 - (void)saveButtonTapped{
-    NSTimeInterval secondsDuration = self.hours.doubleValue * 60 * 60 + self.minutes.doubleValue * 60 + self.seconds.doubleValue;
+    NSTimeInterval durationTimeInSeconds = self.hours.doubleValue * 60 * 60 + self.minutes.doubleValue * 60 + self.seconds.doubleValue;
     
-    if((![self.titleTextField.text isEqualToString:@""]) && (secondsDuration != 0)){
+    if((![self.titleOfTimerTextField.text isEqualToString:@""]) && (durationTimeInSeconds != 0)){
         
-        NSNumber *dutation = [NSNumber numberWithDouble:secondsDuration]; //Convert NSTimeInterval to NSNumber
+        NSNumber *dutation = [NSNumber numberWithDouble:durationTimeInSeconds]; //Convert NSTimeInterval to NSNumber
         
-        [self updateDataWithTitle:self.titleTextField.text andDurationTime:dutation];
+        [self updateDataWithTitle:self.titleOfTimerTextField.text andDurationTime:dutation];
         
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
@@ -96,6 +106,7 @@ typedef enum timePicker{
         
     }
 }
+
 
 
 #pragma mark - Configure Picker View
@@ -176,24 +187,15 @@ typedef enum timePicker{
 }
 
 #pragma mark - Update Data in Core Data
--(void)updateDataWithTitle: (NSString *)titleOfItem andDurationTime: (NSNumber *)duration{
-    ItemModel *itemModel = [self.fetchedResulesController objectAtIndexPath:self.indexPath];
+-(void)updateDataWithTitle: (NSString *)titleOfTimer andDurationTime: (NSNumber *)duration{
+    TimerModel *TimerModel = [self.fetchedResultsController objectAtIndexPath:self.indexPath];
     
     NSNumber *createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
     
-    [itemModel setValue:titleOfItem forKey:@"titleOfItem"];
-    [itemModel setValue:duration forKey:@"duration"];
-    [itemModel setValue:createdDate forKey:@"sortValue"];
+    [TimerModel setValue:titleOfTimer forKey:@"titleOfTimer"];
+    [TimerModel setValue:duration forKey:@"durationTime"];
+    [TimerModel setValue:createdDate forKey:@"sortValue"];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

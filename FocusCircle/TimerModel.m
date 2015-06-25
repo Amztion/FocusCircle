@@ -1,14 +1,14 @@
 //
-//  ItemModel.m
+//  TimerModel.m
 //  FocusCircle
 //
-//  Created by Liang Zhao on 15/6/16.
+//  Created by Liang Zhao on 15/6/25.
 //  Copyright © 2015年 Liang Zhao. All rights reserved.
 //
 
-#import "ItemModel.h"
+#import "TimerModel.h"
 
-@implementation ItemModel
+@implementation TimerModel
 
 // Insert code here to add functionality to your managed object subclass
 

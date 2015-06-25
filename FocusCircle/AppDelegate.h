@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-#import "ItemModel.h"
+#import "TimerModel.h"
 
+@class ItemsTableViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -18,10 +19,6 @@
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-
-@property (strong, retain, nonatomic) NSMutableArray *timersToSave;
-
-
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

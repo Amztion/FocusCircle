@@ -1,21 +1,20 @@
 //
-//  ItemTableViewCell.m
+//  TimerTableViewCell.m
 //  FocusCircle
 //
 //  Created by Liang Zhao on 15/6/15.
 //  Copyright © 2015年 Liang Zhao. All rights reserved.
 //
 
-#import "ItemTableViewCell.h"
+#import "TimerTableViewCell.h"
 
-@implementation ItemTableViewCell
+@implementation TimerTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
 }
 
 - (void)drawRect:(CGRect)rect{
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
     
 }
 

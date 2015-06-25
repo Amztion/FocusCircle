@@ -1,24 +1,24 @@
 //
-//  ItemModel+CoreDataProperties.h
+//  TimerModel+CoreDataProperties.h
 //  FocusCircle
 //
-//  Created by Liang Zhao on 15/6/16.
+//  Created by Liang Zhao on 15/6/25.
 //  Copyright © 2015年 Liang Zhao. All rights reserved.
 //
 //  Delete this file and regenerate it using "Create NSManagedObject Subclass…"
 //  to keep your implementation up to date with your model.
 //
 
-#import "ItemModel.h"
+#import "TimerModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ItemModel (CoreDataProperties)
+@interface TimerModel (CoreDataProperties)
 
-@property (nonatomic, retain) NSNumber *duration;
+@property (nullable, nonatomic, retain) NSNumber *durationTime;
 @property (nullable, nonatomic, retain) NSDate *lastUsedTime;
-@property (nonatomic, retain) NSString *titleOfItem;
-@property (nonatomic, retain) NSNumber *sortValue;
+@property (nullable, nonatomic, retain) NSNumber *sortValue;
+@property (nullable, nonatomic, retain) NSString *titleOfTimer;
 
 @end
 

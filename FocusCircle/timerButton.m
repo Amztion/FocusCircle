@@ -1,5 +1,5 @@
 //
-//  timerButton.m
+//  TimerButton.m
 //  FocusCircle
 //
 //  Created by Liang Zhao on 15/6/23.

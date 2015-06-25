@@ -1,5 +1,5 @@
 //
-//  timerButton.h
+//  TimerButton.h
 //  FocusCircle
 //
 //  Created by Liang Zhao on 15/6/23.
@@ -8,11 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class ItemTableViewCell;
 
 @interface TimerButton : UIView
 
-@property (nonatomic, weak) ItemTableViewCell *currentTableViewCell;
 
 
 @end
