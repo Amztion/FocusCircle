@@ -13,7 +13,7 @@
 -(id)initWithDurationTime:(NSNumber *)durationTime andTimerModel:(TimerModel *)relatedTimerModel{
     self = [super init];
     if (self) {
-        self.remainingTime = durationTime;
+        self.remainingTime = [durationTime copy];
         self.currentStatus = TimerStopped;
         self.relatedTimerModel = relatedTimerModel;
     }

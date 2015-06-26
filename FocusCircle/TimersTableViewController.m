@@ -12,7 +12,7 @@
 @interface TimersTableViewController ()
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultController;
-@property (nonatomic, strong) NSMutableArray *runningTimers;
+@property (nonatomic, strong) NSMutableArray *runningTimerControllers;
 
 @end
 
@@ -26,6 +26,9 @@
 
     [self configureNavigationBar];
     
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    appDelegate.runningTimerControllers = self.runningTimerControllers;
+    
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     NSString *failureReason = @"There was an error creating or loading the application's saved data.";
     NSError *error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
@@ -34,6 +37,8 @@
     dict[NSUnderlyingErrorKey] = error;
     
     [self.fetchedResultController performFetch:&error];
+    
+
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -49,12 +54,12 @@
     [super didReceiveMemoryWarning];
 }
 
-- (NSMutableArray *)runningTimers{
-    if (_runningTimers) {
-        return _runningTimers;
+- (NSMutableArray *)runningTimerControllers{
+    if (_runningTimerControllers) {
+        return _runningTimerControllers;
     }else{
-        _runningTimers = [[NSMutableArray alloc]init];
-        return _runningTimers;
+        _runningTimerControllers = [[NSMutableArray alloc]init];
+        return _runningTimerControllers;
     }
 }
 
@@ -112,9 +117,6 @@
     
     TimerModel *timerModel =  (TimerModel *)[self.fetchedResultController objectAtIndexPath:indexPath];
     TimerController *timerController = timerModel.timerController;
-    #warning this indexPath will not update after delete a row, need [tableView reloadData] somewhere
-    timerController.indexPath = indexPath;
-    
     
     cell.titleOfTimerLabel.text = timerModel.titleOfTimer;
     cell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
@@ -157,8 +159,11 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.fetchedResultController.managedObjectContext deleteObject:[self.fetchedResultController objectAtIndexPath:indexPath]];
-        [tableView reloadData];
+        TimerModel *timerModelToDelete = [self.fetchedResultController objectAtIndexPath:indexPath];
+        if (timerModelToDelete.timerController.currentStatus != TimerStopped) {
+            [self.runningTimerControllers removeObject:timerModelToDelete.timerController];
+        }
+        [self.fetchedResultController.managedObjectContext deleteObject:timerModelToDelete];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         
     }
@@ -227,9 +232,7 @@
 
 -(void)controller:(nonnull NSFetchedResultsController *)controller didChangeObject:(nonnull __kindof NSManagedObject *)anObject atIndexPath:(nullable NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(nullable NSIndexPath *)newIndexPath{
     if (type == NSFetchedResultsChangeDelete) {
-//        TimerTableViewCell *cellToDelete = [self.tableView cellForRowAtIndexPath:indexPath];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//        [self.tableView reloadData];
     }
     else if(type == NSFetchedResultsChangeInsert){
         [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -242,7 +245,7 @@
 
 -(void)controllerDidChangeContent:(nonnull NSFetchedResultsController *)controller{
     [self.tableView endUpdates];
-//    [self.tableView reloadData];
+    [self loadIndexPathForRunningTimerControllers];
 }
 
 
@@ -255,8 +258,6 @@
     }else{
         TimerButton *currentTimerButtonView = (TimerButton *)sender.view;
         TimerController *timerController = (TimerController *)currentTimerButtonView.relatedTimerController;
-#warning if user delete a row below the running row, and will not tap timer button?
-        [self.tableView reloadData];
         
         switch (timerController.currentStatus) {
             case TimerPausing:
@@ -282,6 +283,9 @@
     
     timerController.timer = countdownTimer;
     timerController.currentStatus = TimerRunning;
+    timerController.startedTime = [NSDate date];
+    [self.runningTimerControllers addObject:timerController];
+    [self loadIndexPathForRunningTimerControllers];
     [[NSRunLoop currentRunLoop]addTimer:countdownTimer forMode:NSDefaultRunLoopMode];
     [countdownTimer fire];
 }
@@ -290,20 +294,22 @@
     if (sender.valid) {
         TimerController *timerController = (TimerController *)sender.userInfo;
         if([timerController.remainingTime isEqualToNumber:[NSNumber numberWithDouble:0.0]]){
-            
             [sender invalidate];
             sender = nil;
             
             timerController.currentStatus = TimerStopped;
-            timerController.remainingTime = ((TimerModel *)[self.fetchedResultController objectAtIndexPath:timerController.indexPath]).durationTime;
+            timerController.remainingTime = [((TimerModel *)[self.fetchedResultController objectAtIndexPath:timerController.indexPath]).durationTime copy];
+            #warning LastUsedTime
+//            [timerController.relatedTimerModel setValue:[NSDate getCurrentTimeInCurrentTimeZone] forKey:@"lastUsedTime"];
+            
+            [self.runningTimerControllers removeObject:timerController];
             
             TimerTableViewCell *currentCell = (TimerTableViewCell *)[self.tableView cellForRowAtIndexPath:[self.fetchedResultController indexPathForObject:timerController.relatedTimerModel]];
             currentCell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
-            
 
         }else if(timerController.remainingTime.doubleValue > 0.0){
             NSNumber *oldNumer = timerController.remainingTime;
-            timerController.remainingTime = [NSNumber numberWithDouble:oldNumer.doubleValue - 1];
+            timerController.remainingTime = [[NSNumber numberWithDouble:oldNumer.doubleValue - 1] copy];
             oldNumer = nil;
             
             TimerTableViewCell *currentCell = (TimerTableViewCell *)[self.tableView cellForRowAtIndexPath:[self.fetchedResultController indexPathForObject:timerController.relatedTimerModel]];
@@ -324,6 +330,12 @@
 -(void)resumeTimerForTimerController: (TimerController *)timerController{
     timerController.currentStatus = TimerRunning;
     [timerController.timer setFireDate:[NSDate distantPast]];
+}
+
+-(void)loadIndexPathForRunningTimerControllers{
+    for (TimerController *timerController in self.runningTimerControllers) {
+        timerController.indexPath = [[self.fetchedResultController indexPathForObject:timerController.relatedTimerModel] copy];
+    }
 }
 
 @end

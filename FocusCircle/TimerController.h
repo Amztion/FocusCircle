@@ -22,7 +22,7 @@ typedef enum{
 @property (weak, nonatomic) NSTimer *timer;
 @property (nonatomic) Status currentStatus;
 @property (strong, nonatomic) NSDate *startedTime;
-@property (strong, nonatomic) NSIndexPath *indexPath;
+@property (copy, nonatomic) NSIndexPath *indexPath;
 @property (weak, nonatomic) TimerModel *relatedTimerModel;
 
 
