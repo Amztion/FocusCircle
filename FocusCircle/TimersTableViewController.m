@@ -149,11 +149,7 @@
 
 #pragma mark - Editing Table View Cell
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    TimerModel *timerModelToEdit = [self.fetchedResultController objectAtIndexPath:indexPath];
-    TimerController *currentTimerController = timerModelToEdit.timerController;
-    if (currentTimerController.currentStatus == TimerRunning) {
-        return NO;
-    }
+
     return YES;
 }
 
@@ -166,6 +162,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         TimerModel *timerModelToDelete = [self.fetchedResultController objectAtIndexPath:indexPath];
         if (timerModelToDelete.timerController.currentStatus != TimerStopped) {
+            timerModelToDelete.timerController.remainingTime = [NSNumber numberWithInt:0];
             [self.runningTimerControllers removeObject:timerModelToDelete.timerController];
         }
         [self.fetchedResultController.managedObjectContext deleteObject:timerModelToDelete];
@@ -183,14 +180,9 @@
 #pragma mark - Action of Table View
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(self.editing){
-    
         NavigationController *nvc = [self.storyboard instantiateViewControllerWithIdentifier:@"editingNavigation"];
         TimerEditingViewController *editingViewController = (TimerEditingViewController *)nvc.topViewController;
         [editingViewController setValueForFetchedResultsController:self.fetchedResultController forTimerIndexPath:indexPath];
-//        TimerTableViewCell *cellSelected = [tableView cellForRowAtIndexPath:<#(nonnull NSIndexPath *)#>]
-        if () {
-            <#statements#>
-        }
         [self presentViewController:nvc animated:YES completion:nil];
         
     }else{
@@ -301,9 +293,17 @@
 -(void)countdownForTimer: (NSTimer *)sender{
     if (sender.valid) {
         TimerController *timerController = (TimerController *)sender.userInfo;
-        if([timerController.remainingTime isEqualToNumber:[NSNumber numberWithDouble:0.0]]){
-            [sender invalidate];
-            sender = nil;
+        if(timerController.remainingTime.doubleValue > 0){
+            NSNumber *oldNumer = timerController.remainingTime;
+            timerController.remainingTime = [[NSNumber numberWithDouble:oldNumer.doubleValue - 1] copy];
+            oldNumer = nil;
+            
+            TimerTableViewCell *currentCell = (TimerTableViewCell *)[self.tableView cellForRowAtIndexPath:[self.fetchedResultController indexPathForObject:timerController.relatedTimerModel]];
+            currentCell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
+        }else{
+
+            [timerController.timer invalidate];
+            timerController.timer = nil;
             
             timerController.currentStatus = TimerStopped;
             timerController.remainingTime = [((TimerModel *)[self.fetchedResultController objectAtIndexPath:timerController.indexPath]).durationTime copy];
@@ -314,18 +314,6 @@
             TimerTableViewCell *currentCell = (TimerTableViewCell *)[self.tableView cellForRowAtIndexPath:[self.fetchedResultController indexPathForObject:timerController.relatedTimerModel]];
             currentCell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
             currentCell.lastUsedTime.text = [NSString stringWithFormat:@"上次使用 %@", [timerController.relatedTimerModel.lastUsedTime displayDateWithFormateInCurrentTimeZone]];
- 
-        }else if(timerController.remainingTime.doubleValue > 0.0){
-            NSNumber *oldNumer = timerController.remainingTime;
-            timerController.remainingTime = [[NSNumber numberWithDouble:oldNumer.doubleValue - 1] copy];
-            oldNumer = nil;
-            
-            TimerTableViewCell *currentCell = (TimerTableViewCell *)[self.tableView cellForRowAtIndexPath:[self.fetchedResultController indexPathForObject:timerController.relatedTimerModel]];
-            currentCell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
-            
-            
-        }else{
-            NSLog(@"%@",timerController.remainingTime);
         }
     }
 }
@@ -339,6 +327,7 @@
     timerController.currentStatus = TimerRunning;
     [timerController.timer setFireDate:[NSDate distantPast]];
 }
+
 
 -(void)loadIndexPathForRunningTimerControllers{
     for (TimerController *timerController in self.runningTimerControllers) {
