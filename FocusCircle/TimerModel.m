@@ -16,7 +16,7 @@
     if (timerController) {
         return timerController;
     }else{
-        timerController = [[TimerController alloc]initWithDurationTime:self.durationTime];
+        timerController = [[TimerController alloc]initWithDurationTime:self.durationTime andTimerModel:self];
         return timerController;
     }
 }

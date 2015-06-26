@@ -112,7 +112,9 @@
     
     TimerModel *timerModel =  (TimerModel *)[self.fetchedResultController objectAtIndexPath:indexPath];
     TimerController *timerController = timerModel.timerController;
+    #warning this indexPath will not update after delete a row, need [tableView reloadData] somewhere
     timerController.indexPath = indexPath;
+    
     
     cell.titleOfTimerLabel.text = timerModel.titleOfTimer;
     cell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
@@ -156,10 +158,15 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.fetchedResultController.managedObjectContext deleteObject:[self.fetchedResultController objectAtIndexPath:indexPath]];
-        [self.tableView reloadData];
+        [tableView reloadData];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         
     }
+}
+
+-(void)updateTableView:(UITableView *)tableView{
+    [tableView beginUpdates];
+    [tableView endUpdates];
 }
 
 
@@ -219,32 +226,27 @@
 }
 
 -(void)controller:(nonnull NSFetchedResultsController *)controller didChangeObject:(nonnull __kindof NSManagedObject *)anObject atIndexPath:(nullable NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(nullable NSIndexPath *)newIndexPath{
-    
-    
     if (type == NSFetchedResultsChangeDelete) {
+//        TimerTableViewCell *cellToDelete = [self.tableView cellForRowAtIndexPath:indexPath];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        [self.tableView reloadData];
+//        [self.tableView reloadData];
     }
     else if(type == NSFetchedResultsChangeInsert){
         [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        [self.tableView reloadData];
     }
     else if(type == NSFetchedResultsChangeUpdate){
         [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        [self.tableView reloadData];
     }
 
 }
 
 -(void)controllerDidChangeContent:(nonnull NSFetchedResultsController *)controller{
     [self.tableView endUpdates];
+//    [self.tableView reloadData];
 }
 
 
--(void)updateTableView:(UITableView *)tableView{
-    [tableView beginUpdates];
-    [tableView endUpdates];
-}
+
 
 #pragma mark - Gesture Recognizer
 
@@ -253,6 +255,8 @@
     }else{
         TimerButton *currentTimerButtonView = (TimerButton *)sender.view;
         TimerController *timerController = (TimerController *)currentTimerButtonView.relatedTimerController;
+#warning if user delete a row below the running row, and will not tap timer button?
+        [self.tableView reloadData];
         
         switch (timerController.currentStatus) {
             case TimerPausing:
@@ -293,7 +297,7 @@
             timerController.currentStatus = TimerStopped;
             timerController.remainingTime = ((TimerModel *)[self.fetchedResultController objectAtIndexPath:timerController.indexPath]).durationTime;
             
-            TimerTableViewCell *currentCell = (TimerTableViewCell *)[self.tableView cellForRowAtIndexPath:timerController.indexPath];
+            TimerTableViewCell *currentCell = (TimerTableViewCell *)[self.tableView cellForRowAtIndexPath:[self.fetchedResultController indexPathForObject:timerController.relatedTimerModel]];
             currentCell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
             
 
@@ -302,7 +306,7 @@
             timerController.remainingTime = [NSNumber numberWithDouble:oldNumer.doubleValue - 1];
             oldNumer = nil;
             
-            TimerTableViewCell *currentCell = (TimerTableViewCell *)[self.tableView cellForRowAtIndexPath:timerController.indexPath];
+            TimerTableViewCell *currentCell = (TimerTableViewCell *)[self.tableView cellForRowAtIndexPath:[self.fetchedResultController indexPathForObject:timerController.relatedTimerModel]];
             currentCell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
             
             

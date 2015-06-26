@@ -7,9 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-//#import "TimerModel.h"
 @class TimerModel;
-
 
 typedef enum{
     TimerStopped = 0,
@@ -21,14 +19,13 @@ typedef enum{
 @interface TimerController : NSObject
 
 @property (copy, nonatomic) NSNumber *remainingTime;
-@property (strong, nonatomic) NSTimer *timer;
+@property (weak, nonatomic) NSTimer *timer;
 @property (nonatomic) Status currentStatus;
 @property (strong, nonatomic) NSDate *startedTime;
 @property (strong, nonatomic) NSIndexPath *indexPath;
+@property (weak, nonatomic) TimerModel *relatedTimerModel;
 
 
-//-(instancetype)initWithTimerModel: (TimerModel *)timerModel;
-
--(id)initWithDurationTime: (NSNumber *)durationTime;
+-(id)initWithDurationTime: (NSNumber *)durationTime andTimerModel: (TimerModel *)relatedTimerModel;
 
 @end
