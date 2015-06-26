@@ -21,11 +21,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="timerCell" id="8yS-E1-4D8" customClass="TimerTableViewCell">
-                                <rect key="frame" x="0.0" y="86" width="600" height="95"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="timerCell" rowHeight="150" id="8yS-E1-4D8" customClass="TimerTableViewCell">
+                                <rect key="frame" x="0.0" y="86" width="600" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8yS-E1-4D8" id="PuQ-Tf-rRN">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="94"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="149"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="00:00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdQ-Ac-FtX">
@@ -49,23 +49,39 @@
                                                 <constraint firstAttribute="width" constant="64" id="jzo-dE-uUw"/>
                                             </constraints>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Used Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0UP-CU-McR">
+                                            <rect key="frame" x="26" y="104" width="101" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="v4Q-sB-Gh3" secondAttribute="bottom" constant="5" id="3No-0x-JZe"/>
                                         <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="VdQ-Ac-FtX" secondAttribute="trailing" constant="446" id="6ZS-CR-aCS"/>
                                         <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="v4Q-sB-Gh3" secondAttribute="trailing" constant="528" id="6w6-y2-SH8"/>
+                                        <constraint firstItem="0UP-CU-McR" firstAttribute="leading" secondItem="PuQ-Tf-rRN" secondAttribute="leadingMargin" constant="18" id="BGF-Ld-mxu"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="0UP-CU-McR" secondAttribute="bottom" constant="20" id="GXW-xK-Klj"/>
                                         <constraint firstItem="miP-As-SHu" firstAttribute="top" secondItem="PuQ-Tf-rRN" secondAttribute="topMargin" constant="7" id="SGD-kc-Hll"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="miP-As-SHu" secondAttribute="trailing" constant="29" id="VEO-Y2-zay"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="0UP-CU-McR" secondAttribute="bottom" constant="20" id="YMI-IY-ZzK"/>
                                         <constraint firstItem="VdQ-Ac-FtX" firstAttribute="top" secondItem="PuQ-Tf-rRN" secondAttribute="topMargin" constant="8" id="laT-2D-Bsb"/>
                                         <constraint firstItem="VdQ-Ac-FtX" firstAttribute="leading" secondItem="PuQ-Tf-rRN" secondAttribute="leadingMargin" constant="18" id="ngc-4r-svx"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="VdQ-Ac-FtX" secondAttribute="bottom" constant="36" id="pKm-Mh-cWj"/>
                                         <constraint firstItem="v4Q-sB-Gh3" firstAttribute="leading" secondItem="PuQ-Tf-rRN" secondAttribute="leadingMargin" constant="18" id="qDW-BU-9rM"/>
                                         <constraint firstItem="v4Q-sB-Gh3" firstAttribute="top" secondItem="PuQ-Tf-rRN" secondAttribute="topMargin" constant="50" id="qtU-ub-phV"/>
+                                        <constraint firstItem="0UP-CU-McR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="PuQ-Tf-rRN" secondAttribute="topMargin" constant="92" id="rXl-nl-bYt"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="YMI-IY-ZzK"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="durationTimeLabel" destination="VdQ-Ac-FtX" id="t2E-DS-Dut"/>
+                                    <outlet property="lastUsedTime" destination="0UP-CU-McR" id="Dkw-a6-bx2"/>
                                     <outlet property="timerButtonView" destination="miP-As-SHu" id="Ws5-aA-DMs"/>
                                     <outlet property="titleOfTimerLabel" destination="v4Q-sB-Gh3" id="kk9-eg-w6Q"/>
                                 </connections>

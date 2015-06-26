@@ -120,6 +120,11 @@
     
     cell.titleOfTimerLabel.text = timerModel.titleOfTimer;
     cell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
+    if ([timerModel.lastUsedTime description]) {
+        cell.lastUsedTime.text = [NSString stringWithFormat:@"上次使用 %@", [timerController.relatedTimerModel.lastUsedTime displayDateWithFormateInCurrentTimeZone]];
+    }else{
+        cell.lastUsedTime.text = @"尚未使用";
+    }
 
     UITapGestureRecognizer *tapReconizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(respondToTimerButtonTapped:)];
     tapReconizer.numberOfTapsRequired = 1;
@@ -182,7 +187,10 @@
         NavigationController *nvc = [self.storyboard instantiateViewControllerWithIdentifier:@"editingNavigation"];
         TimerEditingViewController *editingViewController = (TimerEditingViewController *)nvc.topViewController;
         [editingViewController setValueForFetchedResultsController:self.fetchedResultController forTimerIndexPath:indexPath];
-        
+//        TimerTableViewCell *cellSelected = [tableView cellForRowAtIndexPath:<#(nonnull NSIndexPath *)#>]
+        if () {
+            <#statements#>
+        }
         [self presentViewController:nvc animated:YES completion:nil];
         
     }else{
@@ -299,14 +307,14 @@
             
             timerController.currentStatus = TimerStopped;
             timerController.remainingTime = [((TimerModel *)[self.fetchedResultController objectAtIndexPath:timerController.indexPath]).durationTime copy];
-            #warning LastUsedTime
-//            [timerController.relatedTimerModel setValue:[NSDate getCurrentTimeInCurrentTimeZone] forKey:@"lastUsedTime"];
+            [timerController.relatedTimerModel setValue:[NSDate date] forKey:@"lastUsedTime"];
             
             [self.runningTimerControllers removeObject:timerController];
             
             TimerTableViewCell *currentCell = (TimerTableViewCell *)[self.tableView cellForRowAtIndexPath:[self.fetchedResultController indexPathForObject:timerController.relatedTimerModel]];
             currentCell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
-
+            currentCell.lastUsedTime.text = [NSString stringWithFormat:@"上次使用 %@", [timerController.relatedTimerModel.lastUsedTime displayDateWithFormateInCurrentTimeZone]];
+ 
         }else if(timerController.remainingTime.doubleValue > 0.0){
             NSNumber *oldNumer = timerController.remainingTime;
             timerController.remainingTime = [[NSNumber numberWithDouble:oldNumer.doubleValue - 1] copy];
@@ -317,7 +325,7 @@
             
             
         }else{
-            abort();
+            NSLog(@"%@",timerController.remainingTime);
         }
     }
 }

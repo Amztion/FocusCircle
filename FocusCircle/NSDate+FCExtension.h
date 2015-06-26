@@ -11,6 +11,7 @@
 @interface NSDate (FCExtension)
 
 +(NSDate *)getCurrentTimeInCurrentTimeZone;
+-(NSString *)displayDateWithFormateInCurrentTimeZone;
 
 
 @end
