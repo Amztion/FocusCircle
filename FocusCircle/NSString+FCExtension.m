@@ -15,7 +15,7 @@
     NSInteger minutes = time.integerValue/60%60;
     NSInteger seconds = time.integerValue%3600 - minutes*60;
     
-    NSString *string = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", hours, minutes, seconds];
+    NSString *string = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", (long)hours, (long)minutes, (long)seconds];
     return string;
 }
 

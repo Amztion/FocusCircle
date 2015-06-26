@@ -150,13 +150,13 @@ typedef enum timePicker{
 -(NSString *)pickerView:(nonnull UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     switch (component) {
         case 0:
-            return [NSString stringWithFormat:@"%ld 小时", row];
+            return [NSString stringWithFormat:@"%ld 小时", (long)row];
             break;
         case 1:
-            return [NSString stringWithFormat:@"%ld 分钟", row];
+            return [NSString stringWithFormat:@"%ld 分钟", (long)row];
             break;
         case 2:
-            return [NSString stringWithFormat:@"%ld 秒", row];
+            return [NSString stringWithFormat:@"%ld 秒", (long)row];
             break;
             
         default:

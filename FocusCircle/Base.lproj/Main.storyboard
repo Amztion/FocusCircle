@@ -49,7 +49,7 @@
                                                 <constraint firstAttribute="width" constant="64" id="jzo-dE-uUw"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Used Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0UP-CU-McR">
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Used Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0UP-CU-McR">
                                             <rect key="frame" x="26" y="104" width="101" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -71,7 +71,6 @@
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="VdQ-Ac-FtX" secondAttribute="bottom" constant="36" id="pKm-Mh-cWj"/>
                                         <constraint firstItem="v4Q-sB-Gh3" firstAttribute="leading" secondItem="PuQ-Tf-rRN" secondAttribute="leadingMargin" constant="18" id="qDW-BU-9rM"/>
                                         <constraint firstItem="v4Q-sB-Gh3" firstAttribute="top" secondItem="PuQ-Tf-rRN" secondAttribute="topMargin" constant="50" id="qtU-ub-phV"/>
-                                        <constraint firstItem="0UP-CU-McR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="PuQ-Tf-rRN" secondAttribute="topMargin" constant="92" id="rXl-nl-bYt"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
@@ -269,6 +268,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="LwY-hD-obk" kind="relationship" relationship="viewControllers" id="R4D-RZ-eX3"/>
+                        <segue destination="BN0-JV-Bhe" kind="relationship" relationship="viewControllers" id="U1k-54-rJp"/>
                         <segue destination="aqB-bX-vuC" kind="relationship" relationship="viewControllers" id="Ym0-LE-8zZ"/>
                     </connections>
                 </tabBarController>
@@ -396,8 +396,34 @@
             </objects>
             <point key="canvasLocation" x="189" y="2429"/>
         </scene>
+        <!--Pomodoro-->
+        <scene sceneID="wS6-8u-t9d">
+            <objects>
+                <viewController title="Pomodoro" id="BN0-JV-Bhe" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4Vv-sT-axt"/>
+                        <viewControllerLayoutGuide type="bottom" id="3Du-fD-YXE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IBN-YQ-3nF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XlA-LT-vzA">
+                                <rect key="frame" x="180" y="93" width="240" height="128"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Pomodoro" image="PomodoroTabBarIcon" id="zto-pP-cHh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fxP-01-dtT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-576" y="1017"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="PomodoroTabBarIcon" width="29" height="29"/>
         <image name="SettingTabBarIcon" width="29" height="29"/>
         <image name="TimerTabBarIcon" width="29" height="29"/>
     </resources>

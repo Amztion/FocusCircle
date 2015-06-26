@@ -22,7 +22,7 @@
 -(NSString *)displayDateWithFormateInCurrentTimeZone{
     NSDate *dateToDisplay = self;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm";
     dateFormatter.timeZone = [NSTimeZone localTimeZone];
 
     return [dateFormatter stringFromDate:dateToDisplay];

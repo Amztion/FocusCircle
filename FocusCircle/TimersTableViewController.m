@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultController;
 @property (nonatomic, strong) NSMutableArray *runningTimerControllers;
+@property (nonatomic, strong) NSMutableArray *expandedRows;
 
 @end
 
@@ -171,11 +172,6 @@
     }
 }
 
--(void)updateTableView:(UITableView *)tableView{
-    [tableView beginUpdates];
-    [tableView endUpdates];
-}
-
 
 #pragma mark - Action of Table View
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -186,13 +182,20 @@
         [self presentViewController:nvc animated:YES completion:nil];
         
     }else{
-        [self updateTableView:tableView];
+        
+        TimerTableViewCell *currentCell = (TimerTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+        [tableView beginUpdates];
+        currentCell.lastUsedTime.hidden = NO;
+        [tableView endUpdates];
     }
 
 }
 
 -(void)tableView:(nonnull UITableView *)tableView didDeselectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
-    [self updateTableView:tableView];
+    TimerTableViewCell *currentCell = (TimerTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [tableView beginUpdates];
+    currentCell.lastUsedTime.hidden = YES;
+    [tableView endUpdates];
 }
 
 #pragma mark - Configure Core Data
