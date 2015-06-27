@@ -74,7 +74,7 @@
                 if ([shouldEndDate compare:currentDate] == NSOrderedDescending) {
                     timerController.remainingTime = [NSNumber numberWithDouble:[shouldEndDate timeIntervalSinceDate:currentDate] + 1];
                 }else{
-                    timerController.remainingTime = [NSNumber numberWithDouble:0.0];
+                    timerController.remainingTime = [NSNumber numberWithDouble:-1];
                 }
                 
             }
