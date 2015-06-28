@@ -303,7 +303,7 @@
             
             TimerTableViewCell *currentCell = (TimerTableViewCell *)[self.tableView cellForRowAtIndexPath:[self.fetchedResultController indexPathForObject:timerController.relatedTimerModel]];
             currentCell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
-        }else if(timerController.remainingTime.doubleValue == 0){
+        }else{
 
             [timerController.timer invalidate];
             timerController.timer = nil;
@@ -320,27 +320,15 @@
             
             NSString *alertMessage = [NSString stringWithFormat:@"%@完成", timerController.relatedTimerModel.titleOfTimer];
             
-            UIAlertController *completionalert = [UIAlertController alertControllerWithTitle:@"计时器完成" message:alertMessage preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *okAlertAction = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleCancel handler:nil];
-            [completionalert addAction:okAlertAction];
-            [self presentViewController:completionalert animated:YES completion:nil];
-            
-            
-            
-        }else{
-            [timerController.timer invalidate];
-            timerController.timer = nil;
-            
-            timerController.currentStatus = TimerStopped;
-            timerController.remainingTime = [((TimerModel *)[self.fetchedResultController objectAtIndexPath:timerController.indexPath]).durationTime copy];
-            [timerController.relatedTimerModel setValue:[NSDate date] forKey:@"lastUsedTime"];
-            
-            [self.runningTimerControllers removeObject:timerController];
-            
-            TimerTableViewCell *currentCell = (TimerTableViewCell *)[self.tableView cellForRowAtIndexPath:[self.fetchedResultController indexPathForObject:timerController.relatedTimerModel]];
-            currentCell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
-            currentCell.lastUsedTime.text = [NSString stringWithFormat:@"上次使用 %@", [timerController.relatedTimerModel.lastUsedTime displayDateWithFormateInCurrentTimeZone]];
-            
+            if (timerController.isEnterBackground == NO) {
+                UIAlertController *completionalert = [UIAlertController alertControllerWithTitle:@"计时器完成" message:alertMessage preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAlertAction = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleCancel handler:nil];
+                [completionalert addAction:okAlertAction];
+                [self presentViewController:completionalert animated:YES completion:nil];
+
+            }else{
+                timerController.enterBackground = NO;
+            }
             
             
         }

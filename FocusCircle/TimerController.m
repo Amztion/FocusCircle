@@ -20,4 +20,8 @@
     return self;
 }
 
+-(BOOL)isEnterBackground{
+    return _enterBackground;
+}
+
 @end

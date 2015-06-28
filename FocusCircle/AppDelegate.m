@@ -71,10 +71,12 @@
                 NSDate *shouldEndDate = [NSDate dateWithTimeInterval:timerController.relatedTimerModel.durationTime.doubleValue sinceDate:timerController.startedTime];
                 NSDate *currentDate = [NSDate date];
 
+                
                 if ([shouldEndDate compare:currentDate] == NSOrderedDescending) {
-                    timerController.remainingTime = [NSNumber numberWithDouble:[shouldEndDate timeIntervalSinceDate:currentDate] + 1];
+                    timerController.remainingTime = [NSNumber numberWithDouble:[shouldEndDate timeIntervalSinceDate:currentDate]];
+                    timerController.enterBackground = NO;
                 }else{
-                    timerController.remainingTime = [NSNumber numberWithDouble:-1];
+                    timerController.remainingTime = [NSNumber numberWithDouble:0];
                 }
                 
             }
@@ -96,6 +98,7 @@
     for (TimerController *timerController in self.runningTimerControllers) {
         if (timerController.currentStatus == TimerRunning) {
             [self createNotificationWithTitleOfTimer:timerController.relatedTimerModel.titleOfTimer andRemainingTime:timerController.remainingTime];
+            timerController.enterBackground = YES;
             
         }
     }
