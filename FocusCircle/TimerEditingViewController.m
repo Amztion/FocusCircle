@@ -188,13 +188,12 @@ typedef enum timePicker{
 
 #pragma mark - Update Data in Core Data
 -(void)updateDataWithTitle: (NSString *)titleOfTimer andDurationTime: (NSNumber *)duration{
-    TimerModel *TimerModel = [self.fetchedResultsController objectAtIndexPath:self.indexPath];
+    TimerModel *timerModel = [self.fetchedResultsController objectAtIndexPath:self.indexPath];
     
-    NSNumber *createdDate = [NSNumber numberWithDouble:[[NSDate date]timeIntervalSince1970]];
+    timerModel.timerController.remainingTime = duration;
     
-    [TimerModel setValue:titleOfTimer forKey:@"titleOfTimer"];
-    [TimerModel setValue:duration forKey:@"durationTime"];
-    [TimerModel setValue:createdDate forKey:@"sortValue"];
+    [timerModel setValue:titleOfTimer forKey:@"titleOfTimer"];
+    [timerModel setValue:duration forKey:@"durationTime"];
 }
 
 

@@ -48,6 +48,9 @@
     self.tableView.tableFooterView.backgroundColor = [UIColor lightGrayColor];
     
     [self.tableView reloadData];
+//    for (TimerModel *timerModel in [self.fetchedResultController fetchedObjects]) {
+//        NSLog(@"%@, %@", timerModel.titleOfTimer, timerModel.durationTime);
+//    }
 }
 
 
