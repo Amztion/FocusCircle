@@ -53,7 +53,7 @@
                                                 <constraint firstAttribute="width" constant="64" id="jzo-dE-uUw"/>
                                             </constraints>
                                         </view>
-                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Used Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0UP-CU-McR">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Used Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0UP-CU-McR">
                                             <rect key="frame" x="26" y="104" width="101" height="17"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -71,18 +71,13 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="0UP-CU-McR" secondAttribute="bottom" constant="20" id="GXW-xK-Klj"/>
                                         <constraint firstItem="miP-As-SHu" firstAttribute="top" secondItem="PuQ-Tf-rRN" secondAttribute="topMargin" constant="7" id="SGD-kc-Hll"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="miP-As-SHu" secondAttribute="trailing" constant="29" id="VEO-Y2-zay"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="0UP-CU-McR" secondAttribute="bottom" constant="20" id="YMI-IY-ZzK"/>
                                         <constraint firstItem="VdQ-Ac-FtX" firstAttribute="top" secondItem="PuQ-Tf-rRN" secondAttribute="topMargin" constant="8" id="laT-2D-Bsb"/>
                                         <constraint firstItem="VdQ-Ac-FtX" firstAttribute="leading" secondItem="PuQ-Tf-rRN" secondAttribute="leadingMargin" constant="18" id="ngc-4r-svx"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="VdQ-Ac-FtX" secondAttribute="bottom" constant="36" id="pKm-Mh-cWj"/>
                                         <constraint firstItem="v4Q-sB-Gh3" firstAttribute="leading" secondItem="PuQ-Tf-rRN" secondAttribute="leadingMargin" constant="18" id="qDW-BU-9rM"/>
                                         <constraint firstItem="v4Q-sB-Gh3" firstAttribute="top" secondItem="PuQ-Tf-rRN" secondAttribute="topMargin" constant="50" id="qtU-ub-phV"/>
+                                        <constraint firstItem="0UP-CU-McR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="PuQ-Tf-rRN" secondAttribute="topMargin" constant="96" id="yMf-iZ-8rr"/>
                                     </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="YMI-IY-ZzK"/>
-                                        </mask>
-                                    </variation>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>

@@ -48,9 +48,6 @@
     self.tableView.tableFooterView.backgroundColor = [UIColor lightGrayColor];
     
     [self.tableView reloadData];
-//    for (TimerModel *timerModel in [self.fetchedResultController fetchedObjects]) {
-//        NSLog(@"%@, %@", timerModel.titleOfTimer, timerModel.durationTime);
-//    }
 }
 
 
@@ -123,7 +120,7 @@
     TimerController *timerController = timerModel.timerController;
     
     cell.titleOfTimerLabel.text = timerModel.titleOfTimer;
-    cell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
+    cell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.durationTime];
     if ([timerModel.lastUsedTime description]) {
         cell.lastUsedTime.text = [NSString stringWithFormat:@"上次使用 %@", [timerController.relatedTimerModel.lastUsedTime displayDateWithFormateInCurrentTimeZone]];
     }else{
@@ -257,7 +254,16 @@
         [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     else if(type == NSFetchedResultsChangeUpdate){
-        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        TimerTableViewCell *cell = (TimerTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+        TimerModel *timerModel = [self.fetchedResultController objectAtIndexPath:indexPath];
+        cell.titleOfTimerLabel.text = timerModel.titleOfTimer;
+        cell.durationTimeLabel.text = [NSString stringWithSeconds:timerModel.durationTime];
+        if ([timerModel.lastUsedTime description]) {
+            cell.lastUsedTime.text = [NSString stringWithFormat:@"上次使用 %@", [timerModel.lastUsedTime displayDateWithFormateInCurrentTimeZone]];
+        }else{
+            cell.lastUsedTime.text = @"尚未使用";
+        }
     }
 
 }
@@ -344,10 +350,9 @@
     timerController.remainingTime = timerController.durationTime;
     
     TimerTableViewCell *currentCell = (TimerTableViewCell *)[self.tableView cellForRowAtIndexPath:timerController.indexPath];
-    currentCell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
+    currentCell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.durationTime];
     if (normal) {
         [timerController.relatedTimerModel setValue:[NSDate date] forKey:@"lastUsedTime"];
-        currentCell.lastUsedTime.text = [NSString stringWithFormat:@"上次使用 %@", [timerController.relatedTimerModel.lastUsedTime displayDateWithFormateInCurrentTimeZone]];;
     }
     
     [self.runningTimerControllers removeObject:timerController];
