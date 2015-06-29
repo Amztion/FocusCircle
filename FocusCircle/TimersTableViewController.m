@@ -166,8 +166,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         TimerModel *timerModelToDelete = [self.fetchedResultController objectAtIndexPath:indexPath];
         if (timerModelToDelete.timerController.currentStatus != TimerStopped) {
-            timerModelToDelete.timerController.remainingTime = [NSNumber numberWithInt:0];
-            [self.runningTimerControllers removeObject:timerModelToDelete.timerController];
+            [self stopTimerForTimerController:timerModelToDelete.timerController andStopNormally:NO];
         }
         [self.fetchedResultController.managedObjectContext deleteObject:timerModelToDelete];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
@@ -179,10 +178,24 @@
 #pragma mark - Action of Table View
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(self.editing){
-        NavigationController *nvc = [self.storyboard instantiateViewControllerWithIdentifier:@"editingNavigation"];
-        TimerEditingViewController *editingViewController = (TimerEditingViewController *)nvc.topViewController;
-        [editingViewController setValueForFetchedResultsController:self.fetchedResultController forTimerIndexPath:indexPath];
-        [self presentViewController:nvc animated:YES completion:nil];
+        TimerModel *timerModel = (TimerModel *)[self.fetchedResultController objectAtIndexPath:indexPath];
+        TimerController *timerController = timerModel.timerController;
+        if (timerController.currentStatus != TimerStopped) {
+            UIAlertController *editAlert = [UIAlertController alertControllerWithTitle:@"正在运行" message:@"请先停止计时器" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *stopTimer = [UIAlertAction actionWithTitle:@"停止" style:UIAlertActionStyleDefault handler:^(UIAlertAction *alertAction){
+                [self stopTimerForTimerController:timerController andStopNormally:NO];
+            }];
+            [editAlert addAction:stopTimer];
+            UIAlertAction *cancelAlert = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            [editAlert addAction:cancelAlert];
+            [self presentViewController:editAlert animated:YES completion:nil];
+        }else{
+            NavigationController *nvc = [self.storyboard instantiateViewControllerWithIdentifier:@"editingNavigation"];
+            TimerEditingViewController *editingViewController = (TimerEditingViewController *)nvc.topViewController;
+            [editingViewController setValueForFetchedResultsController:self.fetchedResultController forTimerIndexPath:indexPath];
+            [self presentViewController:nvc animated:YES completion:nil];           
+        }
+
         
     }else{
         
@@ -288,12 +301,13 @@
     NSTimer *countdownTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countdownForTimer:) userInfo:timerController repeats:YES];
     
     timerController.timer = countdownTimer;
+    countdownTimer = nil;
     timerController.currentStatus = TimerRunning;
     timerController.startedTime = [NSDate date];
     [self.runningTimerControllers addObject:timerController];
     [self loadIndexPathForRunningTimerControllers];
-    [[NSRunLoop currentRunLoop]addTimer:countdownTimer forMode:NSDefaultRunLoopMode];
-    [countdownTimer fire];
+    [[NSRunLoop currentRunLoop]addTimer:timerController.timer forMode:NSDefaultRunLoopMode];
+    [timerController.timer fire];
 }
 
 -(void)countdownForTimer: (NSTimer *)sender{
@@ -308,34 +322,35 @@
             currentCell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
         }else{
 
-            [timerController.timer invalidate];
-            timerController.timer = nil;
-            
-            timerController.currentStatus = TimerStopped;
-            timerController.remainingTime = [((TimerModel *)[self.fetchedResultController objectAtIndexPath:timerController.indexPath]).durationTime copy];
-            [timerController.relatedTimerModel setValue:[NSDate date] forKey:@"lastUsedTime"];
-            
-            [self.runningTimerControllers removeObject:timerController];
-            
-            TimerTableViewCell *currentCell = (TimerTableViewCell *)[self.tableView cellForRowAtIndexPath:[self.fetchedResultController indexPathForObject:timerController.relatedTimerModel]];
-            currentCell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
-            currentCell.lastUsedTime.text = [NSString stringWithFormat:@"上次使用 %@", [timerController.relatedTimerModel.lastUsedTime displayDateWithFormateInCurrentTimeZone]];
+            [self stopTimerForTimerController:timerController andStopNormally:YES];
             
             NSString *alertMessage = [NSString stringWithFormat:@"%@完成", timerController.relatedTimerModel.titleOfTimer];
-            
-            if (timerController.isEnterBackground == NO) {
-                UIAlertController *completionalert = [UIAlertController alertControllerWithTitle:@"计时器完成" message:alertMessage preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *okAlertAction = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleCancel handler:nil];
-                [completionalert addAction:okAlertAction];
-                [self presentViewController:completionalert animated:YES completion:nil];
+            UIAlertController *completionalert = [UIAlertController alertControllerWithTitle:@"计时器完成" message:alertMessage preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAlertAction = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleCancel handler:nil];
+            [completionalert addAction:okAlertAction];
+            [self presentViewController:completionalert animated:YES completion:nil];
 
-            }else{
-                timerController.enterBackground = NO;
-            }
             
             
         }
     }
+}
+
+-(void)stopTimerForTimerController:(TimerController *)timerController andStopNormally: (BOOL)normal{
+    [timerController.timer invalidate];
+    timerController.timer = nil;
+    
+    timerController.currentStatus = TimerStopped;
+    timerController.remainingTime = timerController.durationTime;
+    
+    TimerTableViewCell *currentCell = (TimerTableViewCell *)[self.tableView cellForRowAtIndexPath:timerController.indexPath];
+    currentCell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
+    if (normal) {
+        [timerController.relatedTimerModel setValue:[NSDate date] forKey:@"lastUsedTime"];
+        currentCell.lastUsedTime.text = [NSString stringWithFormat:@"上次使用 %@", [timerController.relatedTimerModel.lastUsedTime displayDateWithFormateInCurrentTimeZone]];;
+    }
+    
+    [self.runningTimerControllers removeObject:timerController];
 }
 
 -(void)pauseTimerForTimerController: (TimerController *)timerController{
@@ -354,5 +369,4 @@
         timerController.indexPath = [[self.fetchedResultController indexPathForObject:timerController.relatedTimerModel] copy];
     }
 }
-
 @end

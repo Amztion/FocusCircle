@@ -16,12 +16,9 @@
         self.remainingTime = [durationTime copy];
         self.currentStatus = TimerStopped;
         self.relatedTimerModel = relatedTimerModel;
+        self.durationTime = [durationTime copy];
     }
     return self;
-}
-
--(BOOL)isEnterBackground{
-    return _enterBackground;
 }
 
 @end

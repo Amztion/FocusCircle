@@ -18,13 +18,13 @@ typedef enum{
 
 @interface TimerController : NSObject
 
+@property (copy, nonatomic)NSNumber *durationTime;
 @property (copy, nonatomic) NSNumber *remainingTime;
-@property (weak, nonatomic) NSTimer *timer;
+@property (strong, nonatomic) NSTimer *timer;
 @property (nonatomic) Status currentStatus;
 @property (strong, nonatomic) NSDate *startedTime;
 @property (copy, nonatomic) NSIndexPath *indexPath;
 @property (weak, nonatomic) TimerModel *relatedTimerModel;
-@property (nonatomic, getter=isEnterBackground) BOOL enterBackground;
 
 
 -(id)initWithDurationTime: (NSNumber *)durationTime andTimerModel: (TimerModel *)relatedTimerModel;

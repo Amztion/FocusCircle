@@ -191,6 +191,7 @@ typedef enum timePicker{
     TimerModel *timerModel = [self.fetchedResultsController objectAtIndexPath:self.indexPath];
     
     timerModel.timerController.remainingTime = duration;
+    timerModel.timerController.durationTime = duration;
     
     [timerModel setValue:titleOfTimer forKey:@"titleOfTimer"];
     [timerModel setValue:duration forKey:@"durationTime"];
