@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B301C06B1B2EFA46007FA6BE /* TimerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B301C06A1B2EFA46007FA6BE /* TimerTableViewCell.m */; };
 		B32216811B2E69BB000A72D7 /* TimerEditingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32216801B2E69BB000A72D7 /* TimerEditingViewController.m */; };
+		B33CCD711B422F7300B07491 /* PomodoroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33CCD701B422F7300B07491 /* PomodoroViewController.m */; };
+		B33CCD741B42316500B07491 /* PomodoroButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B33CCD731B42316500B07491 /* PomodoroButton.m */; };
 		B35EAABC1B4120D10014FDBB /* RestoreTimers.plist in Resources */ = {isa = PBXBuildFile; fileRef = B35EAABB1B4120D10014FDBB /* RestoreTimers.plist */; };
 		B37023531B3BBC400042FDF3 /* TimerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37023521B3BBC400042FDF3 /* TimerController.m */; };
 		B3B7B4C21B1419EC00B96A01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B7B4C11B1419EC00B96A01 /* main.m */; };
@@ -43,6 +45,10 @@
 		B301C06A1B2EFA46007FA6BE /* TimerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerTableViewCell.m; sourceTree = "<group>"; };
 		B322167F1B2E69BB000A72D7 /* TimerEditingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerEditingViewController.h; sourceTree = "<group>"; };
 		B32216801B2E69BB000A72D7 /* TimerEditingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerEditingViewController.m; sourceTree = "<group>"; };
+		B33CCD6F1B422F7300B07491 /* PomodoroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PomodoroViewController.h; sourceTree = "<group>"; };
+		B33CCD701B422F7300B07491 /* PomodoroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PomodoroViewController.m; sourceTree = "<group>"; };
+		B33CCD721B42316500B07491 /* PomodoroButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PomodoroButton.h; sourceTree = "<group>"; };
+		B33CCD731B42316500B07491 /* PomodoroButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PomodoroButton.m; sourceTree = "<group>"; };
 		B35EAABB1B4120D10014FDBB /* RestoreTimers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RestoreTimers.plist; sourceTree = "<group>"; };
 		B37023511B3BBC400042FDF3 /* TimerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerController.h; sourceTree = "<group>"; };
 		B37023521B3BBC400042FDF3 /* TimerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerController.m; sourceTree = "<group>"; };
@@ -171,6 +177,8 @@
 				B3EB21DF1B180F790045010D /* TimerTextInputViewController.m */,
 				B322167F1B2E69BB000A72D7 /* TimerEditingViewController.h */,
 				B32216801B2E69BB000A72D7 /* TimerEditingViewController.m */,
+				B33CCD6F1B422F7300B07491 /* PomodoroViewController.h */,
+				B33CCD701B422F7300B07491 /* PomodoroViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -193,6 +201,8 @@
 				B3FF7BB01B392EEC005F9D67 /* TimerButton.m */,
 				B301C0691B2EFA46007FA6BE /* TimerTableViewCell.h */,
 				B301C06A1B2EFA46007FA6BE /* TimerTableViewCell.m */,
+				B33CCD721B42316500B07491 /* PomodoroButton.h */,
+				B33CCD731B42316500B07491 /* PomodoroButton.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -321,6 +331,7 @@
 				B3EB21D61B1804CB0045010D /* NavigationController.m in Sources */,
 				B3E5B1121B29D5E5003162D4 /* FocusCircle.xcdatamodeld in Sources */,
 				B3BC80531B3BDF1400256EB9 /* TimerModel.m in Sources */,
+				B33CCD741B42316500B07491 /* PomodoroButton.m in Sources */,
 				B3D4152D1B1D7C9000BAC7A3 /* SettingTableViewController.m in Sources */,
 				B301C06B1B2EFA46007FA6BE /* TimerTableViewCell.m in Sources */,
 				B3E0A1CB1B3A9C7400C88B1A /* NSString+FCExtension.m in Sources */,
@@ -329,6 +340,7 @@
 				B3EB21E01B180F790045010D /* TimerTextInputViewController.m in Sources */,
 				B3EB21D31B1803D60045010D /* TimersTableViewController.m in Sources */,
 				B3E0A1CE1B3A9C8900C88B1A /* NSDate+FCExtension.m in Sources */,
+				B33CCD711B422F7300B07491 /* PomodoroViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

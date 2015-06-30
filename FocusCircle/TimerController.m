@@ -21,20 +21,6 @@
     return self;
 }
 
--(void)encodeWithCoder:(nonnull NSCoder *)aCoder{
-    [aCoder encodeObject:self.indexPath forKey:@"indexPath"];
-    [aCoder encodeObject:self.remainingTime forKey:@"remainingTime"];
-    [aCoder encodeInt:self.currentStatus forKey:@"currentStatus"];
-}
 
--(id)initWithCoder:(nonnull NSCoder *)aDecoder{
-    self = [super init];
-    if (self) {
-        self.indexPath = [aDecoder decodeObjectForKey:@"indexPath"];
-        self.remainingTime = [aDecoder decodeObjectForKey:@"remainingTime"];
-        self.currentStatus = [aDecoder decodeIntForKey:@"currentStatus"];
-    }
-    return self;
-}
 
 @end

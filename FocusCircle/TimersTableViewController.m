@@ -6,6 +6,7 @@
 //  Copyright (c) 2015年 Liang Zhao. All rights reserved.
 //
 
+int BadgeNumer = 0;
 
 #import "TimersTableViewController.h"
 
@@ -81,7 +82,7 @@
     NSError *error;
     NSString *plistPath;
     NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    plistPath = [rootPath stringByAppendingString:@"/Status.plist"];
+    plistPath = [rootPath stringByAppendingString:@"/TimerControllers.plist"];
     if([[NSFileManager defaultManager]fileExistsAtPath:plistPath]){
         
         NSData *plistXML = [[NSFileManager defaultManager]contentsAtPath:plistPath];
@@ -144,12 +145,14 @@
     
     NSLog(@"restore");
     [[UIApplication sharedApplication]cancelAllLocalNotifications];
+    [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
+    BadgeNumer = 0;
     
     NSPropertyListFormat format;
     NSError *error;
     NSString *plistPath;
     NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    plistPath = [rootPath stringByAppendingString:@"/Status.plist"];
+    plistPath = [rootPath stringByAppendingString:@"/TimerControllers.plist"];
     if(![[NSFileManager defaultManager]fileExistsAtPath:plistPath]){
         return;
     }
@@ -222,6 +225,9 @@
     newNotification.timeZone = [NSTimeZone systemTimeZone];
     newNotification.alertBody = titleOfTimer;
     newNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:remainingTime.doubleValue];
+    newNotification.soundName = UILocalNotificationDefaultSoundName;
+    newNotification.applicationIconBadgeNumber = BadgeNumer + 1;
+    
     
     [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
 }
