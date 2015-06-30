@@ -16,7 +16,7 @@ typedef enum{
 }Status;
 
 
-@interface TimerController : NSObject
+@interface TimerController : NSObject<NSCoding>
 
 @property (copy, nonatomic)NSNumber *durationTime;
 @property (copy, nonatomic) NSNumber *remainingTime;

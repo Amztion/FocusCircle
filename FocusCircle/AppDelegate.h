@@ -13,8 +13,6 @@
 #import "NSDate+FCExtension.h"
 #import "TimerModel.h"
 
-static NSString *ReactiveFromBackground = @"ReactiveFromBackground";
-static NSString *Relaunch = @"Relaunch";
 
 @class ItemsTableViewController;
 
@@ -25,10 +23,6 @@ static NSString *Relaunch = @"Relaunch";
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-
-@property (strong, nonatomic) NSMutableArray *runningTimerControllers;
-@property (copy, nonatomic) NSString *applicationStatus;
-
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

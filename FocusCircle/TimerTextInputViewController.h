@@ -11,4 +11,6 @@
 
 @interface TimerTextInputViewController : UITableViewController<UIPickerViewDataSource, UIPickerViewDelegate, UIPickerViewAccessibilityDelegate>
 
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 @end

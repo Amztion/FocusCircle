@@ -23,7 +23,6 @@ typedef enum timePicker{
 @property (nonatomic) NSNumber *minutes;
 @property (nonatomic) NSNumber *seconds;
 
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 
 @end
@@ -179,6 +178,9 @@ typedef enum timePicker{
     [timerModel setValue:titleOfTimer forKey:@"titleOfTimer"];
     [timerModel setValue:duration forKey:@"durationTime"];
     [timerModel setValue:createdDate forKey:@"sortValue"];
+    
+    NSError *error;
+    [self.managedObjectContext save:&error];
 }
 
 

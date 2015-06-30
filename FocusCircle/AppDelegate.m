@@ -16,8 +16,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSLog(@"didFinishLaunch");
     
     [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil]];
+    
+
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
+    {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        NSLog(@"once");
+        [self insertDemoData];
+    }
+    
      
 
     return YES;
@@ -25,105 +36,50 @@
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     
+    NSLog(@"willResign");
+    
+
+    
+
     
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     
-    [self applicationEnterBackground];
 }
 
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    
+    NSLog(@"didEnterBackground");
+    
+    
+    
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    NSLog(@"willEnterForeground");
+    
 
+    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    
+    NSLog(@"didBecomeActive");
+    
+    
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    [self applicationEnterForeground];
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+    NSLog(@"willTerminate");
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
-    
-    [self applicationTerminated];
-    
-    [self saveContext];
-}
-
-#pragma mark - Deal with Timers when Application Status changed
-
--(void)applicationEnterForeground{
-    
-    [[UIApplication sharedApplication]cancelAllLocalNotifications];
-    
-    if ([self.applicationStatus isEqualToString:ReactiveFromBackground]) {
-        for (TimerController *timerController in self.runningTimerControllers) {
-            
-            if(timerController.currentStatus == TimerRunning){
-                NSDate *shouldEndDate = [NSDate dateWithTimeInterval:timerController.relatedTimerModel.durationTime.doubleValue sinceDate:timerController.startedTime];
-                NSDate *currentDate = [NSDate date];
-
-                
-                if ([shouldEndDate compare:currentDate] == NSOrderedDescending) {
-                    timerController.remainingTime = [NSNumber numberWithDouble:[shouldEndDate timeIntervalSinceDate:currentDate]];
-                }else{
-                    [timerController.timer invalidate];
-                    timerController.timer = nil;
-                    
-                    timerController.currentStatus = TimerStopped;
-                    timerController.remainingTime = timerController.durationTime;
-                    [timerController.relatedTimerModel setValue:[NSDate date] forKey:@"lastUsedTime"];
-                    
-                    [self.runningTimerControllers removeObject:timerController];
-                }
-                
-            }
-            
-        }
-        
-    }
-    else if ([self.applicationStatus isEqualToString:Relaunch]) {
-        NSLog(@"Relaunch App");
-        
-    }else if (self.applicationStatus == nil){
-        [self insertDemoData];
-    }
-}
-
--(void)applicationEnterBackground{
-    self.applicationStatus = [ReactiveFromBackground copy];
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
-    for (TimerController *timerController in self.runningTimerControllers) {
-        if (timerController.currentStatus == TimerRunning) {
-            [self createNotificationWithTitleOfTimer:timerController.relatedTimerModel.titleOfTimer andRemainingTime:timerController.remainingTime];
-            
-        }
-    }
-    
-}
-
--(void)applicationTerminated{
-    self.applicationStatus = [Relaunch copy];
-}
-
-
-#pragma mark - UILocalNotification
-
--(void)createNotificationWithTitleOfTimer: (NSString *)titleOfTimer andRemainingTime: (NSNumber *)remainingTime{
-    UILocalNotification *newNotification = [[UILocalNotification alloc]init];
-    newNotification.timeZone = [NSTimeZone systemTimeZone];
-    newNotification.alertBody = titleOfTimer;
-    newNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:remainingTime.doubleValue];
-    
-    [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
 }
 
 #pragma mark - Core Data stack
@@ -203,9 +159,13 @@
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
+        }else{
+            [self.managedObjectContext save:&error];
         }
     }
+    
 }
+
 
 
 
@@ -331,7 +291,9 @@
     [timer setValue:duration forKey:@"durationTime"];
     [timer setValue:createdDate forKey:@"sortValue"];
     
+    NSError *error;
     
+    [self.managedObjectContext save:&error];
 }
 
 @end

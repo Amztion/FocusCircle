@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TimerModel : NSManagedObject
 
-@property (readonly) TimerController *timerController;
+@property (strong, nonatomic) TimerController *timerController;
 
 
 @end

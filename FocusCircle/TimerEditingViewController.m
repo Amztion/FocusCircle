@@ -21,7 +21,6 @@ typedef enum timePicker{
 
 @property (nonatomic, copy) NSIndexPath *indexPath;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) TimerModel *currentTimerModel;
 
 @property (nonatomic) NSNumber *hours;

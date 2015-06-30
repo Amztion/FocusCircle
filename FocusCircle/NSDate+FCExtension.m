@@ -18,7 +18,6 @@
     
     return localTimeNow;
 }
-
 -(NSString *)displayDateWithFormateInCurrentTimeZone{
     NSDate *dateToDisplay = self;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
