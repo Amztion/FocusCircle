@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Pomodoro.h"
+#import "PomodoroController.h"
 
 @interface PomodoroViewController : UIViewController
 

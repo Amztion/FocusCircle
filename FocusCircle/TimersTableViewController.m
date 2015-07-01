@@ -104,9 +104,7 @@ int BadgeNumer = 0;
             [timerController.timer invalidate];
             timerController.timer = nil;
             
-            if (timerController.currentStatus == TimerRunning) {
-                [self createNotificationWithTitleOfTimer:timerController.relatedTimerModel.titleOfTimer andRemainingTime:timerController.remainingTime];
-            }
+     
             
             NSDate *shouldEndTime = [timerController.startedTime dateByAddingTimeInterval:timerController.durationTime.doubleValue];
             NSNumber *remainingTime = [timerController remainingTime];
@@ -124,6 +122,10 @@ int BadgeNumer = 0;
             [status setObject:shouldEndTime forKey:@"shouldEndTime"];
 //            NSLog(@"%@, %@, %@", startedTime, remainingTime, shouldEndTime);
             [status setObject:currentStatus forKey:@"currentStatus"];
+            
+            if (timerController.currentStatus == TimerRunning) {
+                [self createNotificationWithTitleOfTimer:timerController.relatedTimerModel.titleOfTimer andRemainingTime: [NSNumber numberWithDouble:[shouldEndTime timeIntervalSinceDate:[NSDate date]]]];
+            }
             
             [timerControllersToSave addObject:status];
         }
@@ -249,8 +251,30 @@ int BadgeNumer = 0;
 #pragma mark - Actions of Controls
 
 - (void)addingButtonTapped:(id)sender{
+    
     NavigationController *nvc = [self.storyboard instantiateViewControllerWithIdentifier:@"addingNavigation"];
+    TimerTextInputViewController *addViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"adding"];
+    [TimersTableViewController setPresentationStyleForSelfController:self presentingController:nvc ]; //show add view controller above current viewcontroller
+    
+    
     [self presentViewController:nvc animated:YES completion:nil];
+}
+
++ (void)setPresentationStyleForSelfController:(UIViewController *)selfController presentingController:(UIViewController *)presentingController
+{
+    if ([NSProcessInfo instancesRespondToSelector:@selector(isOperatingSystemAtLeastVersion:)])
+    {
+        //iOS 8.0 and above
+        presentingController.providesPresentationContextTransitionStyle = YES;
+        presentingController.definesPresentationContext = YES;
+        
+        [presentingController setModalPresentationStyle:UIModalPresentationOverFullScreen];
+    }
+    else
+    {
+        [selfController setModalPresentationStyle:UIModalPresentationCurrentContext];
+        [selfController.navigationController setModalPresentationStyle:UIModalPresentationCurrentContext];
+    }
 }
 
 - (void)settingButtonTapped:(id)sender{
@@ -546,7 +570,13 @@ int BadgeNumer = 0;
 
 -(void)resumeTimerForTimerController: (TimerController *)timerController{
     timerController.currentStatus = TimerRunning;
-    timerController.startedTime = [NSDate date];
+    NSDate *shouldEndTime = [[NSDate date]dateByAddingTimeInterval:timerController.remainingTime.doubleValue];
+    
+    NSTimeInterval shouldEndTimeInSecond = [shouldEndTime timeIntervalSince1970];
+    NSTimeInterval durationTimeInSecond = [timerController.durationTime doubleValue];
+    
+    timerController.startedTime = [NSDate dateWithTimeIntervalSince1970:shouldEndTimeInSecond - durationTimeInSecond];
+    
     [timerController.timer setFireDate:[NSDate distantPast]];
 }
 

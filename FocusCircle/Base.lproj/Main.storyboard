@@ -155,17 +155,23 @@
         <!--Timer Text Input View Controller-->
         <scene sceneID="9Zr-ND-9lA">
             <objects>
-                <tableViewController id="qHB-fA-fhv" customClass="TimerTextInputViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="adding" id="qHB-fA-fhv" customClass="TimerTextInputViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="iFJ-eA-svb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="TGF-ik-xmJ">
+                            <rect key="frame" x="0.0" y="64" width="600" height="134"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
                         <sections>
                             <tableViewSection id="Tpu-Ih-KVa">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="KHc-z2-uQr">
-                                        <rect key="frame" x="0.0" y="99" width="600" height="50"/>
+                                        <rect key="frame" x="0.0" y="198" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KHc-z2-uQr" id="NUz-zx-nFk">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
@@ -193,7 +199,7 @@
                             <tableViewSection id="fwX-CU-kAZ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="166" id="VSF-EB-d9x">
-                                        <rect key="frame" x="0.0" y="169" width="600" height="166"/>
+                                        <rect key="frame" x="0.0" y="268" width="600" height="166"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VSF-EB-d9x" id="Fxu-Wz-vjo">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="165"/>
@@ -426,7 +432,7 @@
         <!--Pomodoro-->
         <scene sceneID="wS6-8u-t9d">
             <objects>
-                <viewController title="Pomodoro" id="BN0-JV-Bhe" sceneMemberID="viewController">
+                <viewController title="Pomodoro" id="BN0-JV-Bhe" customClass="PomodoroViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Vv-sT-axt"/>
                         <viewControllerLayoutGuide type="bottom" id="3Du-fD-YXE"/>
@@ -435,16 +441,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XlA-LT-vzA">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XlA-LT-vzA" customClass="Pomodoro">
                                 <rect key="frame" x="180" y="93" width="240" height="128"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="任务名称" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W20-LI-F4Z">
+                                <rect key="frame" x="252" y="279" width="97" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="qCq-fE-vz7"/>
+                    <connections>
+                        <outlet property="pomodoroButtonView" destination="XlA-LT-vzA" id="mBM-pc-JnM"/>
+                        <outlet property="taskNameLabel" destination="W20-LI-F4Z" id="Cs0-WO-uGd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fxP-01-dtT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

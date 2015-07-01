@@ -1,14 +1,14 @@
 //
-//  PomodoroButton.m
+//  Pomodoro.m
 //  FocusCircle
 //
-//  Created by Liang Zhao on 15/6/30.
+//  Created by Liang Zhao on 15/7/1.
 //  Copyright © 2015年 Liang Zhao. All rights reserved.
 //
 
-#import "PomodoroButton.h"
+#import "Pomodoro.h"
 
-@implementation PomodoroButton
+@implementation Pomodoro
 
 /*
 // Only override drawRect: if you perform custom drawing.

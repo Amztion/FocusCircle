@@ -33,6 +33,22 @@ typedef enum timePicker{
     [super viewDidLoad];
     [self configureNavigationBar];
     [self configurePickerView];
+    self.view.backgroundColor = [UIColor clearColor];
+    
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+    
+    UIVisualEffectView *bgView = [[UIVisualEffectView alloc]initWithEffect:blurEffect];
+    
+    UIVibrancyEffect *vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:blurEffect];
+    UIVisualEffectView *vibrancyView = [[UIVisualEffectView alloc]initWithEffect:vibrancyEffect];
+    
+    [bgView addSubview:vibrancyView];
+    
+    bgView.frame = CGRectMake(0, -200, self.view.frame.size.width, self.view.frame.size.height * 2);
+
+    [self.view addSubview:bgView];
+    [self.view sendSubviewToBack:bgView];
+    
     
 }
 
