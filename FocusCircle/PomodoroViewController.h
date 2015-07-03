@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Pomodoro.h"
 #import "PomodoroController.h"
+#import "NSString+FCExtension.h"
 
 @interface PomodoroViewController : UIViewController
 

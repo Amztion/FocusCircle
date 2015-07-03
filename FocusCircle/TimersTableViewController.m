@@ -24,7 +24,6 @@ int BadgeNumer = 0;
     NSLog(@"load");
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restoreTimerControllers) name:UIApplicationDidBecomeActiveNotification object:nil];
-//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(saveTimerControllers) name:UIApplicationDidEnterBackgroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveTimerControllers) name:UIApplicationWillResignActiveNotification object:nil];
 
     self.tableView.allowsSelectionDuringEditing = YES;
@@ -522,17 +521,20 @@ int BadgeNumer = 0;
 -(void)countdownForTimer: (NSTimer *)sender{
     if (sender.valid) {
         TimerController *timerController = (TimerController *)sender.userInfo;
-        if(timerController.remainingTime.doubleValue > 0){
+        TimerTableViewCell *currentCell = (TimerTableViewCell *)[self.tableView cellForRowAtIndexPath:[self.fetchedResultController indexPathForObject:timerController.relatedTimerModel]];
+        if(timerController.remainingTime.integerValue > 0){
             NSLog(@"running");
+            currentCell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
+            
             NSNumber *oldNumer = timerController.remainingTime;
             timerController.remainingTime = [[NSNumber numberWithDouble:oldNumer.doubleValue - 1] copy];
             oldNumer = nil;
             
-            TimerTableViewCell *currentCell = (TimerTableViewCell *)[self.tableView cellForRowAtIndexPath:[self.fetchedResultController indexPathForObject:timerController.relatedTimerModel]];
-            currentCell.durationTimeLabel.text = [NSString stringWithSeconds:timerController.remainingTime];
+
         }else{
 
             [self stopTimerForTimerController:timerController andStopNormally:YES];
+            currentCell.durationTimeLabel.text = @"00:00:00";
             
             NSString *alertMessage = [NSString stringWithFormat:@"%@完成", timerController.relatedTimerModel.titleOfTimer];
             UIAlertController *completionalert = [UIAlertController alertControllerWithTitle:@"计时器完成" message:alertMessage preferredStyle:UIAlertControllerStyleAlert];

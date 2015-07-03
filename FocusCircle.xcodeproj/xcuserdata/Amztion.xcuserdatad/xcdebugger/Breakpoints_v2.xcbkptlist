@@ -55,29 +55,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FocusCircle/TimersTableViewController.m"
-            timestampString = "457357489.408263"
+            filePath = "FocusCircle/PomodoroViewController.m"
+            timestampString = "457581144.779187"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
-            landmarkName = "-restoreTimerControllers"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FocusCircle/TimersTableViewController.m"
-            timestampString = "457357489.408263"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
-            landmarkName = "-restoreTimerControllers"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "-countdownPomodoro:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

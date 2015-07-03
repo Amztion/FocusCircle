@@ -16,11 +16,11 @@ typedef enum{
 
 @interface PomodoroController : NSObject
 
-@property (strong, nonatomic) NSNumber *workingTime;
-@property (copy, nonatomic) NSNumber *workingRemaingTime;
+@property (nonatomic) NSTimeInterval workingTime;
+@property (nonatomic) NSTimeInterval workingRemaingTime;
 
-@property (strong, nonatomic) NSNumber *breakTime;
-@property (copy, nonatomic) NSNumber *breakRemaingTime;
+@property (nonatomic) NSTimeInterval breakTime;
+@property (nonatomic) NSTimeInterval breakRemaingTime;
 
 @property (nonatomic) NSInteger amountOfRounds;
 @property (nonatomic) NSInteger roundCounter;
@@ -29,6 +29,14 @@ typedef enum{
 
 @property (nonatomic) PomodoroStatus currentStatus;
 
--(id)initWithWorkingTime: (NSNumber *)workingTime andBreakTime: (NSNumber *)breakTime andAmountOfRounds: (NSInteger)amountOfRounds;
+-(id)initWithWorkingTime: (NSTimeInterval)workingTime andBreakTime: (NSTimeInterval)breakTime andAmountOfRounds: (NSInteger)amountOfRounds;
+
+-(void)startPomodoroWithTimer: (NSTimer *)timer;
+
+-(void)stopPomodoro;
+
+-(void)goToHaveBreak;
+
+-(void)goToWork;
 
 @end

@@ -452,6 +452,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96u-V8-vx9">
+                                <rect key="frame" x="180" y="422" width="181" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -459,7 +466,8 @@
                     <navigationItem key="navigationItem" id="qCq-fE-vz7"/>
                     <connections>
                         <outlet property="pomodoroButtonView" destination="XlA-LT-vzA" id="mBM-pc-JnM"/>
-                        <outlet property="taskNameLabel" destination="W20-LI-F4Z" id="Cs0-WO-uGd"/>
+                        <outlet property="pomodoroTimeLabel" destination="96u-V8-vx9" id="7fh-lF-sKL"/>
+                        <outlet property="taskNameTextField" destination="W20-LI-F4Z" id="scX-zY-nrc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fxP-01-dtT" userLabel="First Responder" sceneMemberID="firstResponder"/>
