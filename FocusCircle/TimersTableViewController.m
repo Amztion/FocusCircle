@@ -48,6 +48,7 @@ int BadgeNumer = 0;
 
 - (void)viewWillAppear:(BOOL)animated{
     
+    //不显示没有内容的 TableView 的表格
     self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.tableFooterView.frame.size.width, self.tableView.tableFooterView.frame.size.height)];
     self.tableView.tableFooterView.backgroundColor = [UIColor lightGrayColor];
 
@@ -256,6 +257,7 @@ int BadgeNumer = 0;
     [TimersTableViewController setPresentationStyleForSelfController:self presentingController:nvc ]; //show add view controller above current viewcontroller
     
     
+//   self.view.tintAdjustmentMode = UIViewTintAdjustmentModeDimmed; 
     [self presentViewController:nvc animated:YES completion:nil];
 }
 

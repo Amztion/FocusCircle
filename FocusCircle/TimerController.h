@@ -28,5 +28,9 @@ typedef enum{
 
 
 -(id)initWithDurationTime: (NSNumber *)durationTime andTimerModel: (TimerModel *)relatedTimerModel;
+-(void)attachTimer: (NSTimer *)timer isRestored: (BOOL)restored;
+-(void)pauserTimer;
+-(void)resumeTimer;
+-(void)stopTimerForNormal: (BOOL)normal;
 
 @end

@@ -35,6 +35,7 @@ typedef enum timePicker{
     [self configurePickerView];
     self.view.backgroundColor = [UIColor clearColor];
     
+    
     UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
     
     UIVisualEffectView *bgView = [[UIVisualEffectView alloc]initWithEffect:blurEffect];
@@ -49,7 +50,7 @@ typedef enum timePicker{
     [self.view addSubview:bgView];
     [self.view sendSubviewToBack:bgView];
     
-    
+ 
 }
 
 - (void)didReceiveMemoryWarning {
