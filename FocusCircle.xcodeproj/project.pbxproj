@@ -21,6 +21,7 @@
 		B3B8A39A1B43AF430013E366 /* PomodoroController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B8A3991B43AF430013E366 /* PomodoroController.m */; };
 		B3B8A39D1B43D6090013E366 /* Pomodoro.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B8A39C1B43D6090013E366 /* Pomodoro.m */; };
 		B3BC80531B3BDF1400256EB9 /* TimerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BC80521B3BDF1400256EB9 /* TimerModel.m */; };
+		B3C11A531C2E7DAA00BA2DBC /* TimerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C11A521C2E7DAA00BA2DBC /* TimerTableViewController.swift */; };
 		B3D4152D1B1D7C9000BAC7A3 /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4152C1B1D7C9000BAC7A3 /* SettingTableViewController.m */; };
 		B3E0A1CB1B3A9C7400C88B1A /* NSString+FCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E0A1CA1B3A9C7400C88B1A /* NSString+FCExtension.m */; };
 		B3E0A1CE1B3A9C8900C88B1A /* NSDate+FCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E0A1CD1B3A9C8900C88B1A /* NSDate+FCExtension.m */; };
@@ -69,6 +70,7 @@
 		B3BC80501B3BDF1400256EB9 /* TimerModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TimerModel+CoreDataProperties.h"; sourceTree = "<group>"; };
 		B3BC80511B3BDF1400256EB9 /* TimerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerModel.h; sourceTree = "<group>"; };
 		B3BC80521B3BDF1400256EB9 /* TimerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerModel.m; sourceTree = "<group>"; };
+		B3C11A521C2E7DAA00BA2DBC /* TimerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTableViewController.swift; sourceTree = "<group>"; };
 		B3D4152B1B1D7C9000BAC7A3 /* SettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewController.h; sourceTree = "<group>"; };
 		B3D4152C1B1D7C9000BAC7A3 /* SettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
 		B3E0A1C91B3A9C7400C88B1A /* NSString+FCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FCExtension.h"; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		B3EB21D71B1805190045010D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B3C11A521C2E7DAA00BA2DBC /* TimerTableViewController.swift */,
 				B3EB21D41B1804CB0045010D /* NavigationController.h */,
 				B3EB21D51B1804CB0045010D /* NavigationController.m */,
 				B3D4152B1B1D7C9000BAC7A3 /* SettingTableViewController.h */,
@@ -268,6 +271,7 @@
 		B3B7B4B41B1419EC00B96A01 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Liang Zhao";
 				TargetAttributes = {
@@ -339,6 +343,7 @@
 				B3E5B1121B29D5E5003162D4 /* FocusCircle.xcdatamodeld in Sources */,
 				B3BC80531B3BDF1400256EB9 /* TimerModel.m in Sources */,
 				B3D4152D1B1D7C9000BAC7A3 /* SettingTableViewController.m in Sources */,
+				B3C11A531C2E7DAA00BA2DBC /* TimerTableViewController.swift in Sources */,
 				B301C06B1B2EFA46007FA6BE /* TimerTableViewCell.m in Sources */,
 				B3E0A1CB1B3A9C7400C88B1A /* NSString+FCExtension.m in Sources */,
 				B3FF7BB11B392EEC005F9D67 /* TimerButton.m in Sources */,
@@ -473,10 +478,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/FocusCircle/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Amztion.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = FocusCircle;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -484,6 +491,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/FocusCircle/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Amztion.$(PRODUCT_NAME:rfc1034identifier)";
