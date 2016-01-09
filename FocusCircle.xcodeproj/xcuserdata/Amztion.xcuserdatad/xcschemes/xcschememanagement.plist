@@ -7,17 +7,22 @@
 		<key>FocusCircle.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>B3B7B4BB1B1419EC00B96A01</key>
+		<key>B380A4A31C390A7A004A38C9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B3B7B4D71B1419EC00B96A01</key>
+		<key>B380A4B71C390A7A004A38C9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B380A4C21C390A7A004A38C9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

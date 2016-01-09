@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0720"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B3B7B4BB1B1419EC00B96A01"
+               BlueprintIdentifier = "B380A4A31C390A7A004A38C9"
                BuildableName = "FocusCircle.app"
                BlueprintName = "FocusCircle"
                ReferencedContainer = "container:FocusCircle.xcodeproj">
@@ -23,16 +23,36 @@
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B380A4B71C390A7A004A38C9"
+               BuildableName = "FocusCircleTests.xctest"
+               BlueprintName = "FocusCircleTests"
+               ReferencedContainer = "container:FocusCircle.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B380A4C21C390A7A004A38C9"
+               BuildableName = "FocusCircleUITests.xctest"
+               BlueprintName = "FocusCircleUITests"
+               ReferencedContainer = "container:FocusCircle.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B3B7B4BB1B1419EC00B96A01"
+            BlueprintIdentifier = "B380A4A31C390A7A004A38C9"
             BuildableName = "FocusCircle.app"
             BlueprintName = "FocusCircle"
             ReferencedContainer = "container:FocusCircle.xcodeproj">
@@ -42,11 +62,11 @@
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
@@ -55,7 +75,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B3B7B4BB1B1419EC00B96A01"
+            BlueprintIdentifier = "B380A4A31C390A7A004A38C9"
             BuildableName = "FocusCircle.app"
             BlueprintName = "FocusCircle"
             ReferencedContainer = "container:FocusCircle.xcodeproj">
@@ -65,16 +85,16 @@
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B3B7B4BB1B1419EC00B96A01"
+            BlueprintIdentifier = "B380A4A31C390A7A004A38C9"
             BuildableName = "FocusCircle.app"
             BlueprintName = "FocusCircle"
             ReferencedContainer = "container:FocusCircle.xcodeproj">

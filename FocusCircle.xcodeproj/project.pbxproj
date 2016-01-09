@@ -7,96 +7,68 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B301C06B1B2EFA46007FA6BE /* TimerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B301C06A1B2EFA46007FA6BE /* TimerTableViewCell.m */; };
-		B32216811B2E69BB000A72D7 /* TimerEditingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32216801B2E69BB000A72D7 /* TimerEditingViewController.m */; };
-		B33CCD711B422F7300B07491 /* PomodoroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B33CCD701B422F7300B07491 /* PomodoroViewController.m */; };
-		B35EAABC1B4120D10014FDBB /* RestoreTimers.plist in Resources */ = {isa = PBXBuildFile; fileRef = B35EAABB1B4120D10014FDBB /* RestoreTimers.plist */; };
-		B37023531B3BBC400042FDF3 /* TimerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B37023521B3BBC400042FDF3 /* TimerController.m */; };
-		B3B7B4C21B1419EC00B96A01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B7B4C11B1419EC00B96A01 /* main.m */; };
-		B3B7B4C51B1419EC00B96A01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B7B4C41B1419EC00B96A01 /* AppDelegate.m */; };
-		B3B7B4CE1B1419EC00B96A01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3B7B4CC1B1419EC00B96A01 /* Main.storyboard */; };
-		B3B7B4D01B1419EC00B96A01 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3B7B4CF1B1419EC00B96A01 /* Images.xcassets */; };
-		B3B7B4D31B1419EC00B96A01 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3B7B4D11B1419EC00B96A01 /* LaunchScreen.xib */; };
-		B3B7B4DF1B1419EC00B96A01 /* FocusCircleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B7B4DE1B1419EC00B96A01 /* FocusCircleTests.m */; };
-		B3B8A39A1B43AF430013E366 /* PomodoroController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B8A3991B43AF430013E366 /* PomodoroController.m */; };
-		B3B8A39D1B43D6090013E366 /* Pomodoro.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B8A39C1B43D6090013E366 /* Pomodoro.m */; };
-		B3BC80531B3BDF1400256EB9 /* TimerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BC80521B3BDF1400256EB9 /* TimerModel.m */; };
-		B3C11A531C2E7DAA00BA2DBC /* TimerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C11A521C2E7DAA00BA2DBC /* TimerTableViewController.swift */; };
-		B3D4152D1B1D7C9000BAC7A3 /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4152C1B1D7C9000BAC7A3 /* SettingTableViewController.m */; };
-		B3E0A1CB1B3A9C7400C88B1A /* NSString+FCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E0A1CA1B3A9C7400C88B1A /* NSString+FCExtension.m */; };
-		B3E0A1CE1B3A9C8900C88B1A /* NSDate+FCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E0A1CD1B3A9C8900C88B1A /* NSDate+FCExtension.m */; };
-		B3E5B1121B29D5E5003162D4 /* FocusCircle.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3E5B1101B29D5E5003162D4 /* FocusCircle.xcdatamodeld */; };
-		B3EB21D31B1803D60045010D /* TimersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB21D21B1803D60045010D /* TimersTableViewController.m */; };
-		B3EB21D61B1804CB0045010D /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB21D51B1804CB0045010D /* NavigationController.m */; };
-		B3EB21E01B180F790045010D /* TimerTextInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3EB21DF1B180F790045010D /* TimerTextInputViewController.m */; };
-		B3FF7BB11B392EEC005F9D67 /* TimerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FF7BB01B392EEC005F9D67 /* TimerButton.m */; };
+		B380A4A81C390A7A004A38C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4A71C390A7A004A38C9 /* AppDelegate.swift */; };
+		B380A4AA1C390A7A004A38C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4A91C390A7A004A38C9 /* ViewController.swift */; };
+		B380A4AD1C390A7A004A38C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B380A4AB1C390A7A004A38C9 /* Main.storyboard */; };
+		B380A4AF1C390A7A004A38C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B380A4AE1C390A7A004A38C9 /* Assets.xcassets */; };
+		B380A4B21C390A7A004A38C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B380A4B01C390A7A004A38C9 /* LaunchScreen.storyboard */; };
+		B380A4BD1C390A7A004A38C9 /* FocusCircleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4BC1C390A7A004A38C9 /* FocusCircleTests.swift */; };
+		B380A4C81C390A7A004A38C9 /* FocusCircleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4C71C390A7A004A38C9 /* FocusCircleUITests.swift */; };
+		B380A4D61C40F0F7004A38C9 /* TimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4D51C40F0F7004A38C9 /* TimerController.swift */; };
+		B380A4D81C40F13C004A38C9 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4D71C40F13C004A38C9 /* Timer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B3B7B4D91B1419EC00B96A01 /* PBXContainerItemProxy */ = {
+		B380A4B91C390A7A004A38C9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B3B7B4B41B1419EC00B96A01 /* Project object */;
+			containerPortal = B380A49C1C390A7A004A38C9 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B3B7B4BB1B1419EC00B96A01;
+			remoteGlobalIDString = B380A4A31C390A7A004A38C9;
+			remoteInfo = FocusCircle;
+		};
+		B380A4C41C390A7A004A38C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B380A49C1C390A7A004A38C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B380A4A31C390A7A004A38C9;
 			remoteInfo = FocusCircle;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B301C0691B2EFA46007FA6BE /* TimerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerTableViewCell.h; sourceTree = "<group>"; };
-		B301C06A1B2EFA46007FA6BE /* TimerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerTableViewCell.m; sourceTree = "<group>"; };
-		B322167F1B2E69BB000A72D7 /* TimerEditingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerEditingViewController.h; sourceTree = "<group>"; };
-		B32216801B2E69BB000A72D7 /* TimerEditingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerEditingViewController.m; sourceTree = "<group>"; };
-		B33CCD6F1B422F7300B07491 /* PomodoroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PomodoroViewController.h; sourceTree = "<group>"; };
-		B33CCD701B422F7300B07491 /* PomodoroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PomodoroViewController.m; sourceTree = "<group>"; };
-		B35EAABB1B4120D10014FDBB /* RestoreTimers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RestoreTimers.plist; sourceTree = "<group>"; };
-		B37023511B3BBC400042FDF3 /* TimerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerController.h; sourceTree = "<group>"; };
-		B37023521B3BBC400042FDF3 /* TimerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerController.m; sourceTree = "<group>"; };
-		B3B7B4BC1B1419EC00B96A01 /* FocusCircle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FocusCircle.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3B7B4C01B1419EC00B96A01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B3B7B4C11B1419EC00B96A01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B3B7B4C31B1419EC00B96A01 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B3B7B4C41B1419EC00B96A01 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B3B7B4CD1B1419EC00B96A01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B3B7B4CF1B1419EC00B96A01 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B3B7B4D21B1419EC00B96A01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		B3B7B4D81B1419EC00B96A01 /* FocusCircleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FocusCircleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3B7B4DD1B1419EC00B96A01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B3B7B4DE1B1419EC00B96A01 /* FocusCircleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FocusCircleTests.m; sourceTree = "<group>"; };
-		B3B8A3981B43AF430013E366 /* PomodoroController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PomodoroController.h; sourceTree = "<group>"; };
-		B3B8A3991B43AF430013E366 /* PomodoroController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PomodoroController.m; sourceTree = "<group>"; };
-		B3B8A39B1B43D6090013E366 /* Pomodoro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pomodoro.h; sourceTree = "<group>"; };
-		B3B8A39C1B43D6090013E366 /* Pomodoro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pomodoro.m; sourceTree = "<group>"; };
-		B3BC80501B3BDF1400256EB9 /* TimerModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TimerModel+CoreDataProperties.h"; sourceTree = "<group>"; };
-		B3BC80511B3BDF1400256EB9 /* TimerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerModel.h; sourceTree = "<group>"; };
-		B3BC80521B3BDF1400256EB9 /* TimerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerModel.m; sourceTree = "<group>"; };
-		B3C11A521C2E7DAA00BA2DBC /* TimerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTableViewController.swift; sourceTree = "<group>"; };
-		B3D4152B1B1D7C9000BAC7A3 /* SettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewController.h; sourceTree = "<group>"; };
-		B3D4152C1B1D7C9000BAC7A3 /* SettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
-		B3E0A1C91B3A9C7400C88B1A /* NSString+FCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FCExtension.h"; sourceTree = "<group>"; };
-		B3E0A1CA1B3A9C7400C88B1A /* NSString+FCExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FCExtension.m"; sourceTree = "<group>"; };
-		B3E0A1CC1B3A9C8900C88B1A /* NSDate+FCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+FCExtension.h"; sourceTree = "<group>"; };
-		B3E0A1CD1B3A9C8900C88B1A /* NSDate+FCExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FCExtension.m"; sourceTree = "<group>"; };
-		B3E5B1111B29D5E5003162D4 /* FocusCircle.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FocusCircle.xcdatamodel; sourceTree = "<group>"; };
-		B3EB21D11B1803D60045010D /* TimersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimersTableViewController.h; sourceTree = "<group>"; };
-		B3EB21D21B1803D60045010D /* TimersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimersTableViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
-		B3EB21D41B1804CB0045010D /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
-		B3EB21D51B1804CB0045010D /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
-		B3EB21DE1B180F790045010D /* TimerTextInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerTextInputViewController.h; sourceTree = "<group>"; };
-		B3EB21DF1B180F790045010D /* TimerTextInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerTextInputViewController.m; sourceTree = "<group>"; };
-		B3FF7BAF1B392EEC005F9D67 /* TimerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerButton.h; sourceTree = "<group>"; };
-		B3FF7BB01B392EEC005F9D67 /* TimerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerButton.m; sourceTree = "<group>"; };
+		B380A4A41C390A7A004A38C9 /* FocusCircle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FocusCircle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B380A4A71C390A7A004A38C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B380A4A91C390A7A004A38C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B380A4AC1C390A7A004A38C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B380A4AE1C390A7A004A38C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B380A4B11C390A7A004A38C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B380A4B31C390A7A004A38C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B380A4B81C390A7A004A38C9 /* FocusCircleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FocusCircleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B380A4BC1C390A7A004A38C9 /* FocusCircleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusCircleTests.swift; sourceTree = "<group>"; };
+		B380A4BE1C390A7A004A38C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B380A4C31C390A7A004A38C9 /* FocusCircleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FocusCircleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B380A4C71C390A7A004A38C9 /* FocusCircleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusCircleUITests.swift; sourceTree = "<group>"; };
+		B380A4C91C390A7A004A38C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B380A4D51C40F0F7004A38C9 /* TimerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerController.swift; sourceTree = "<group>"; };
+		B380A4D71C40F13C004A38C9 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B3B7B4B91B1419EC00B96A01 /* Frameworks */ = {
+		B380A4A11C390A7A004A38C9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B3B7B4D51B1419EC00B96A01 /* Frameworks */ = {
+		B380A4B51C390A7A004A38C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B380A4C01C390A7A004A38C9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -106,137 +78,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B3B7B4B31B1419EC00B96A01 = {
+		B380A49B1C390A7A004A38C9 = {
 			isa = PBXGroup;
 			children = (
-				B3B7B4BE1B1419EC00B96A01 /* FocusCircle */,
-				B3B7B4DB1B1419EC00B96A01 /* FocusCircleTests */,
-				B3B7B4BD1B1419EC00B96A01 /* Products */,
+				B380A4A61C390A7A004A38C9 /* FocusCircle */,
+				B380A4BB1C390A7A004A38C9 /* FocusCircleTests */,
+				B380A4C61C390A7A004A38C9 /* FocusCircleUITests */,
+				B380A4A51C390A7A004A38C9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		B3B7B4BD1B1419EC00B96A01 /* Products */ = {
+		B380A4A51C390A7A004A38C9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B3B7B4BC1B1419EC00B96A01 /* FocusCircle.app */,
-				B3B7B4D81B1419EC00B96A01 /* FocusCircleTests.xctest */,
+				B380A4A41C390A7A004A38C9 /* FocusCircle.app */,
+				B380A4B81C390A7A004A38C9 /* FocusCircleTests.xctest */,
+				B380A4C31C390A7A004A38C9 /* FocusCircleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B3B7B4BE1B1419EC00B96A01 /* FocusCircle */ = {
+		B380A4A61C390A7A004A38C9 /* FocusCircle */ = {
 			isa = PBXGroup;
 			children = (
-				B3EB21D91B1805400045010D /* View */,
-				B3EB21D71B1805190045010D /* ViewController */,
-				B3EB21DA1B18068B0045010D /* Model */,
-				B3EB21D81B18052D0045010D /* Resource */,
-				B3B7B4BF1B1419EC00B96A01 /* Supporting Files */,
+				B380A4A71C390A7A004A38C9 /* AppDelegate.swift */,
+				B380A4A91C390A7A004A38C9 /* ViewController.swift */,
+				B380A4D51C40F0F7004A38C9 /* TimerController.swift */,
+				B380A4D71C40F13C004A38C9 /* Timer.swift */,
+				B380A4AB1C390A7A004A38C9 /* Main.storyboard */,
+				B380A4AE1C390A7A004A38C9 /* Assets.xcassets */,
+				B380A4B01C390A7A004A38C9 /* LaunchScreen.storyboard */,
+				B380A4B31C390A7A004A38C9 /* Info.plist */,
 			);
 			path = FocusCircle;
 			sourceTree = "<group>";
 		};
-		B3B7B4BF1B1419EC00B96A01 /* Supporting Files */ = {
+		B380A4BB1C390A7A004A38C9 /* FocusCircleTests */ = {
 			isa = PBXGroup;
 			children = (
-				B3E0A1CC1B3A9C8900C88B1A /* NSDate+FCExtension.h */,
-				B3E0A1CD1B3A9C8900C88B1A /* NSDate+FCExtension.m */,
-				B3E0A1C91B3A9C7400C88B1A /* NSString+FCExtension.h */,
-				B3E0A1CA1B3A9C7400C88B1A /* NSString+FCExtension.m */,
-				B3B7B4C31B1419EC00B96A01 /* AppDelegate.h */,
-				B3B7B4C41B1419EC00B96A01 /* AppDelegate.m */,
-				B3B7B4C01B1419EC00B96A01 /* Info.plist */,
-				B35EAABB1B4120D10014FDBB /* RestoreTimers.plist */,
-				B3B7B4C11B1419EC00B96A01 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		B3B7B4DB1B1419EC00B96A01 /* FocusCircleTests */ = {
-			isa = PBXGroup;
-			children = (
-				B3B7B4DE1B1419EC00B96A01 /* FocusCircleTests.m */,
-				B3B7B4DC1B1419EC00B96A01 /* Supporting Files */,
+				B380A4BC1C390A7A004A38C9 /* FocusCircleTests.swift */,
+				B380A4BE1C390A7A004A38C9 /* Info.plist */,
 			);
 			path = FocusCircleTests;
 			sourceTree = "<group>";
 		};
-		B3B7B4DC1B1419EC00B96A01 /* Supporting Files */ = {
+		B380A4C61C390A7A004A38C9 /* FocusCircleUITests */ = {
 			isa = PBXGroup;
 			children = (
-				B3B7B4DD1B1419EC00B96A01 /* Info.plist */,
+				B380A4C71C390A7A004A38C9 /* FocusCircleUITests.swift */,
+				B380A4C91C390A7A004A38C9 /* Info.plist */,
 			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		B3EB21D71B1805190045010D /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				B3C11A521C2E7DAA00BA2DBC /* TimerTableViewController.swift */,
-				B3EB21D41B1804CB0045010D /* NavigationController.h */,
-				B3EB21D51B1804CB0045010D /* NavigationController.m */,
-				B3D4152B1B1D7C9000BAC7A3 /* SettingTableViewController.h */,
-				B3D4152C1B1D7C9000BAC7A3 /* SettingTableViewController.m */,
-				B3EB21D11B1803D60045010D /* TimersTableViewController.h */,
-				B3EB21D21B1803D60045010D /* TimersTableViewController.m */,
-				B3EB21DE1B180F790045010D /* TimerTextInputViewController.h */,
-				B3EB21DF1B180F790045010D /* TimerTextInputViewController.m */,
-				B322167F1B2E69BB000A72D7 /* TimerEditingViewController.h */,
-				B32216801B2E69BB000A72D7 /* TimerEditingViewController.m */,
-				B33CCD6F1B422F7300B07491 /* PomodoroViewController.h */,
-				B33CCD701B422F7300B07491 /* PomodoroViewController.m */,
-			);
-			name = ViewController;
-			sourceTree = "<group>";
-		};
-		B3EB21D81B18052D0045010D /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				B3B7B4CC1B1419EC00B96A01 /* Main.storyboard */,
-				B3B7B4CF1B1419EC00B96A01 /* Images.xcassets */,
-				B3E5B1101B29D5E5003162D4 /* FocusCircle.xcdatamodeld */,
-				B3B7B4D11B1419EC00B96A01 /* LaunchScreen.xib */,
-			);
-			name = Resource;
-			sourceTree = "<group>";
-		};
-		B3EB21D91B1805400045010D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B3FF7BAF1B392EEC005F9D67 /* TimerButton.h */,
-				B3FF7BB01B392EEC005F9D67 /* TimerButton.m */,
-				B301C0691B2EFA46007FA6BE /* TimerTableViewCell.h */,
-				B301C06A1B2EFA46007FA6BE /* TimerTableViewCell.m */,
-				B3B8A39B1B43D6090013E366 /* Pomodoro.h */,
-				B3B8A39C1B43D6090013E366 /* Pomodoro.m */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		B3EB21DA1B18068B0045010D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				B3BC80511B3BDF1400256EB9 /* TimerModel.h */,
-				B3BC80521B3BDF1400256EB9 /* TimerModel.m */,
-				B3BC80501B3BDF1400256EB9 /* TimerModel+CoreDataProperties.h */,
-				B37023511B3BBC400042FDF3 /* TimerController.h */,
-				B37023521B3BBC400042FDF3 /* TimerController.m */,
-				B3B8A3981B43AF430013E366 /* PomodoroController.h */,
-				B3B8A3991B43AF430013E366 /* PomodoroController.m */,
-			);
-			name = Model;
+			path = FocusCircleUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B3B7B4BB1B1419EC00B96A01 /* FocusCircle */ = {
+		B380A4A31C390A7A004A38C9 /* FocusCircle */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B3B7B4E21B1419EC00B96A01 /* Build configuration list for PBXNativeTarget "FocusCircle" */;
+			buildConfigurationList = B380A4CC1C390A7A004A38C9 /* Build configuration list for PBXNativeTarget "FocusCircle" */;
 			buildPhases = (
-				B3B7B4B81B1419EC00B96A01 /* Sources */,
-				B3B7B4B91B1419EC00B96A01 /* Frameworks */,
-				B3B7B4BA1B1419EC00B96A01 /* Resources */,
+				B380A4A01C390A7A004A38C9 /* Sources */,
+				B380A4A11C390A7A004A38C9 /* Frameworks */,
+				B380A4A21C390A7A004A38C9 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -244,52 +148,72 @@
 			);
 			name = FocusCircle;
 			productName = FocusCircle;
-			productReference = B3B7B4BC1B1419EC00B96A01 /* FocusCircle.app */;
+			productReference = B380A4A41C390A7A004A38C9 /* FocusCircle.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B3B7B4D71B1419EC00B96A01 /* FocusCircleTests */ = {
+		B380A4B71C390A7A004A38C9 /* FocusCircleTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B3B7B4E51B1419EC00B96A01 /* Build configuration list for PBXNativeTarget "FocusCircleTests" */;
+			buildConfigurationList = B380A4CF1C390A7A004A38C9 /* Build configuration list for PBXNativeTarget "FocusCircleTests" */;
 			buildPhases = (
-				B3B7B4D41B1419EC00B96A01 /* Sources */,
-				B3B7B4D51B1419EC00B96A01 /* Frameworks */,
-				B3B7B4D61B1419EC00B96A01 /* Resources */,
+				B380A4B41C390A7A004A38C9 /* Sources */,
+				B380A4B51C390A7A004A38C9 /* Frameworks */,
+				B380A4B61C390A7A004A38C9 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B3B7B4DA1B1419EC00B96A01 /* PBXTargetDependency */,
+				B380A4BA1C390A7A004A38C9 /* PBXTargetDependency */,
 			);
 			name = FocusCircleTests;
 			productName = FocusCircleTests;
-			productReference = B3B7B4D81B1419EC00B96A01 /* FocusCircleTests.xctest */;
+			productReference = B380A4B81C390A7A004A38C9 /* FocusCircleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B380A4C21C390A7A004A38C9 /* FocusCircleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B380A4D21C390A7A004A38C9 /* Build configuration list for PBXNativeTarget "FocusCircleUITests" */;
+			buildPhases = (
+				B380A4BF1C390A7A004A38C9 /* Sources */,
+				B380A4C01C390A7A004A38C9 /* Frameworks */,
+				B380A4C11C390A7A004A38C9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B380A4C51C390A7A004A38C9 /* PBXTargetDependency */,
+			);
+			name = FocusCircleUITests;
+			productName = FocusCircleUITests;
+			productReference = B380A4C31C390A7A004A38C9 /* FocusCircleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		B3B7B4B41B1419EC00B96A01 /* Project object */ = {
+		B380A49C1C390A7A004A38C9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Liang Zhao";
 				TargetAttributes = {
-					B3B7B4BB1B1419EC00B96A01 = {
-						CreatedOnToolsVersion = 6.3.1;
-						SystemCapabilities = {
-							com.apple.BackgroundModes = {
-								enabled = 1;
-							};
-						};
+					B380A4A31C390A7A004A38C9 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = TNZ7HD8PFQ;
 					};
-					B3B7B4D71B1419EC00B96A01 = {
-						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = B3B7B4BB1B1419EC00B96A01;
+					B380A4B71C390A7A004A38C9 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = TNZ7HD8PFQ;
+						TestTargetID = B380A4A31C390A7A004A38C9;
+					};
+					B380A4C21C390A7A004A38C9 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = TNZ7HD8PFQ;
+						TestTargetID = B380A4A31C390A7A004A38C9;
 					};
 				};
 			};
-			buildConfigurationList = B3B7B4B71B1419EC00B96A01 /* Build configuration list for PBXProject "FocusCircle" */;
+			buildConfigurationList = B380A49F1C390A7A004A38C9 /* Build configuration list for PBXProject "FocusCircle" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -297,30 +221,37 @@
 				en,
 				Base,
 			);
-			mainGroup = B3B7B4B31B1419EC00B96A01;
-			productRefGroup = B3B7B4BD1B1419EC00B96A01 /* Products */;
+			mainGroup = B380A49B1C390A7A004A38C9;
+			productRefGroup = B380A4A51C390A7A004A38C9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B3B7B4BB1B1419EC00B96A01 /* FocusCircle */,
-				B3B7B4D71B1419EC00B96A01 /* FocusCircleTests */,
+				B380A4A31C390A7A004A38C9 /* FocusCircle */,
+				B380A4B71C390A7A004A38C9 /* FocusCircleTests */,
+				B380A4C21C390A7A004A38C9 /* FocusCircleUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B3B7B4BA1B1419EC00B96A01 /* Resources */ = {
+		B380A4A21C390A7A004A38C9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3B7B4CE1B1419EC00B96A01 /* Main.storyboard in Resources */,
-				B35EAABC1B4120D10014FDBB /* RestoreTimers.plist in Resources */,
-				B3B7B4D31B1419EC00B96A01 /* LaunchScreen.xib in Resources */,
-				B3B7B4D01B1419EC00B96A01 /* Images.xcassets in Resources */,
+				B380A4B21C390A7A004A38C9 /* LaunchScreen.storyboard in Resources */,
+				B380A4AF1C390A7A004A38C9 /* Assets.xcassets in Resources */,
+				B380A4AD1C390A7A004A38C9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B3B7B4D61B1419EC00B96A01 /* Resources */ = {
+		B380A4B61C390A7A004A38C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B380A4C11C390A7A004A38C9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -330,70 +261,69 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B3B7B4B81B1419EC00B96A01 /* Sources */ = {
+		B380A4A01C390A7A004A38C9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3B8A39D1B43D6090013E366 /* Pomodoro.m in Sources */,
-				B3B7B4C51B1419EC00B96A01 /* AppDelegate.m in Sources */,
-				B37023531B3BBC400042FDF3 /* TimerController.m in Sources */,
-				B3B8A39A1B43AF430013E366 /* PomodoroController.m in Sources */,
-				B3B7B4C21B1419EC00B96A01 /* main.m in Sources */,
-				B3EB21D61B1804CB0045010D /* NavigationController.m in Sources */,
-				B3E5B1121B29D5E5003162D4 /* FocusCircle.xcdatamodeld in Sources */,
-				B3BC80531B3BDF1400256EB9 /* TimerModel.m in Sources */,
-				B3D4152D1B1D7C9000BAC7A3 /* SettingTableViewController.m in Sources */,
-				B3C11A531C2E7DAA00BA2DBC /* TimerTableViewController.swift in Sources */,
-				B301C06B1B2EFA46007FA6BE /* TimerTableViewCell.m in Sources */,
-				B3E0A1CB1B3A9C7400C88B1A /* NSString+FCExtension.m in Sources */,
-				B3FF7BB11B392EEC005F9D67 /* TimerButton.m in Sources */,
-				B32216811B2E69BB000A72D7 /* TimerEditingViewController.m in Sources */,
-				B3EB21E01B180F790045010D /* TimerTextInputViewController.m in Sources */,
-				B3EB21D31B1803D60045010D /* TimersTableViewController.m in Sources */,
-				B3E0A1CE1B3A9C8900C88B1A /* NSDate+FCExtension.m in Sources */,
-				B33CCD711B422F7300B07491 /* PomodoroViewController.m in Sources */,
+				B380A4AA1C390A7A004A38C9 /* ViewController.swift in Sources */,
+				B380A4A81C390A7A004A38C9 /* AppDelegate.swift in Sources */,
+				B380A4D61C40F0F7004A38C9 /* TimerController.swift in Sources */,
+				B380A4D81C40F13C004A38C9 /* Timer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B3B7B4D41B1419EC00B96A01 /* Sources */ = {
+		B380A4B41C390A7A004A38C9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3B7B4DF1B1419EC00B96A01 /* FocusCircleTests.m in Sources */,
+				B380A4BD1C390A7A004A38C9 /* FocusCircleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B380A4BF1C390A7A004A38C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B380A4C81C390A7A004A38C9 /* FocusCircleUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B3B7B4DA1B1419EC00B96A01 /* PBXTargetDependency */ = {
+		B380A4BA1C390A7A004A38C9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B3B7B4BB1B1419EC00B96A01 /* FocusCircle */;
-			targetProxy = B3B7B4D91B1419EC00B96A01 /* PBXContainerItemProxy */;
+			target = B380A4A31C390A7A004A38C9 /* FocusCircle */;
+			targetProxy = B380A4B91C390A7A004A38C9 /* PBXContainerItemProxy */;
+		};
+		B380A4C51C390A7A004A38C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B380A4A31C390A7A004A38C9 /* FocusCircle */;
+			targetProxy = B380A4C41C390A7A004A38C9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B3B7B4CC1B1419EC00B96A01 /* Main.storyboard */ = {
+		B380A4AB1C390A7A004A38C9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B3B7B4CD1B1419EC00B96A01 /* Base */,
+				B380A4AC1C390A7A004A38C9 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		B3B7B4D11B1419EC00B96A01 /* LaunchScreen.xib */ = {
+		B380A4B01C390A7A004A38C9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B3B7B4D21B1419EC00B96A01 /* Base */,
+				B380A4B11C390A7A004A38C9 /* Base */,
 			);
-			name = LaunchScreen.xib;
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		B3B7B4E01B1419EC00B96A01 /* Debug */ = {
+		B380A4CA1C390A7A004A38C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -412,7 +342,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -423,21 +353,21 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		B3B7B4E11B1419EC00B96A01 /* Release */ = {
+		B380A4CB1C390A7A004A38C9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -467,118 +397,120 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		B3B7B4E31B1419EC00B96A01 /* Debug */ = {
+		B380A4CD1C390A7A004A38C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/FocusCircle/Info.plist";
+				INFOPLIST_FILE = FocusCircle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Amztion.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = FocusCircle;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Amztion.FocusCircle;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		B3B7B4E41B1419EC00B96A01 /* Release */ = {
+		B380A4CE1C390A7A004A38C9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/FocusCircle/Info.plist";
+				INFOPLIST_FILE = FocusCircle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Amztion.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = FocusCircle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Amztion.FocusCircle;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
-		B3B7B4E61B1419EC00B96A01 /* Debug */ = {
+		B380A4D01C390A7A004A38C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = FocusCircleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Amztion.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = FocusCircleTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Amztion.FocusCircleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FocusCircle.app/FocusCircle";
 			};
 			name = Debug;
 		};
-		B3B7B4E71B1419EC00B96A01 /* Release */ = {
+		B380A4D11C390A7A004A38C9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = FocusCircleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Amztion.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = FocusCircleTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Amztion.FocusCircleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FocusCircle.app/FocusCircle";
+			};
+			name = Release;
+		};
+		B380A4D31C390A7A004A38C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FocusCircleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Amztion.FocusCircleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FocusCircle;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		B380A4D41C390A7A004A38C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FocusCircleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Amztion.FocusCircleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FocusCircle;
+				USES_XCTRUNNER = YES;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B3B7B4B71B1419EC00B96A01 /* Build configuration list for PBXProject "FocusCircle" */ = {
+		B380A49F1C390A7A004A38C9 /* Build configuration list for PBXProject "FocusCircle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B3B7B4E01B1419EC00B96A01 /* Debug */,
-				B3B7B4E11B1419EC00B96A01 /* Release */,
+				B380A4CA1C390A7A004A38C9 /* Debug */,
+				B380A4CB1C390A7A004A38C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B3B7B4E21B1419EC00B96A01 /* Build configuration list for PBXNativeTarget "FocusCircle" */ = {
+		B380A4CC1C390A7A004A38C9 /* Build configuration list for PBXNativeTarget "FocusCircle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B3B7B4E31B1419EC00B96A01 /* Debug */,
-				B3B7B4E41B1419EC00B96A01 /* Release */,
+				B380A4CD1C390A7A004A38C9 /* Debug */,
+				B380A4CE1C390A7A004A38C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
-		B3B7B4E51B1419EC00B96A01 /* Build configuration list for PBXNativeTarget "FocusCircleTests" */ = {
+		B380A4CF1C390A7A004A38C9 /* Build configuration list for PBXNativeTarget "FocusCircleTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B3B7B4E61B1419EC00B96A01 /* Debug */,
-				B3B7B4E71B1419EC00B96A01 /* Release */,
+				B380A4D01C390A7A004A38C9 /* Debug */,
+				B380A4D11C390A7A004A38C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+		};
+		B380A4D21C390A7A004A38C9 /* Build configuration list for PBXNativeTarget "FocusCircleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B380A4D31C390A7A004A38C9 /* Debug */,
+				B380A4D41C390A7A004A38C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		B3E5B1101B29D5E5003162D4 /* FocusCircle.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				B3E5B1111B29D5E5003162D4 /* FocusCircle.xcdatamodel */,
-			);
-			currentVersion = B3E5B1111B29D5E5003162D4 /* FocusCircle.xcdatamodel */;
-			path = FocusCircle.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
-	rootObject = B3B7B4B41B1419EC00B96A01 /* Project object */;
+	rootObject = B380A49C1C390A7A004A38C9 /* Project object */;
 }
