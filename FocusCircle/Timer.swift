@@ -8,6 +8,38 @@
 
 import UIKit
 
-class Timer: NSObject {
+protocol TimerControlProtocol {
+    func start() -> Bool
+    func pause() -> Bool
+    func stop() -> Bool
+}
 
+class Timer: TimerModel, TimerControlProtocol {
+    
+    private var timer: NSTimer?
+    
+    init(dictionary: NSDictionary) {
+        
+    }
+    
+    func start() -> Bool {
+
+        state = TimerState.Running
+        
+        
+        
+        return false
+    }
+    
+    func pause() -> Bool {
+        
+        return false
+    }
+    
+    func stop() -> Bool {
+        
+        return false
+    }
+    
+    
 }
