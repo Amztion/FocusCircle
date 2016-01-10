@@ -22,6 +22,11 @@ class Timer: TimerInfo, TimerControlProtocol {
         }
     }
     
+    var remainingTime: NSTimeInterval = 0 {
+        didSet(newRemainingTime) {
+            self.remainingTimeUpdateOperation!(timer: self, remainingTime: newRemainingTime)
+        }
+    }
     
     private var timer: NSTimer?
     
@@ -32,22 +37,32 @@ class Timer: TimerInfo, TimerControlProtocol {
         
     }
     
+    init?(name: String?, durationTime: NSTimeInterval) {
+        super.init()
+        
+        self.name = name
+        self.durationTime = durationTime
+        self.remainingTime = durationTime
+    }
+    
     
     //MARK: TimerControlProtocol
     func start() -> Bool {
         state = TimerState.Running
         
-        return false
+        return true
     }
     
     func pause() -> Bool {
+        state = TimerState.Paused
         
-        return false
+        return true
     }
     
     func stop() -> Bool {
+        state = TimerState.Stopped
         
-        return false
+        return true
     }
     
     

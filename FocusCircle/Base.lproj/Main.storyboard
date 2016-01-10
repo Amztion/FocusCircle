@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Timer View Controller-->
@@ -40,7 +41,13 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Hqp-qg-3j1" secondAttribute="bottom" id="pdn-di-9wq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="sxM-zT-ksv"/>
+                    <navigationItem key="navigationItem" id="sxM-zT-ksv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="LJB-GA-OYA">
+                            <connections>
+                                <segue destination="ece-Bp-LJo" kind="presentation" id="Eqj-4o-dFT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Hqp-qg-3j1" id="MZn-NK-Y1Q"/>
                     </connections>
@@ -66,6 +73,108 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7a-Ew-WMq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="76" y="-363"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="naW-Dd-Ntf">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C9h-NS-bvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ece-Bp-LJo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Y0Y-Dp-xZJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="C09-7m-zXW" kind="relationship" relationship="rootViewController" id="T1C-GK-hkR"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1757" y="-363"/>
+        </scene>
+        <!--Timer Text Table View Controller-->
+        <scene sceneID="r0V-Rk-hmW">
+            <objects>
+                <tableViewController storyboardIdentifier="TimerTextTableVC" id="C09-7m-zXW" customClass="TimerTextTableViewController" customModule="FocusCircle" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="pBA-RC-rM5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="x66-zQ-4XJ">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="3lC-qA-qJ0">
+                                        <rect key="frame" x="0.0" y="99" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3lC-qA-qJ0" id="9NU-xh-lhr">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Timer Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="piG-uH-wGr">
+                                                    <rect key="frame" x="5" y="0.0" width="590" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="piG-uH-wGr" firstAttribute="leading" secondItem="9NU-xh-lhr" secondAttribute="leading" constant="5" id="9C9-6q-WjA"/>
+                                                <constraint firstAttribute="bottom" secondItem="piG-uH-wGr" secondAttribute="bottom" id="L5x-EV-TDh"/>
+                                                <constraint firstItem="piG-uH-wGr" firstAttribute="top" secondItem="9NU-xh-lhr" secondAttribute="top" id="Ti5-FL-8hq"/>
+                                                <constraint firstAttribute="trailing" secondItem="piG-uH-wGr" secondAttribute="trailing" constant="5" id="XLI-ET-lHa"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="H4b-0v-7qt">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="166" id="FIU-gF-u5M">
+                                        <rect key="frame" x="0.0" y="179" width="600" height="166"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FIU-gF-u5M" id="0qi-XE-zv7">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="165"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oh1-Qa-ZcM">
+                                                    <rect key="frame" x="8" y="8" width="584" height="149"/>
+                                                </pickerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Oh1-Qa-ZcM" firstAttribute="leading" secondItem="0qi-XE-zv7" secondAttribute="leadingMargin" id="MkQ-JT-Ocv"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Oh1-Qa-ZcM" secondAttribute="trailing" id="O2e-1j-ySf"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Oh1-Qa-ZcM" secondAttribute="bottom" id="wD9-sb-5gD"/>
+                                                <constraint firstItem="Oh1-Qa-ZcM" firstAttribute="top" secondItem="0qi-XE-zv7" secondAttribute="topMargin" id="xGN-fZ-Rqq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="C09-7m-zXW" id="NS9-eW-EHm"/>
+                            <outlet property="delegate" destination="C09-7m-zXW" id="vJT-hf-j3h"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="93V-eX-XoT">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="YiN-cg-2zS">
+                            <connections>
+                                <action selector="cancel:" destination="C09-7m-zXW" id="HeN-zb-dRX"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="YD5-WW-fb5">
+                            <connections>
+                                <action selector="done:" destination="C09-7m-zXW" id="D6P-wG-bzR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="durationTimePickerView" destination="Oh1-Qa-ZcM" id="Jqs-2Q-zaE"/>
+                        <outlet property="nameTextField" destination="piG-uH-wGr" id="ayg-Tg-Bhm"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TUf-Dd-cX5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2478" y="-363"/>
         </scene>
     </scenes>
 </document>

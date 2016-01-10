@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol TimerUpdateProtocol {
+protocol TimerUIUpdateProtocol: class {
     func updateRemaingTimeUIAtIndex(index: Int)
     func updateTimerStateUIAtIndex(index: Int)
 }
@@ -16,15 +16,15 @@ protocol TimerUpdateProtocol {
 class TimerController {
 
     static var sharedController = TimerController()
-    var viewControllerDelegate: TimerUpdateProtocol?
+    weak var timerUpdateDelegate: TimerUIUpdateProtocol?
     
     private var timersArray = [Timer]()
     
-    //MARK: Get Timers Info
-    func numbersOfTimers() -> Int {
+    //MARK: Get Info Of Timers
+    func numberOfTimers() -> Int {
         return timersArray.count
     }
-
+    
     func timerInfoAtIndex(index: Int) -> TimerInfo? {
         if index >= timersArray.count {
             return nil
@@ -34,8 +34,14 @@ class TimerController {
     }
     
     //MARK: Operation With Timer
-    func addNewTimerName(name: String, durationTime: NSTimeInterval) -> Bool {
+    func addNewTimerName(name: String?, durationTime: NSTimeInterval) -> Bool {
      
+        let newTimer = Timer(name: name, durationTime: durationTime)
+        
+        if let timerToHandle = newTimer {
+            timersArray.append(timerToHandle)
+        }
+        
         return true
     }
     
@@ -49,7 +55,22 @@ class TimerController {
         return true
     }
     
-    func modifyTimrAtIndex(index: Int, durationTime: NSTimeInterval) -> Bool {
+    func modifyTimerAtIndex(index: Int, durationTime: NSTimeInterval) -> Bool {
+        
+        return true
+    }
+    
+    func startTimerAtIndex(index: Int) -> Bool {
+        
+        return true
+    }
+    
+    func pauseTimerAtIndex(index: Int) -> Bool {
+        
+        return true
+    }
+    
+    func resetTimerAtIndex(index: Int) -> Bool {
         
         return true
     }
@@ -79,13 +100,15 @@ class TimerController {
     func remainingTimeUpdate(updatedTimer: Timer, remainingTime: NSTimeInterval) -> Void {
         let index = self.timersArray.indexOf(updatedTimer)!
         
-        self.viewControllerDelegate?.updateRemaingTimeUIAtIndex(index)
+        self.timerUpdateDelegate?.updateRemaingTimeUIAtIndex(index)
     }
     
     func timerStateDidChanged(updatedTimer: Timer, newState: TimerState) -> Void {
         let index = self.timersArray.indexOf(updatedTimer)!
         
-        self.viewControllerDelegate?.updateTimerStateUIAtIndex(index)
+        self.timerUpdateDelegate?.updateTimerStateUIAtIndex(index)
     }
+    
+
     
 }
