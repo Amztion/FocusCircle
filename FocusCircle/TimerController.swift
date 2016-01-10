@@ -9,7 +9,8 @@
 import UIKit
 
 protocol TimerUpdateProtocol {
-    func updateTimerUIAtIndex(index: Int)
+    func updateRemaingTimeUIAtIndex(index: Int)
+    func updateTimerStateUIAtIndex(index: Int)
 }
 
 class TimerController {
@@ -17,19 +18,40 @@ class TimerController {
     static var sharedController = TimerController()
     var viewControllerDelegate: TimerUpdateProtocol?
     
-    private var timerModelsArray = [TimerModel]()
+    private var timersArray = [Timer]()
     
     //MARK: Get Timers Info
     func numbersOfTimers() -> Int {
-        return timerModelsArray.count
+        return timersArray.count
     }
-    
-    func timerModelAtIndex(index: Int) -> TimerModel? {
-        if index >= timerModelsArray.count {
+
+    func timerInfoAtIndex(index: Int) -> TimerInfo? {
+        if index >= timersArray.count {
             return nil
         }else{
-            return timerModelsArray[index]
+            return timersArray[index]
         }
+    }
+    
+    //MARK: Operation With Timer
+    func addNewTimerName(name: String, durationTime: NSTimeInterval) -> Bool {
+     
+        return true
+    }
+    
+    func deleteTimerAtIndex(index: Int) -> Bool {
+     
+        return true
+    }
+    
+    func renameTimerAtIndex(index: Int, name: String) -> Bool {
+        
+        return true
+    }
+    
+    func modifyTimrAtIndex(index: Int, durationTime: NSTimeInterval) -> Bool {
+        
+        return true
     }
     
     //MARK: Storage
@@ -38,22 +60,32 @@ class TimerController {
         //Read From Database
         let fakeDatabaseDict = Dictionary<String, String>()
         
-        let timerModel = Timer(dictionary: fakeDatabaseDict)
+        let timer = Timer(dictionary: fakeDatabaseDict)
 
-        if let timerModelToHandle = timerModel {
-            timerModelToHandle.callback! = {
-                updatedTimerModel in
-                let index = self.timerModelsArray.indexOf(updatedTimerModel)
-                
-                self.viewControllerDelegate?.updateTimerUIAtIndex(index!)
-            }
+        if let timerToHandle = timer {
             
-            timerModelsArray.append(timerModelToHandle)
+            timerToHandle.remainingTimeUpdateOperation! = remainingTimeUpdate
+            timerToHandle.timerStateDidChangedOperation! = timerStateDidChanged
+            
+            timersArray.append(timerToHandle)
         }
     }
     
     private func saveTimerToDatabase() {
         
+    }
+    
+    //MARK: Timer Changed Operation
+    func remainingTimeUpdate(updatedTimer: Timer, remainingTime: NSTimeInterval) -> Void {
+        let index = self.timersArray.indexOf(updatedTimer)!
+        
+        self.viewControllerDelegate?.updateRemaingTimeUIAtIndex(index)
+    }
+    
+    func timerStateDidChanged(updatedTimer: Timer, newState: TimerState) -> Void {
+        let index = self.timersArray.indexOf(updatedTimer)!
+        
+        self.viewControllerDelegate?.updateTimerStateUIAtIndex(index)
     }
     
 }

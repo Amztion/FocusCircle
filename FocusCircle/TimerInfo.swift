@@ -1,8 +1,8 @@
 //
-//  TimerModel.swift
+//  TimerInfo.swift
 //  FocusCircle
 //
-//  Created by Liang Zhao on 16/1/9.
+//  Created by Liang Zhao on 16/1/10.
 //  Copyright © 2016年 Liang Zhao. All rights reserved.
 //
 
@@ -14,11 +14,8 @@ enum TimerState {
     case Stopped
 }
 
-class TimerModel: NSObject {
+class TimerInfo: NSObject {
     var name: String?
     var state = TimerState.Stopped
-    
-    override init() {
-        
-    }
+    var durationTime: NSTimeInterval!
 }

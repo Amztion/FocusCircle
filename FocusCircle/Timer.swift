@@ -14,33 +14,23 @@ protocol TimerControlProtocol {
     func stop() -> Bool
 }
 
-class Timer: TimerModel, TimerControlProtocol {
-    
-    override var name: String? {
-        didSet {
-            
-        }
-    }
+class Timer: TimerInfo, TimerControlProtocol {
     
     override var state: TimerState {
-        didSet {
-            
+        didSet(newState) {
+            timerStateDidChangedOperation!(timer: self, state: newState)
         }
     }
     
-    var test = 0 {
-        didSet {
-            
-        }
-    }
     
     private var timer: NSTimer?
-    var callback: ((timer: TimerModel) -> Void)?
+    
+    var timerStateDidChangedOperation: ((timer: Timer, state: TimerState) -> Void)?
+    var remainingTimeUpdateOperation: ((timer: Timer, remainingTime: NSTimeInterval) -> Void)?
     
     init?(dictionary: NSDictionary) {
         
     }
-    
     
     
     //MARK: TimerControlProtocol

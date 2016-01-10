@@ -25,10 +25,14 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     //MARK: TimerUpdateProtocol
-    func updateTimerUIAtIndex(index: Int) {
+    func updateRemaingTimeUIAtIndex(index: Int) {
         let tabViewCell = tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: index, inSection: 0))
         
         tabViewCell?.textLabel?.text = "test"
+    }
+    
+    func updateTimerStateUIAtIndex(index: Int) {
+        
     }
     
     //MARK: TableViewDataSource
@@ -41,10 +45,10 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let timerModel: TimerModel? = timerController.timerModelAtIndex(indexPath.row)
+        let timer: TimerInfo? = timerController.timerInfoAtIndex(indexPath.row)
 
         let tableViewCell = tableView.dequeueReusableCellWithIdentifier("TimerCell", forIndexPath: indexPath)
-        tableViewCell.textLabel!.text = timerModel!.name
+        tableViewCell.textLabel!.text = timer!.name
         return tableViewCell
     }
     
