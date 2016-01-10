@@ -17,6 +17,7 @@
 		B380A4D81C40F13C004A38C9 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4D71C40F13C004A38C9 /* Timer.swift */; };
 		B380A4DA1C4138CA004A38C9 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4D91C4138CA004A38C9 /* TimerModel.swift */; };
 		B380A4DE1C414D22004A38C9 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4DD1C414D22004A38C9 /* TimerViewController.swift */; };
+		B380A4E41C41F81D004A38C9 /* TimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4E31C41F81D004A38C9 /* TimerTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		B380A4D71C40F13C004A38C9 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		B380A4D91C4138CA004A38C9 /* TimerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		B380A4DD1C414D22004A38C9 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		B380A4E31C41F81D004A38C9 /* TimerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		B380A4A61C390A7A004A38C9 /* FocusCircle */ = {
 			isa = PBXGroup;
 			children = (
+				B380A4E51C41F822004A38C9 /* Views */,
 				B380A4DF1C414D2E004A38C9 /* ViewControllers */,
 				B380A4E21C414D73004A38C9 /* Timer */,
 				B380A4E01C414D44004A38C9 /* Resources */,
@@ -164,6 +167,14 @@
 				B380A4D71C40F13C004A38C9 /* Timer.swift */,
 			);
 			name = Timer;
+			sourceTree = "<group>";
+		};
+		B380A4E51C41F822004A38C9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B380A4E31C41F81D004A38C9 /* TimerTableViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +316,7 @@
 				B380A4D61C40F0F7004A38C9 /* TimerController.swift in Sources */,
 				B380A4DE1C414D22004A38C9 /* TimerViewController.swift in Sources */,
 				B380A4D81C40F13C004A38C9 /* Timer.swift in Sources */,
+				B380A4E41C41F81D004A38C9 /* TimerTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

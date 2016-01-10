@@ -17,16 +17,18 @@ protocol TimerControlProtocol {
 class Timer: TimerModel, TimerControlProtocol {
     
     private var timer: NSTimer?
+    var callback: ((timer: TimerModel) -> Void)?
     
-    init(dictionary: NSDictionary) {
+    init?(dictionary: NSDictionary) {
         
     }
     
+    
+    
+    //MARK: TimerControlProtocol
     func start() -> Bool {
 
         state = TimerState.Running
-        
-        
         
         return false
     }

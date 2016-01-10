@@ -9,32 +9,17 @@
 import UIKit
 
 protocol TimerUpdateProtocol {
-    var identifier: String { get }
-    
     func updateTimerUIAtIndex(index: Int)
 }
 
 class TimerController {
-    
-    static let sharedController = TimerController()
+
+    static var sharedController = TimerController()
+    var viewControllerDelegate: TimerUpdateProtocol?
     
     private var timerModelsArray = [TimerModel]()
-    private var viewControllerObservers = [String: TimerUpdateProtocol]()
     
-    func registerObserver(observer: TimerUpdateProtocol) {
-        
-        if !viewControllerObservers.keys.contains(observer.identifier) {
-            viewControllerObservers.updateValue(observer, forKey: observer.identifier)
-        }
-    }
-    
-    func unregisterObserver(observer: TimerUpdateProtocol) {
-        if viewControllerObservers.keys.contains(observer.identifier) {
-            viewControllerObservers.removeValueForKey(observer.identifier)
-        }
-    }
-    
-    //Get Timers Info
+    //MARK: Get Timers Info
     func numbersOfTimers() -> Int {
         return timerModelsArray.count
     }
@@ -47,18 +32,24 @@ class TimerController {
         }
     }
     
-    
-    //Storage
+    //MARK: Storage
     private func restoreTimersFromDataBase() {
         
         //Read From Database
         let fakeDatabaseDict = Dictionary<String, String>()
         
-        let timerModel: TimerModel = Timer(dictionary: fakeDatabaseDict)
-        
-        
-        
-        timerModelsArray.append(timerModel)
+        let timerModel = Timer(dictionary: fakeDatabaseDict)
+
+        if let timerModelToHandle = timerModel {
+            timerModelToHandle.callback! = {
+                updatedTimerModel in
+                let index = self.timerModelsArray.indexOf(updatedTimerModel)
+                
+                self.viewControllerDelegate?.updateTimerUIAtIndex(index!)
+            }
+            
+            timerModelsArray.append(timerModelToHandle)
+        }
     }
     
     private func saveTimerToDatabase() {
