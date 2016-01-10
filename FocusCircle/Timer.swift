@@ -37,7 +37,7 @@ class Timer: TimerInfo, TimerControlProtocol {
         
     }
     
-    init?(name: String?, durationTime: NSTimeInterval) {
+    init?(name: String, durationTime: NSTimeInterval) {
         super.init()
         
         self.name = name

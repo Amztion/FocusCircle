@@ -15,7 +15,7 @@ enum TimerState {
 }
 
 class TimerInfo: NSObject {
-    var name: String?
+    var name: String = ""
     var state = TimerState.Stopped
     var durationTime: NSTimeInterval!
 }

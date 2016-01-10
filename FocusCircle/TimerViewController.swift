@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TimerUIUpdateProtocol, NewTimerInfoBringBackProtocol {
+class TimerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TimerUIUpdateProtocol {
     
     let timerController: TimerController = TimerController.sharedController
 
@@ -34,11 +34,6 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func updateTimerStateUIAtIndex(index: Int) {
         
-    }
-    
-    //MARK: NewTimerInfoBringBackProtocol
-    func addNewTimer(name: String?, durationTime: NSTimeInterval!) {
-        timerController.addNewTimerName(name, durationTime: durationTime)
     }
     
     //MARK: TableViewDataSource
@@ -70,14 +65,16 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
         let editRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "编辑") { (editRowAction, indexPath) -> Void in
             let timerInfo = self.timerController.timerInfoAtIndex(indexPath.row)!
             
-            if let timerTextTableVC = self.storyboard?.instantiateViewControllerWithIdentifier("TimerTextTableVC") as? TimerTextTableViewController {
+            if let timerTextNav = self.storyboard?.instantiateViewControllerWithIdentifier("TimerTextNav") as? UINavigationController {
                 
-                timerTextTableVC.editTimerInfo(timerInfo, completionHandler: { (name, durationTime) -> Void in
+                let timerTextTableVC = timerTextNav.viewControllers.first! as! TimerTextTableViewController
+                
+                timerTextTableVC.editTimerWithTimerInfo(timerInfo, completionHandler: { (name, durationTime) -> Void in
                     
                     if let newName = name {
                         self.timerController.renameTimerAtIndex(indexPath.row, name: newName)
                     }
-                        
+                    
                     if let newDurationTime = durationTime {
                         self.timerController.modifyTimerAtIndex(indexPath.row, durationTime: newDurationTime)
                     }
@@ -85,6 +82,7 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
                     self.dismissViewControllerAnimated(true, completion: nil)
                 })
                 
+                self.presentViewController(timerTextNav, animated: true, completion: nil)
             }
         }
         
@@ -106,8 +104,12 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         if let timerTextNavVC = segue.destinationViewController as? UINavigationController{
             let timerTextTableVC = timerTextNavVC.viewControllers[0] as? TimerTextTableViewController
+            timerTextTableVC?.addTimerWithCompletionHandler({ (name, durationTime) -> Void in
+                self.timerController.addNewTimerName(name!, durationTime: durationTime!)
+                self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
+                self.dismissViewControllerAnimated(true, completion: nil)
+            })
             
-            timerTextTableVC?.receiveNewInfoDelegate = self
         }
     }
     

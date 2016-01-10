@@ -19,6 +19,8 @@
 		B380A4E41C41F81D004A38C9 /* TimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4E31C41F81D004A38C9 /* TimerTableViewCell.swift */; };
 		B380A4E91C4223D7004A38C9 /* TimerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4E81C4223D7004A38C9 /* TimerInfo.swift */; };
 		B380A4ED1C42351C004A38C9 /* TimerTextTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4EC1C42351C004A38C9 /* TimerTextTableViewController.swift */; };
+		B380A4EF1C4267B9004A38C9 /* UIAlertController+FocusCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4EE1C4267B9004A38C9 /* UIAlertController+FocusCircle.swift */; };
+		B380A4F41C428118004A38C9 /* Double+FocusCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4F31C428118004A38C9 /* Double+FocusCircle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		B380A4E31C41F81D004A38C9 /* TimerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTableViewCell.swift; sourceTree = "<group>"; };
 		B380A4E81C4223D7004A38C9 /* TimerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerInfo.swift; sourceTree = "<group>"; };
 		B380A4EC1C42351C004A38C9 /* TimerTextTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTextTableViewController.swift; sourceTree = "<group>"; };
+		B380A4EE1C4267B9004A38C9 /* UIAlertController+FocusCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+FocusCircle.swift"; sourceTree = "<group>"; };
+		B380A4F31C428118004A38C9 /* Double+FocusCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Double+FocusCircle.swift"; path = "../../Double+FocusCircle.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 				B380A4E51C41F822004A38C9 /* Views */,
 				B380A4DF1C414D2E004A38C9 /* ViewControllers */,
 				B380A4E21C414D73004A38C9 /* Timer */,
+				B380A4F01C4267C1004A38C9 /* Extensions */,
 				B380A4E01C414D44004A38C9 /* Resources */,
 				B380A4E11C414D58004A38C9 /* Supporting File */,
 			);
@@ -178,6 +183,15 @@
 				B380A4E31C41F81D004A38C9 /* TimerTableViewCell.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		B380A4F01C4267C1004A38C9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B380A4F31C428118004A38C9 /* Double+FocusCircle.swift */,
+				B380A4EE1C4267B9004A38C9 /* UIAlertController+FocusCircle.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,8 +331,10 @@
 				B380A4A81C390A7A004A38C9 /* AppDelegate.swift in Sources */,
 				B380A4D61C40F0F7004A38C9 /* TimerController.swift in Sources */,
 				B380A4ED1C42351C004A38C9 /* TimerTextTableViewController.swift in Sources */,
+				B380A4F41C428118004A38C9 /* Double+FocusCircle.swift in Sources */,
 				B380A4DE1C414D22004A38C9 /* TimerViewController.swift in Sources */,
 				B380A4D81C40F13C004A38C9 /* Timer.swift in Sources */,
+				B380A4EF1C4267B9004A38C9 /* UIAlertController+FocusCircle.swift in Sources */,
 				B380A4E91C4223D7004A38C9 /* TimerInfo.swift in Sources */,
 				B380A4E41C41F81D004A38C9 /* TimerTableViewCell.swift in Sources */,
 			);

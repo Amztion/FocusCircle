@@ -34,12 +34,12 @@ class TimerController {
     }
     
     //MARK: Operation With Timer
-    func addNewTimerName(name: String?, durationTime: NSTimeInterval) -> Bool {
+    func addNewTimerName(name: String, durationTime: NSTimeInterval) -> Bool {
      
         let newTimer = Timer(name: name, durationTime: durationTime)
         
         if let timerToHandle = newTimer {
-            timersArray.append(timerToHandle)
+            timersArray.insert(timerToHandle, atIndex: 0)
         }
         
         return true
@@ -88,7 +88,7 @@ class TimerController {
             timerToHandle.remainingTimeUpdateOperation! = remainingTimeUpdate
             timerToHandle.timerStateDidChangedOperation! = timerStateDidChanged
             
-            timersArray.append(timerToHandle)
+            timersArray.insert(timerToHandle, atIndex: 0)
         }
     }
     

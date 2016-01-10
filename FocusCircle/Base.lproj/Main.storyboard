@@ -78,7 +78,7 @@
         <scene sceneID="naW-Dd-Ntf">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C9h-NS-bvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ece-Bp-LJo" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TimerTextNav" automaticallyAdjustsScrollViewInsets="NO" id="ece-Bp-LJo" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Y0Y-Dp-xZJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

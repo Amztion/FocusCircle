@@ -7,53 +7,94 @@
 //
 
 import UIKit
-
-protocol NewTimerInfoBringBackProtocol: class {
-    func addNewTimer(name: String?, durationTime: NSTimeInterval!)
+struct TimeComponent {
+    var hour = 0.0
+    var minute = 0.0
+    var second = 0.0
 }
 
-class TimerTextTableViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class TimerTextTableViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+    
+    private enum OperationType {
+        case Adding
+        case Editing
+    }
     
     typealias BringDataBackHandler = ((name: String?, durationTime: NSTimeInterval?) -> Void)
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var durationTimePickerView: UIPickerView!
     
-    weak var receiveNewInfoDelegate: NewTimerInfoBringBackProtocol?
+    private var operationType: OperationType!
+    private var bringDataBackHandler: BringDataBackHandler!
     
-    private var name: String?
+    private var name: String = ""
     private var durationTime: NSTimeInterval = 0
     
-    private var newName: String?
-    private var newDurationTime: NSTimeInterval?
-    private var bringDataBackHandler: BringDataBackHandler!
+    private var durationTimeComponent = TimeComponent()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameTextField.text = oldName
+        nameTextField.text = name
+        nameTextField.delegate = self
         
         durationTimePickerView.dataSource = self
         durationTimePickerView.delegate = self
         
-        durationTimePickerView.selectRow(0, inComponent: 0, animated: true)
-        durationTimePickerView.selectRow(1, inComponent: 0, animated: true)
-        durationTimePickerView.selectRow(2, inComponent: 0, animated: true)
-        
+        if durationTime != 0 {
+            durationTimeComponent = durationTime.convertIntoTimeComponent()
+            
+            durationTimePickerView.selectRow(Int(durationTimeComponent.hour), inComponent: 0, animated: false)
+            durationTimePickerView.selectRow(Int(durationTimeComponent.minute), inComponent: 1, animated: false)
+            durationTimePickerView.selectRow(Int(durationTimeComponent.second), inComponent: 2, animated: false)
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func editTimerInfo(timer: TimerInfo, completionHandler: BringDataBackHandler) {
+    func editTimerWithTimerInfo(timer: TimerInfo, completionHandler: BringDataBackHandler) {
         bringDataBackHandler = completionHandler
+        operationType = OperationType.Editing
         
-        if let name = timer.name {
-            self.name = name
+        name = timer.name
+        durationTime = timer.durationTime
+    }
+    
+    func addTimerWithCompletionHandler(completionHandler: BringDataBackHandler) {
+        bringDataBackHandler = completionHandler
+        operationType = OperationType.Adding
+    }
+    
+    //MARK: Dismiss Text TableVC Actions
+    @IBAction func cancel(sender: UIBarButtonItem) {
+        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func done(sender: UIBarButtonItem) {
+        let newDurationTime = Double(durationTimeComponent.hour * 3600 + durationTimeComponent.minute * 60 + durationTimeComponent.second)
+        let newName = nameTextField.text
+        
+        if newDurationTime == 0 {
+            self.presentViewController(UIAlertController.oneButtonAlertController("出现错误", message: "时间不能为 0", preferredStryle: UIAlertControllerStyle.Alert), animated: true, completion: nil)
+            
+            return
         }
         
-        self.durationTime = timer.durationTime
+        if operationType == OperationType.Adding {
+            self.bringDataBackHandler(name: newName!, durationTime: newDurationTime)
+        }else{
+            
+            if newName! == name && newDurationTime == durationTime {
+               self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                return
+            }
+            
+            self.bringDataBackHandler(name: newName, durationTime: newDurationTime)
+        }
     }
     
     //MARK: UIPickerViewDataSource
@@ -92,26 +133,13 @@ class TimerTextTableViewController: UITableViewController, UIPickerViewDataSourc
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch component {
         case 0:
-            durationTime += row * 3600
+            durationTimeComponent.hour = Double(row)
         case 1:
-            durationTime += row * 60
+            durationTimeComponent.minute = Double(row)
         case 2:
-            durationTime += row
+            durationTimeComponent.second = Double(row)
         default:
-            durationTime += 0
-        }
-    }
-    
-    //MARK: Dismiss Text TableVC Actions
-    @IBAction func cancel(sender: UIBarButtonItem) {
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    @IBAction func done(sender: UIBarButtonItem) {
-        if let delegate = receiveNewInfoDelegate {
-           delegate.addNewTimer(newName, durationTime: newDurationTime!)
-        }else{
-            self.bringDataBackHandler(name: newName, durationTime: newDurationTime)
+            durationTimeComponent.second += 0
         }
     }
 }
