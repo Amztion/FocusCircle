@@ -16,6 +16,24 @@ protocol TimerControlProtocol {
 
 class Timer: TimerModel, TimerControlProtocol {
     
+    override var name: String? {
+        didSet {
+            
+        }
+    }
+    
+    override var state: TimerState {
+        didSet {
+            
+        }
+    }
+    
+    var test = 0 {
+        didSet {
+            
+        }
+    }
+    
     private var timer: NSTimer?
     var callback: ((timer: TimerModel) -> Void)?
     
@@ -27,7 +45,6 @@ class Timer: TimerModel, TimerControlProtocol {
     
     //MARK: TimerControlProtocol
     func start() -> Bool {
-
         state = TimerState.Running
         
         return false
