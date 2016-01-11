@@ -43,6 +43,9 @@
                                                         <constraint firstAttribute="width" constant="21" id="xhE-96-7IY"/>
                                                     </constraints>
                                                     <state key="normal" image="RunningIcon"/>
+                                                    <connections>
+                                                        <action selector="controlButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l1R-DQ-Fi6"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6c-Zg-2vX">
                                                     <rect key="frame" x="20" y="36" width="108" height="20.5"/>

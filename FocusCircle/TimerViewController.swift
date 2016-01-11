@@ -29,7 +29,8 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     //MARK: TimerUIUpdateProtocol
     func updateRemainingTimeUIAtIndex(index: Int, newRemainingTime: NSTimeInterval) {
-        if let tableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) {
+        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as? TimerTableViewCell {
+            cell.durationTimeLabel.text = String(seconds: newRemainingTime)
         }
     }
     
@@ -46,7 +47,16 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func updateTimerStateUIAtIndex(index: Int, newState: TimerState) {
-        if let tableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) {
+        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) {
+        }
+    }
+    
+    //MARK: Control Button Operation
+    @IBAction func controlButtonTapped(sender: UIButton) {
+        if let cell = sender.superview?.superview as? UITableViewCell {
+            if let indexPath = tableView.indexPathForCell(cell) {
+                timerController.startTimerAtIndex(indexPath.row)
+            }
         }
     }
     

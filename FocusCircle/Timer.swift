@@ -83,22 +83,52 @@ class Timer: TimerInfo, TimerControlProtocol {
         self.remainingTime = newDurationTime
     }
     
+    func countDownRemainingTime() {
+        if remainingTime > 0 {
+            remainingTime -= 1
+        }else{
+            self.stop()
+        }
+    }
     
     //MARK: TimerControlProtocol
     func start() -> Bool {
+        if state == TimerState.Running {
+            return false
+        }
+        
         state = TimerState.Running
+        
+        timer = NSTimer(timeInterval: 1, target: self, selector: "countDownRemainingTime", userInfo: nil, repeats: true)
+        NSRunLoop.currentRunLoop().addTimer(timer!, forMode: "NSDefaultRunLoopMode")
+        timer?.fire()
         
         return true
     }
     
     func pause() -> Bool {
+        if state != TimerState.Paused {
+            return false
+        }
+        
         state = TimerState.Paused
+        
+        timer?.invalidate()
+        timer = nil
         
         return true
     }
     
     func stop() -> Bool {
+        if state == TimerState.Stopped {
+            return false
+        }
+        
+        remainingTime = durationTime
         state = TimerState.Stopped
+        
+        timer?.invalidate()
+        timer = nil
         
         return true
     }

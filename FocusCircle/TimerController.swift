@@ -75,6 +75,11 @@ class TimerController {
     }
     
     func startTimerAtIndex(index: Int) -> Bool {
+        if timersArray.count < index - 1 {
+            return false
+        }
+        
+        timersArray[index].start()
         
         return true
     }
