@@ -9,6 +9,10 @@
 import UIKit
 
 class TimerTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var durationTimeLabel: UILabel!
+    @IBOutlet weak var controlButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -17,5 +21,7 @@ class TimerTableViewCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    
 
 }

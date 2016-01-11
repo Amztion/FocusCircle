@@ -34,9 +34,13 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func updateTimerInfoUIAtIndex(index: Int, newName: String?, newDurationTime: NSTimeInterval?) {
-        if let tableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) {
+        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as? TimerTableViewCell {
             if let name = newName {
-                tableViewCell.textLabel?.text! = name
+                cell.nameLabel.text = name
+            }
+            
+            if let durationTime = newDurationTime {
+                cell.durationTimeLabel.text = String(seconds: durationTime)
             }
         }
     }
@@ -56,12 +60,15 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let timerInfo = timerController.timerInfoAtIndex(indexPath.row)
-        
-        let tableViewCell = tableView.dequeueReusableCellWithIdentifier("TimerCell", forIndexPath: indexPath)
-        tableViewCell.textLabel!.text = timerInfo!.name
-        
-        return tableViewCell
+        if let timerInfo = timerController.timerInfoAtIndex(indexPath.row) {
+            let cell = tableView.dequeueReusableCellWithIdentifier("TimerCell", forIndexPath: indexPath) as! TimerTableViewCell
+            cell.nameLabel.text = timerInfo.name
+            cell.durationTimeLabel.text = String(seconds: timerInfo.durationTime)
+            
+            return cell
+        }else{
+            return UITableViewCell()
+        }
     }
     
     //MARK: TableViewDelegate
@@ -107,6 +114,10 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         return actionsArray
         
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 66
     }
     
     //MARK: Prepare For Segue

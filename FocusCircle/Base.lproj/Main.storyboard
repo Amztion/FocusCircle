@@ -22,13 +22,44 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TimerCell" id="TfR-EQ-HoF">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TimerCell" rowHeight="66" id="TfR-EQ-HoF" customClass="TimerTableViewCell" customModule="FocusCircle" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TfR-EQ-HoF" id="AhC-Lo-Dov">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="65.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blR-Qa-6YZ">
+                                                    <rect key="frame" x="20" y="7" width="94" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W7B-sF-YYG">
+                                                    <rect key="frame" x="526" y="18" width="51" height="30"/>
+                                                    <state key="normal" title="Control"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6c-Zg-2vX">
+                                                    <rect key="frame" x="20" y="36" width="108" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="blR-Qa-6YZ" firstAttribute="leading" secondItem="AhC-Lo-Dov" secondAttribute="leadingMargin" constant="12" id="2ZY-Lx-ORb"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="W7B-sF-YYG" secondAttribute="trailing" constant="15" id="An6-3m-f85"/>
+                                                <constraint firstItem="blR-Qa-6YZ" firstAttribute="top" secondItem="AhC-Lo-Dov" secondAttribute="topMargin" constant="-1" id="BQi-Gm-wr0"/>
+                                                <constraint firstItem="o6c-Zg-2vX" firstAttribute="top" secondItem="AhC-Lo-Dov" secondAttribute="topMargin" constant="28" id="RvN-zA-Ly2"/>
+                                                <constraint firstItem="o6c-Zg-2vX" firstAttribute="leading" secondItem="blR-Qa-6YZ" secondAttribute="leading" id="Y2C-zm-9vC"/>
+                                                <constraint firstItem="W7B-sF-YYG" firstAttribute="centerY" secondItem="AhC-Lo-Dov" secondAttribute="centerY" id="e5u-Hs-88a"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="controlButton" destination="W7B-sF-YYG" id="sEj-mP-fcC"/>
+                                            <outlet property="durationTimeLabel" destination="o6c-Zg-2vX" id="n2z-aa-PVf"/>
+                                            <outlet property="nameLabel" destination="blR-Qa-6YZ" id="2NY-CJ-Y4Q"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B34F28881C4378B200E2655A /* String+FocusCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34F28871C4378B200E2655A /* String+FocusCircle.swift */; };
 		B353C8B81C433622003FF374 /* Double+FocusCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B353C8B71C433622003FF374 /* Double+FocusCircle.swift */; };
 		B380A4A81C390A7A004A38C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4A71C390A7A004A38C9 /* AppDelegate.swift */; };
 		B380A4AD1C390A7A004A38C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B380A4AB1C390A7A004A38C9 /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B34F28871C4378B200E2655A /* String+FocusCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FocusCircle.swift"; sourceTree = "<group>"; };
 		B353C8B71C433622003FF374 /* Double+FocusCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+FocusCircle.swift"; sourceTree = "<group>"; };
 		B380A4A41C390A7A004A38C9 /* FocusCircle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FocusCircle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B380A4A71C390A7A004A38C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				B353C8B71C433622003FF374 /* Double+FocusCircle.swift */,
+				B34F28871C4378B200E2655A /* String+FocusCircle.swift */,
 				B380A4EE1C4267B9004A38C9 /* UIAlertController+FocusCircle.swift */,
 			);
 			name = Extensions;
@@ -337,6 +340,7 @@
 				B353C8B81C433622003FF374 /* Double+FocusCircle.swift in Sources */,
 				B380A4E91C4223D7004A38C9 /* TimerInfo.swift in Sources */,
 				B380A4E41C41F81D004A38C9 /* TimerTableViewCell.swift in Sources */,
+				B34F28881C4378B200E2655A /* String+FocusCircle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
