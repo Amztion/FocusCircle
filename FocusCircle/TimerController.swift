@@ -14,6 +14,8 @@ protocol TimerUIUpdateProtocol: class {
     func updateTimerInfoUIAtIndex(index: Int, newName: String?, newDurationTime: NSTimeInterval?)
 }
 
+typealias TimerInfo = (name: String, durationTime: NSTimeInterval, state: TimerState)
+
 class TimerController {
 
     static var sharedController = TimerController()
@@ -30,7 +32,8 @@ class TimerController {
         if index >= timersArray.count {
             return nil
         }else{
-            return timersArray[index]
+            let timer = timersArray[index]
+            return (timer.name, timer.durationTime, timer.state)
         }
     }
     
@@ -107,13 +110,6 @@ class TimerController {
     //MARK: Storage
     private func restoreTimersFromDataBase() {
         
-        //Read From Database
-        let fakeDatabaseDict = Dictionary<String, String>()
-        
-        if let timer = Timer(dictionary: fakeDatabaseDict) {
-            timersArray.insert(timer, atIndex: 0)
-            timer.addObserverOperationWhenStateDidchanged(timerStateDidChanged, remainingTimeDidChanged: remainingTimeUpdate, infoDidChanged: timerInfoDidChanged)
-        }
     }
     
     private func saveTimerToDatabase() {

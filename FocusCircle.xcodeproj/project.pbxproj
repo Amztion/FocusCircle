@@ -19,9 +19,9 @@
 		B380A4D81C40F13C004A38C9 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4D71C40F13C004A38C9 /* Timer.swift */; };
 		B380A4DE1C414D22004A38C9 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4DD1C414D22004A38C9 /* TimerViewController.swift */; };
 		B380A4E41C41F81D004A38C9 /* TimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4E31C41F81D004A38C9 /* TimerTableViewCell.swift */; };
-		B380A4E91C4223D7004A38C9 /* TimerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4E81C4223D7004A38C9 /* TimerInfo.swift */; };
 		B380A4ED1C42351C004A38C9 /* TimerTextTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4EC1C42351C004A38C9 /* TimerTextTableViewController.swift */; };
 		B380A4EF1C4267B9004A38C9 /* UIAlertController+FocusCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4EE1C4267B9004A38C9 /* UIAlertController+FocusCircle.swift */; };
+		B380A4FA1C43FC04004A38C9 /* UIButton+FocusCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4F91C43FC04004A38C9 /* UIButton+FocusCircle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,9 +60,9 @@
 		B380A4D71C40F13C004A38C9 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		B380A4DD1C414D22004A38C9 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		B380A4E31C41F81D004A38C9 /* TimerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTableViewCell.swift; sourceTree = "<group>"; };
-		B380A4E81C4223D7004A38C9 /* TimerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerInfo.swift; sourceTree = "<group>"; };
 		B380A4EC1C42351C004A38C9 /* TimerTextTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTextTableViewController.swift; sourceTree = "<group>"; };
 		B380A4EE1C4267B9004A38C9 /* UIAlertController+FocusCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+FocusCircle.swift"; sourceTree = "<group>"; };
+		B380A4F91C43FC04004A38C9 /* UIButton+FocusCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+FocusCircle.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,7 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				B380A4D51C40F0F7004A38C9 /* TimerController.swift */,
-				B380A4E81C4223D7004A38C9 /* TimerInfo.swift */,
 				B380A4D71C40F13C004A38C9 /* Timer.swift */,
 			);
 			name = Timer;
@@ -190,6 +189,7 @@
 		B380A4F01C4267C1004A38C9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B380A4F91C43FC04004A38C9 /* UIButton+FocusCircle.swift */,
 				B353C8B71C433622003FF374 /* Double+FocusCircle.swift */,
 				B34F28871C4378B200E2655A /* String+FocusCircle.swift */,
 				B380A4EE1C4267B9004A38C9 /* UIAlertController+FocusCircle.swift */,
@@ -333,12 +333,12 @@
 			files = (
 				B380A4A81C390A7A004A38C9 /* AppDelegate.swift in Sources */,
 				B380A4D61C40F0F7004A38C9 /* TimerController.swift in Sources */,
+				B380A4FA1C43FC04004A38C9 /* UIButton+FocusCircle.swift in Sources */,
 				B380A4ED1C42351C004A38C9 /* TimerTextTableViewController.swift in Sources */,
 				B380A4DE1C414D22004A38C9 /* TimerViewController.swift in Sources */,
 				B380A4D81C40F13C004A38C9 /* Timer.swift in Sources */,
 				B380A4EF1C4267B9004A38C9 /* UIAlertController+FocusCircle.swift in Sources */,
 				B353C8B81C433622003FF374 /* Double+FocusCircle.swift in Sources */,
-				B380A4E91C4223D7004A38C9 /* TimerInfo.swift in Sources */,
 				B380A4E41C41F81D004A38C9 /* TimerTableViewCell.swift in Sources */,
 				B34F28881C4378B200E2655A /* String+FocusCircle.swift in Sources */,
 			);

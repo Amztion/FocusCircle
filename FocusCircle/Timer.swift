@@ -2,35 +2,35 @@
 //  Timer.swift
 //  FocusCircle
 //
-//  Created by Liang Zhao on 16/1/9.
+//  Created by Liang Zhao on 16/1/11.
 //  Copyright © 2016年 Liang Zhao. All rights reserved.
 //
 
 import UIKit
 
-protocol TimerControlProtocol {
-    func start() -> Bool
-    func pause() -> Bool
-    func stop() -> Bool
+enum TimerState {
+    case Running
+    case Paused
+    case Stopped
 }
 
-class Timer: TimerInfo, TimerControlProtocol {
-    
-    override var state: TimerState {
-        willSet(newState) {
-            self.notifyObserverStateDidChangedOfTier?(self, newState: newState)
-        }
-    }
-    
-    override var name: String {
+class Timer: NSObject {
+
+    var name: String! {
         willSet(newName) {
             self.notifyObserverInfoDidChangedOfTimer?(self, newName: newName, newDurationTime: nil)
         }
     }
     
-    override var durationTime: NSTimeInterval! {
+    var durationTime: NSTimeInterval! {
         willSet(newDurationTime) {
             self.notifyObserverInfoDidChangedOfTimer?(self, newName: nil, newDurationTime: newDurationTime)
+        }
+    }
+    
+    var state: TimerState = TimerState.Stopped {
+        willSet(newState) {
+            self.notifyObserverStateDidChangedOfTier?(self, newState: newState)
         }
     }
     
@@ -42,19 +42,16 @@ class Timer: TimerInfo, TimerControlProtocol {
         }
     }
     
+    
+//    private let identifier: String!
     private var timer: NSTimer?
     
     var notifyObserverStateDidChangedOfTier: ((Timer, newState: TimerState) -> Void)?
     var notifyObserverRemaingTimeDidChangedOfTimer: ((Timer, newRemainingTime: NSTimeInterval) -> Void)?
     var notifyObserverInfoDidChangedOfTimer: ((Timer, newName: String?, newDurationTime: NSTimeInterval?) -> Void)?
     
-    init?(dictionary: NSDictionary) {
-        
-    }
-    
     init?(name: String, durationTime: NSTimeInterval) {
         super.init()
-        
         self.name = name
         self.durationTime = durationTime
         self.remainingTime = durationTime
@@ -107,7 +104,7 @@ class Timer: TimerInfo, TimerControlProtocol {
     }
     
     func pause() -> Bool {
-        if state != TimerState.Paused {
+        if state != TimerState.Running {
             return false
         }
         

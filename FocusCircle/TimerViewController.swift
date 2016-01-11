@@ -47,7 +47,8 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func updateTimerStateUIAtIndex(index: Int, newState: TimerState) {
-        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) {
+        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as? TimerTableViewCell{
+            cell.controlButton.changeButtonToState(newState)
         }
     }
     
@@ -55,7 +56,14 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func controlButtonTapped(sender: UIButton) {
         if let cell = sender.superview?.superview as? UITableViewCell {
             if let indexPath = tableView.indexPathForCell(cell) {
-                timerController.startTimerAtIndex(indexPath.row)
+                if let timerInfo = timerController.timerInfoAtIndex(indexPath.row){
+                    switch timerInfo.state {
+                    case TimerState.Stopped, TimerState.Paused:
+                        timerController.startTimerAtIndex(indexPath.row)
+                    case TimerState.Running:
+                        timerController.pauseTimerAtIndex(indexPath.row)
+                    }
+                }
             }
         }
     }
@@ -74,7 +82,7 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
             let cell = tableView.dequeueReusableCellWithIdentifier("TimerCell", forIndexPath: indexPath) as! TimerTableViewCell
             cell.nameLabel.text = timerInfo.name
             cell.durationTimeLabel.text = String(seconds: timerInfo.durationTime)
-            
+            cell.controlButton.changeButtonToState(timerInfo.state)
             return cell
         }else{
             return UITableViewCell()
