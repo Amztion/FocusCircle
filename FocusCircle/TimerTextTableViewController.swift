@@ -80,7 +80,7 @@ class TimerTextTableViewController: UITableViewController, UIPickerViewDataSourc
     
     @IBAction func done(sender: UIBarButtonItem) {
         let newDurationTime = durationTimeComponent.convertToSeconds()
-        let newName = nameTextField.text
+        let newName = nameTextField.text!
         
         if newDurationTime == 0 {
             self.presentViewController(UIAlertController.oneButtonAlertController("出现错误", message: "时间不能为 0", preferredStryle: UIAlertControllerStyle.Alert), animated: true, completion: nil)
@@ -88,11 +88,17 @@ class TimerTextTableViewController: UITableViewController, UIPickerViewDataSourc
             return
         }
         
+        if newName == "" {
+            self.presentViewController(UIAlertController.oneButtonAlertController("出现错误", message: "项目名称不能为空", preferredStryle: UIAlertControllerStyle.Alert), animated: true, completion: nil)
+        
+            return
+        }
+        
         if operationType == OperationType.Adding {
-            self.bringDataBackHandler(name: newName!, durationTime: newDurationTime)
+            self.bringDataBackHandler(name: newName, durationTime: newDurationTime)
         }else{
             
-            if newName! == name && newDurationTime == durationTime {
+            if newName == name && newDurationTime == durationTime {
                self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
                 return
             }
@@ -120,7 +126,6 @@ class TimerTextTableViewController: UITableViewController, UIPickerViewDataSourc
     }
     
     //MARK: UIPickerViewDelegate
-    
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch component {
         case 0:
