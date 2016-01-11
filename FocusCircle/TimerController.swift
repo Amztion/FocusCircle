@@ -85,11 +85,21 @@ class TimerController {
     }
     
     func pauseTimerAtIndex(index: Int) -> Bool {
+        if timersArray.count < index - 1 {
+            return false
+        }
+        
+        timersArray[index].pause()
         
         return true
     }
     
     func resetTimerAtIndex(index: Int) -> Bool {
+        if timersArray.count < index - 1 {
+            return false
+        }
+        
+        timersArray[index].stop()
         
         return true
     }
