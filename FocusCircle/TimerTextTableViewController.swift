@@ -11,6 +11,10 @@ struct TimeComponent {
     var hour = 0.0
     var minute = 0.0
     var second = 0.0
+    
+    func convertToSeconds() -> NSTimeInterval {
+        return hour * 3600.0 + minute * 60.0 + second
+    }
 }
 
 class TimerTextTableViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
@@ -75,7 +79,7 @@ class TimerTextTableViewController: UITableViewController, UIPickerViewDataSourc
     }
     
     @IBAction func done(sender: UIBarButtonItem) {
-        let newDurationTime = Double(durationTimeComponent.hour * 3600 + durationTimeComponent.minute * 60 + durationTimeComponent.second)
+        let newDurationTime = durationTimeComponent.convertToSeconds()
         let newName = nameTextField.text
         
         if newDurationTime == 0 {

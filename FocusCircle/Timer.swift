@@ -17,21 +17,36 @@ protocol TimerControlProtocol {
 class Timer: TimerInfo, TimerControlProtocol {
     
     override var state: TimerState {
-        didSet(newState) {
-            timerStateDidChangedOperation!(timer: self, state: newState)
+        willSet(newState) {
+            self.notifyObserverStateDidChangedOfTier?(self, newState: newState)
+        }
+    }
+    
+    override var name: String {
+        willSet(newName) {
+            self.notifyObserverInfoDidChangedOfTimer?(self, newName: newName, newDurationTime: nil)
+        }
+    }
+    
+    override var durationTime: NSTimeInterval! {
+        willSet(newDurationTime) {
+            self.notifyObserverInfoDidChangedOfTimer?(self, newName: nil, newDurationTime: newDurationTime)
         }
     }
     
     var remainingTime: NSTimeInterval = 0 {
-        didSet(newRemainingTime) {
-            self.remainingTimeUpdateOperation!(timer: self, remainingTime: newRemainingTime)
+        willSet(newRemainingTime) {
+            if self.state == TimerState.Running {
+                self.notifyObserverRemaingTimeDidChangedOfTimer!(self, newRemainingTime: newRemainingTime)
+            }
         }
     }
     
     private var timer: NSTimer?
     
-    var timerStateDidChangedOperation: ((timer: Timer, state: TimerState) -> Void)?
-    var remainingTimeUpdateOperation: ((timer: Timer, remainingTime: NSTimeInterval) -> Void)?
+    var notifyObserverStateDidChangedOfTier: ((Timer, newState: TimerState) -> Void)?
+    var notifyObserverRemaingTimeDidChangedOfTimer: ((Timer, newRemainingTime: NSTimeInterval) -> Void)?
+    var notifyObserverInfoDidChangedOfTimer: ((Timer, newName: String?, newDurationTime: NSTimeInterval?) -> Void)?
     
     init?(dictionary: NSDictionary) {
         
@@ -43,6 +58,29 @@ class Timer: TimerInfo, TimerControlProtocol {
         self.name = name
         self.durationTime = durationTime
         self.remainingTime = durationTime
+    }
+    
+    //MARK: Observer Operation
+    func addObserverOperationWhenStateDidchanged(stateDidChanged: ((Timer, TimerState) -> Void)?, remainingTimeDidChanged: ((Timer, NSTimeInterval) -> Void)?, infoDidChanged: ((Timer, String?, NSTimeInterval?) -> Void)?) {
+        self.notifyObserverStateDidChangedOfTier = stateDidChanged
+        self.notifyObserverRemaingTimeDidChangedOfTimer = remainingTimeDidChanged
+        self.notifyObserverInfoDidChangedOfTimer = infoDidChanged
+    }
+    
+    func removeObserver() {
+        self.notifyObserverInfoDidChangedOfTimer = nil
+        self.notifyObserverRemaingTimeDidChangedOfTimer = nil
+        self.notifyObserverStateDidChangedOfTier = nil
+    }
+    
+    //MARK: Modify Timer
+    func renameAs(newName: String) {
+        self.name = newName
+    }
+    
+    func modifyDurationTimeTo(newDurationTime: NSTimeInterval) {
+        self.durationTime = newDurationTime
+        self.remainingTime = newDurationTime
     }
     
     
@@ -64,6 +102,4 @@ class Timer: TimerInfo, TimerControlProtocol {
         
         return true
     }
-    
-    
 }
