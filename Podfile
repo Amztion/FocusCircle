@@ -4,7 +4,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'FocusCircle' do
-
+pod 'FMDB'
 end
 
 target 'FocusCircleTests' do
