@@ -35,4 +35,73 @@ class DatabaseController: NSObject {
             database.close()
         }
     }
+    
+    func readAllTimersFromDatabase() -> Array<[String: AnyObject]>? {
+        
+        
+        return nil
+    }
+    
+    func saveNewTimer(timer: Timer) -> Bool {
+        if !database.open(){
+            print("Unable To Open Database")
+        }else {
+            let rs = try? database.executeQuery("SELECT * FROM timers WHERE identifier = ?;", values: [timer.identifier])
+            if rs!.next() {
+                database.close()
+                return false
+            }
+            
+            database.close()
+        }
+        
+        databaseQueue.inDatabase { (database) -> Void in
+            _ = try? database.executeUpdate("INSERT INTO timers (identifier, name, durationTime, state) VALUES (?,?,?,?)", values: [timer.identifier, timer.name, timer.durationTime, timer.state.rawValue])
+            
+        }
+        
+        return true
+    }
+    
+    func updateInfoOfTimer(timer:Timer) -> Bool {
+        if !database.open() {
+            print("Unable To Open Database")
+        }else {
+            let rs = try? database.executeQuery("SELECT * FROM timers WHERE identifier = ?", values: [timer.identifier])
+            
+            if !(rs!.next()) {
+                database.close()
+                return false
+            }
+            
+            database.close()
+        }
+        
+        databaseQueue.inDatabase { (database) -> Void in
+            _ = try? database.executeUpdate("UPDATE timers SET name = ?, durationTime = ? WHERE identifier = ?", values: [timer.name, timer.durationTime, timer.identifier])
+        }
+        
+        return true
+    }
+    
+    func updateTimeOfTimer(timer:Timer) -> Bool {
+        if !database.open() {
+            print("Unable To Open Database")
+        }else {
+            let rs = try? database.executeQuery("SELECT * FROM timers WHERE identifier = ?", values: [timer.identifier])
+            
+            if !(rs!.next()) {
+                database.close()
+                return false
+            }
+            
+            database.close()
+        }
+        
+        databaseQueue.inDatabase { (database) -> Void in
+            _ = try? database.executeUpdate("UPDATE timers SET state = ?, timeStarted = ?, timeShouldEnd = ? WHERE identifier = ?", values: [timer.state.rawValue, timer.timeStarted!,timer.timeShouldEnd!, timer.identifier])
+        }
+        
+        return true
+    }
 }

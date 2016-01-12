@@ -298,6 +298,11 @@
 					B380A4A31C390A7A004A38C9 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = TNZ7HD8PFQ;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					B380A4B71C390A7A004A38C9 = {
 						CreatedOnToolsVersion = 7.2;

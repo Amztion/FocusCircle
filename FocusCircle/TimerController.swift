@@ -44,6 +44,8 @@ class TimerController {
         if let timer = Timer(name: name, durationTime: durationTime) {
             timersArray.insert(timer, atIndex: 0)
             timer.addObserverOperationWhenStateDidchanged(timerStateDidChanged, remainingTimeDidChanged: remainingTimeUpdate, infoDidChanged: timerInfoDidChanged)
+            
+            databaseController.saveNewTimer(timer)
         }
         
         return true
@@ -132,5 +134,6 @@ class TimerController {
     func timerInfoDidChanged(updateTimer: Timer, newName: String?, newDurationTime: NSTimeInterval?) -> Void {
         let index = self.timersArray.indexOf(updateTimer)!
         self.timerUpdateDelegate?.updateTimerInfoUIAtIndex(index, newName: newName, newDurationTime: newDurationTime)
+        databaseController.updateInfoOfTimer(updateTimer)
     }
 }
