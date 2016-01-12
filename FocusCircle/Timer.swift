@@ -8,10 +8,10 @@
 
 import UIKit
 
-enum TimerState {
-    case Running
-    case Paused
-    case Stopped
+enum TimerState: Int {
+    case Running = 0
+    case Paused = 1
+    case Stopped = 2
 }
 
 class Timer: NSObject {

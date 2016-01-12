@@ -21,6 +21,8 @@ class TimerController {
     static var sharedController = TimerController()
     weak var timerUpdateDelegate: TimerUIUpdateProtocol?
     
+    let databaseController = DatabaseController.sharedController
+    
     private var timersArray = [Timer]()
     
     //MARK: Get Info Of Timers

@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7D494790198D287B9F320D5F /* Pods_FocusCircle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA45A4CB5275F3C9563E5FF /* Pods_FocusCircle.framework */; };
+		AFB749191A522FF67C6274F3 /* libPods-FocusCircle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 613B633D6292FDCA8DCB8769 /* libPods-FocusCircle.a */; };
 		B34F28881C4378B200E2655A /* String+FocusCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34F28871C4378B200E2655A /* String+FocusCircle.swift */; };
+		B34F288F1C44F3BD00E2655A /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34F288E1C44F3BD00E2655A /* DatabaseController.swift */; };
 		B353C8B81C433622003FF374 /* Double+FocusCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B353C8B71C433622003FF374 /* Double+FocusCircle.swift */; };
 		B380A4A81C390A7A004A38C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4A71C390A7A004A38C9 /* AppDelegate.swift */; };
 		B380A4AD1C390A7A004A38C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B380A4AB1C390A7A004A38C9 /* Main.storyboard */; };
@@ -44,9 +45,10 @@
 
 /* Begin PBXFileReference section */
 		0793252493E05B58812C1B30 /* Pods-FocusCircle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FocusCircle.release.xcconfig"; path = "Pods/Target Support Files/Pods-FocusCircle/Pods-FocusCircle.release.xcconfig"; sourceTree = "<group>"; };
-		2CA45A4CB5275F3C9563E5FF /* Pods_FocusCircle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FocusCircle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		613B633D6292FDCA8DCB8769 /* libPods-FocusCircle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FocusCircle.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B34F28871C4378B200E2655A /* String+FocusCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FocusCircle.swift"; sourceTree = "<group>"; };
 		B34F28891C448E4C00E2655A /* FocusCircle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FocusCircle-Bridging-Header.h"; sourceTree = "<group>"; };
+		B34F288E1C44F3BD00E2655A /* DatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
 		B353C8B71C433622003FF374 /* Double+FocusCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+FocusCircle.swift"; sourceTree = "<group>"; };
 		B380A4A41C390A7A004A38C9 /* FocusCircle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FocusCircle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B380A4A71C390A7A004A38C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D494790198D287B9F320D5F /* Pods_FocusCircle.framework in Frameworks */,
+				AFB749191A522FF67C6274F3 /* libPods-FocusCircle.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +132,7 @@
 		B380A4A61C390A7A004A38C9 /* FocusCircle */ = {
 			isa = PBXGroup;
 			children = (
+				B34F288E1C44F3BD00E2655A /* DatabaseController.swift */,
 				B380A4E51C41F822004A38C9 /* Views */,
 				B380A4DF1C414D2E004A38C9 /* ViewControllers */,
 				B380A4E21C414D73004A38C9 /* Timer */,
@@ -218,7 +221,7 @@
 		EF3364BE8F5DDFB7E28BF242 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2CA45A4CB5275F3C9563E5FF /* Pods_FocusCircle.framework */,
+				613B633D6292FDCA8DCB8769 /* libPods-FocusCircle.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				B380A4D61C40F0F7004A38C9 /* TimerController.swift in Sources */,
 				B380A4FA1C43FC04004A38C9 /* UIButton+FocusCircle.swift in Sources */,
 				B380A4ED1C42351C004A38C9 /* TimerTextTableViewController.swift in Sources */,
+				B34F288F1C44F3BD00E2655A /* DatabaseController.swift in Sources */,
 				B380A4DE1C414D22004A38C9 /* TimerViewController.swift in Sources */,
 				B380A4D81C40F13C004A38C9 /* Timer.swift in Sources */,
 				B380A4EF1C4267B9004A38C9 /* UIAlertController+FocusCircle.swift in Sources */,
