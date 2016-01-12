@@ -36,14 +36,14 @@ class Timer: NSObject {
     
     var remainingTime: NSTimeInterval = 0 {
         willSet(newRemainingTime) {
-            if self.state == TimerState.Running {
+            if self.state != TimerState.Stopped {
                 self.notifyObserverRemaingTimeDidChangedOfTimer!(self, newRemainingTime: newRemainingTime)
             }
         }
     }
     
+    let identifier: String = (String(NSDate().timeIntervalSince1970) + String(drand48())).md5()
     
-//    private let identifier: String!
     private var timer: NSTimer?
     
     var notifyObserverStateDidChangedOfTier: ((Timer, newState: TimerState) -> Void)?

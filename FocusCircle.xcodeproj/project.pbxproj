@@ -43,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		B34F28871C4378B200E2655A /* String+FocusCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FocusCircle.swift"; sourceTree = "<group>"; };
+		B34F28891C448E4C00E2655A /* FocusCircle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FocusCircle-Bridging-Header.h"; sourceTree = "<group>"; };
 		B353C8B71C433622003FF374 /* Double+FocusCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+FocusCircle.swift"; sourceTree = "<group>"; };
 		B380A4A41C390A7A004A38C9 /* FocusCircle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FocusCircle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B380A4A71C390A7A004A38C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +164,7 @@
 		B380A4E11C414D58004A38C9 /* Supporting File */ = {
 			isa = PBXGroup;
 			children = (
+				B34F28891C448E4C00E2655A /* FocusCircle-Bridging-Header.h */,
 				B380A4A71C390A7A004A38C9 /* AppDelegate.swift */,
 				B380A4B31C390A7A004A38C9 /* Info.plist */,
 			);
@@ -480,10 +482,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = FocusCircle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Amztion.FocusCircle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FocusCircle/FocusCircle-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -491,10 +496,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = FocusCircle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Amztion.FocusCircle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FocusCircle/FocusCircle-Bridging-Header.h";
 			};
 			name = Release;
 		};

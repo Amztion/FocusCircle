@@ -21,6 +21,7 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.allowsSelection = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,8 +97,9 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         var actionsArray = [UITableViewRowAction]()
+        let timerInfo = timerController.timerInfoAtIndex(indexPath.row)!
         
-        let editRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "编辑") { (editRowAction, indexPath) -> Void in
+        let editRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "编辑") { (editRowAction, indexPath) -> Void in
             let timerInfo = self.timerController.timerInfoAtIndex(indexPath.row)!
             
             if let timerTextNav = self.storyboard?.instantiateViewControllerWithIdentifier("TimerTextNav") as? UINavigationController {
@@ -116,19 +118,34 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
                     
                     self.dismissViewControllerAnimated(true, completion: nil)
                 })
-                
                 self.presentViewController(timerTextNav, animated: true, completion: nil)
             }
+            self.tableView.editing = false
         }
         
         let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Destructive, title: "删除") { (tableViewRowAction, indexPath) -> Void in
             
             self.timerController.deleteTimerAtIndex(indexPath.row)
             self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            self.tableView.editing = false
         }
         
-        actionsArray.append(editRowAction)
-        actionsArray.append(deleteRowAction)
+        let resetRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "重置") { (tableViewRowAction, indexPath) -> Void in
+            
+            self.timerController.resetTimerAtIndex(indexPath.row)
+            self.tableView.editing = false
+        }
+        
+        switch timerInfo.state {
+        case .Running:
+            actionsArray.append(resetRowAction)
+        case .Paused:
+            actionsArray.append(deleteRowAction)
+            actionsArray.append(resetRowAction)
+        case .Stopped:
+            actionsArray.append(deleteRowAction)
+            actionsArray.append(editRowAction)
+        }
         
         return actionsArray
         
