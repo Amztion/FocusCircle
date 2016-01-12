@@ -15,7 +15,8 @@ enum TimerState {
 }
 
 class Timer: NSObject {
-
+    let identifier: String = (String(NSDate().timeIntervalSince1970) + String(drand48())).md5()
+    
     var name: String! {
         willSet(newName) {
             self.notifyObserverInfoDidChangedOfTimer?(self, newName: newName, newDurationTime: nil)
@@ -42,7 +43,8 @@ class Timer: NSObject {
         }
     }
     
-    let identifier: String = (String(NSDate().timeIntervalSince1970) + String(drand48())).md5()
+    var timeStarted: NSTimeInterval?
+    var timeShouldEnd: NSTimeInterval?
     
     private var timer: NSTimer?
     
@@ -95,6 +97,8 @@ class Timer: NSObject {
         }
         
         state = TimerState.Running
+        timeStarted = NSDate().timeIntervalSince1970
+        timeShouldEnd = NSDate().timeIntervalSince1970 + remainingTime
         
         timer = NSTimer(timeInterval: 1, target: self, selector: "countDownRemainingTime", userInfo: nil, repeats: true)
         NSRunLoop.currentRunLoop().addTimer(timer!, forMode: "NSDefaultRunLoopMode")
