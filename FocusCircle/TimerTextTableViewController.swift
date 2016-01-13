@@ -32,8 +32,8 @@ class TimerTextTableViewController: UITableViewController, UIPickerViewDataSourc
     private var operationType: OperationType!
     private var bringDataBackHandler: BringDataBackHandler!
     
-    private var name: String = ""
-    private var durationTime: NSTimeInterval = 0
+    private var name: String!
+    private var durationTime: NSTimeInterval!
     
     private var durationTimeComponent = TimeComponent()
     
@@ -47,7 +47,7 @@ class TimerTextTableViewController: UITableViewController, UIPickerViewDataSourc
         durationTimePickerView.dataSource = self
         durationTimePickerView.delegate = self
         
-        if durationTime != 0 {
+        if operationType == OperationType.Editing {
             durationTimeComponent = durationTime.convertIntoTimeComponent()
             
             durationTimePickerView.selectRow(Int(durationTimeComponent.hour), inComponent: 0, animated: false)
@@ -99,11 +99,26 @@ class TimerTextTableViewController: UITableViewController, UIPickerViewDataSourc
         }else{
             
             if newName == name && newDurationTime == durationTime {
-               self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+               
+            }
+            
+            switch true {
+            case newName == name && newDurationTime == durationTime:
+                self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                return
+            case newName != name && newDurationTime != durationTime:
+                self.bringDataBackHandler(name: newName, durationTime: newDurationTime)
+                return
+            case newName == name && newDurationTime != durationTime:
+                self.bringDataBackHandler(name: nil, durationTime: newDurationTime)
+                return
+            case newName != name && newDurationTime == durationTime:
+                self.bringDataBackHandler(name: newName, durationTime: nil)
+                return
+            default:
                 return
             }
             
-            self.bringDataBackHandler(name: newName, durationTime: newDurationTime)
         }
     }
     

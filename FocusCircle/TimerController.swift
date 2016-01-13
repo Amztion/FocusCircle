@@ -25,12 +25,19 @@ class TimerController {
     
     private var timersArray = [Timer]()
     
+    init(){
+        self.restoreTimersFromDataBase()
+    }
+    
     //MARK: Get Info Of Timers
     func numberOfTimers() -> Int {
         return timersArray.count
     }
     
     func timerInfoAtIndex(index: Int) -> TimerInfo? {
+        if index < 0 {
+            return nil
+        }
         if index >= timersArray.count {
             return nil
         }else{
@@ -113,7 +120,10 @@ class TimerController {
     
     //MARK: Storage
     private func restoreTimersFromDataBase() {
-        
+        let timersArray = databaseController.readAllTimersFromDatabase()
+        for timerDictionary in timersArray! {
+            print(timerDictionary)
+        }
     }
     
     private func saveTimerToDatabase() {
@@ -134,6 +144,6 @@ class TimerController {
     func timerInfoDidChanged(updateTimer: Timer, newName: String?, newDurationTime: NSTimeInterval?) -> Void {
         let index = self.timersArray.indexOf(updateTimer)!
         self.timerUpdateDelegate?.updateTimerInfoUIAtIndex(index, newName: newName, newDurationTime: newDurationTime)
-        databaseController.updateInfoOfTimer(updateTimer)
+        databaseController.updateInfoOfTimerWithIdentifier(updateTimer.identifier, newName: newName, newDurationTime: newDurationTime)
     }
 }

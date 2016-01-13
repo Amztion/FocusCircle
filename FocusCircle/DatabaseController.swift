@@ -36,9 +36,23 @@ class DatabaseController: NSObject {
         }
     }
     
-    func readAllTimersFromDatabase() -> Array<[String: AnyObject]>? {
+    //MARK: Timer Stroage
+    func readAllTimersFromDatabase() -> Array<[NSObject: AnyObject]>? {
+        var resultArray = Array<[NSObject: AnyObject]>()
         
+        if !database.open(){
+            print("Unable To Open Database")
+        }else {
+            let rs = try? database.executeQuery("SELECT * FROM timers", values:nil)
+            while rs!.next() {
+                resultArray.append((rs?.resultDictionary())!)
+            }
+            
+            database.close()
+            return resultArray
+        }
         
+        database.close()
         return nil
     }
     
@@ -63,11 +77,11 @@ class DatabaseController: NSObject {
         return true
     }
     
-    func updateInfoOfTimer(timer:Timer) -> Bool {
+    func updateInfoOfTimerWithIdentifier(identifier: String, newName: String?, newDurationTime: NSTimeInterval?) -> Bool {
         if !database.open() {
             print("Unable To Open Database")
         }else {
-            let rs = try? database.executeQuery("SELECT * FROM timers WHERE identifier = ?", values: [timer.identifier])
+            let rs = try? database.executeQuery("SELECT * FROM timers WHERE identifier = ?", values: [identifier])
             
             if !(rs!.next()) {
                 database.close()
@@ -77,8 +91,21 @@ class DatabaseController: NSObject {
             database.close()
         }
         
+        var attr: String!
+        var valueToSet: AnyObject!
+        
+        if let name = newName {
+            attr = "name"
+            valueToSet = name
+        }
+        
+        if let durationTime = newDurationTime {
+            attr = "durationTime"
+            valueToSet = durationTime
+        }
+        
         databaseQueue.inDatabase { (database) -> Void in
-            _ = try? database.executeUpdate("UPDATE timers SET name = ?, durationTime = ? WHERE identifier = ?", values: [timer.name, timer.durationTime, timer.identifier])
+            _ = try? database.executeUpdate("UPDATE timers SET \(attr) = ? WHERE identifier = ?", values: [valueToSet, identifier])
         }
         
         return true
