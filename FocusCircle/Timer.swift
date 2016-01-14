@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol TimerUpdateObserverProtocol:class {
+    func stateDidChangedOfTimer(updatedTimer:Timer, newState: TimerState, newTimeStarted: NSTimeInterval?, newTimeShouldEnd: NSTimeInterval?)
+    func infoDidChangedOfTimer(updatedTimer:Timer, newName: String?, newDurationTime: NSTimeInterval?)
+    func remainingTimeDidChangedOfTimer(updatedTimer:Timer, newRemainingTime: NSTimeInterval)
+}
+
 enum TimerState: Int {
     case Running = 0
     case Paused = 1
@@ -15,30 +21,30 @@ enum TimerState: Int {
 }
 
 class Timer: NSObject {
-    let identifier: String = (String(NSDate().timeIntervalSince1970) + String(drand48())).md5()
+    var identifier: String!
     
     var name: String! {
         willSet(newName) {
-            self.notifyObserverInfoDidChangedOfTimer?(self, newName: newName, newDurationTime: nil)
+            self.timerUpdateObserver?.infoDidChangedOfTimer(self, newName: newName, newDurationTime: nil)
         }
     }
     
     var durationTime: NSTimeInterval! {
         willSet(newDurationTime) {
-            self.notifyObserverInfoDidChangedOfTimer?(self, newName: nil, newDurationTime: newDurationTime)
+            self.timerUpdateObserver?.infoDidChangedOfTimer(self, newName: nil, newDurationTime: newDurationTime)
         }
     }
     
     var state: TimerState = TimerState.Stopped {
         willSet(newState) {
-            self.notifyObserverStateDidChangedOfTier?(self, newState: newState)
+            self.timerUpdateObserver?.stateDidChangedOfTimer(self, newState: newState, newTimeStarted: nil, newTimeShouldEnd: nil)
         }
     }
     
     var remainingTime: NSTimeInterval = 0 {
         willSet(newRemainingTime) {
             if self.state != TimerState.Stopped {
-                self.notifyObserverRemaingTimeDidChangedOfTimer!(self, newRemainingTime: newRemainingTime)
+                self.timerUpdateObserver?.remainingTimeDidChangedOfTimer(self, newRemainingTime: newRemainingTime)
             }
         }
     }
@@ -48,28 +54,34 @@ class Timer: NSObject {
     
     private var timer: NSTimer?
     
-    var notifyObserverStateDidChangedOfTier: ((Timer, newState: TimerState) -> Void)?
-    var notifyObserverRemaingTimeDidChangedOfTimer: ((Timer, newRemainingTime: NSTimeInterval) -> Void)?
-    var notifyObserverInfoDidChangedOfTimer: ((Timer, newName: String?, newDurationTime: NSTimeInterval?) -> Void)?
+//    var observers = [TimerUpdateObserverProtocol]()
+    private weak var timerUpdateObserver: TimerUpdateObserverProtocol?
     
     init?(name: String, durationTime: NSTimeInterval) {
         super.init()
+        self.identifier = (String(NSDate().timeIntervalSince1970) + String(drand48())).md5()
         self.name = name
         self.durationTime = durationTime
         self.remainingTime = durationTime
     }
     
-    //MARK: Observer Operation
-    func addObserverOperationWhenStateDidchanged(stateDidChanged: ((Timer, TimerState) -> Void)?, remainingTimeDidChanged: ((Timer, NSTimeInterval) -> Void)?, infoDidChanged: ((Timer, String?, NSTimeInterval?) -> Void)?) {
-        self.notifyObserverStateDidChangedOfTier = stateDidChanged
-        self.notifyObserverRemaingTimeDidChangedOfTimer = remainingTimeDidChanged
-        self.notifyObserverInfoDidChangedOfTimer = infoDidChanged
+    init?(dataBaseDict:[NSObject:AnyObject]){
+        super.init()
+        self.identifier = dataBaseDict["identifier"] as! String
+        self.name = dataBaseDict["name"] as! String
+        self.durationTime = dataBaseDict["durationTime"] as! NSTimeInterval
+        self.state = TimerState(rawValue: dataBaseDict["state"] as! Int)!
+        self.timeStarted = dataBaseDict["timeStarted"] as? NSTimeInterval
+        self.timeShouldEnd = dataBaseDict["timeShoudleEnd"] as? NSTimeInterval
     }
     
-    func removeObserver() {
-        self.notifyObserverInfoDidChangedOfTimer = nil
-        self.notifyObserverRemaingTimeDidChangedOfTimer = nil
-        self.notifyObserverStateDidChangedOfTier = nil
+    //MARK: Observer Operation
+    func addTimerUpdatObserver(observer: TimerUpdateObserverProtocol){
+        timerUpdateObserver = observer
+    }
+    
+    func removeTimerUpdateObserver(ovserver: TimerUpdateObserverProtocol){
+        timerUpdateObserver = nil
     }
     
     //MARK: Modify Timer

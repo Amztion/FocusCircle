@@ -17,7 +17,7 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        timerController.timerUpdateDelegate = self
+        timerController.addUIUpdateDelegate(self)
         
         tableView.delegate = self
         tableView.dataSource = self

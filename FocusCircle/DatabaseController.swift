@@ -77,6 +77,26 @@ class DatabaseController: NSObject {
         return true
     }
     
+    func deleteTimerWithIdentifier(identifier: String) -> Bool{
+        if !database.open(){
+            print("Unable To Open Database")
+        }else {
+            let rs = try? database.executeQuery("SELECT * FROM timers WHERE identifier = ?;", values: [identifier])
+            if !rs!.next() {
+                database.close()
+                return false
+            }
+            
+            database.close()
+        }
+        
+        databaseQueue.inDatabase { (database) -> Void in
+            _ = try? database.executeUpdate("DELETE FROM timers WHERE identifier = ?;", values: [identifier])
+        }
+        
+        return true
+    }
+    
     func updateInfoOfTimerWithIdentifier(identifier: String, newName: String?, newDurationTime: NSTimeInterval?) -> Bool {
         if !database.open() {
             print("Unable To Open Database")
