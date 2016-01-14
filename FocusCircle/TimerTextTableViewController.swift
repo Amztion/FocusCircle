@@ -97,11 +97,6 @@ class TimerTextTableViewController: UITableViewController, UIPickerViewDataSourc
         if operationType == OperationType.Adding {
             self.bringDataBackHandler(name: newName, durationTime: newDurationTime)
         }else{
-            
-            if newName == name && newDurationTime == durationTime {
-               
-            }
-            
             switch true {
             case newName == name && newDurationTime == durationTime:
                 self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
