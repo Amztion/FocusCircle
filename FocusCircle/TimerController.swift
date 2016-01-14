@@ -133,7 +133,6 @@ class TimerController: TimerUpdateObserverProtocol {
     private func restoreTimersFromDataBase() {
         let timerInfoDicts = databaseController.readAllTimersFromDatabase()
         for timerDictionary in timerInfoDicts! {
-            print(timerDictionary)
             if let timer = Timer(dataBaseDict: timerDictionary){
                 timersArray.insert(timer, atIndex: 0)
                 timer.addTimerUpdatObserver(self)
