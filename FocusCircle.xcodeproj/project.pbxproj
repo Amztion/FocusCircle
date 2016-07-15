@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AFB749191A522FF67C6274F3 /* libPods-FocusCircle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 613B633D6292FDCA8DCB8769 /* libPods-FocusCircle.a */; };
+		85723333D5A8E1ED4A7DA213 /* libPods-FocusCircleUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A8264FF3AE57AF667F9BD5 /* libPods-FocusCircleUITests.a */; };
 		B34F28881C4378B200E2655A /* String+FocusCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34F28871C4378B200E2655A /* String+FocusCircle.swift */; };
 		B34F288F1C44F3BD00E2655A /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34F288E1C44F3BD00E2655A /* DatabaseController.swift */; };
 		B353C8B81C433622003FF374 /* Double+FocusCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B353C8B71C433622003FF374 /* Double+FocusCircle.swift */; };
@@ -24,6 +24,8 @@
 		B380A4ED1C42351C004A38C9 /* TimerTextTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4EC1C42351C004A38C9 /* TimerTextTableViewController.swift */; };
 		B380A4EF1C4267B9004A38C9 /* UIAlertController+FocusCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4EE1C4267B9004A38C9 /* UIAlertController+FocusCircle.swift */; };
 		B380A4FA1C43FC04004A38C9 /* UIButton+FocusCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B380A4F91C43FC04004A38C9 /* UIButton+FocusCircle.swift */; };
+		BBE5C656A98EF3606F2C1D31 /* libPods-FocusCircle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F5C66E992C7C0C1312E360 /* libPods-FocusCircle.a */; };
+		DBDC705EF6C136F6E93315A3 /* libPods-FocusCircleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D26D5DCD1DFAF318F470E1 /* libPods-FocusCircleTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +46,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0793252493E05B58812C1B30 /* Pods-FocusCircle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FocusCircle.release.xcconfig"; path = "Pods/Target Support Files/Pods-FocusCircle/Pods-FocusCircle.release.xcconfig"; sourceTree = "<group>"; };
-		613B633D6292FDCA8DCB8769 /* libPods-FocusCircle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FocusCircle.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		03F5C66E992C7C0C1312E360 /* libPods-FocusCircle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FocusCircle.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F67A3A5F127E86E342A37EC /* Pods-FocusCircle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FocusCircle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FocusCircle/Pods-FocusCircle.debug.xcconfig"; sourceTree = "<group>"; };
+		42D26D5DCD1DFAF318F470E1 /* libPods-FocusCircleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FocusCircleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		47B74F41A6DC3397837EA20F /* Pods-FocusCircleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FocusCircleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FocusCircleUITests/Pods-FocusCircleUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		52A8264FF3AE57AF667F9BD5 /* libPods-FocusCircleUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FocusCircleUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		54A56AC8B3F4746AD82FE679 /* Pods-FocusCircleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FocusCircleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FocusCircleUITests/Pods-FocusCircleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		55728C91537A3D8E4910457F /* Pods-FocusCircleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FocusCircleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FocusCircleTests/Pods-FocusCircleTests.release.xcconfig"; sourceTree = "<group>"; };
+		920D5BACD25D1E0432A04A99 /* Pods-FocusCircle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FocusCircle.release.xcconfig"; path = "Pods/Target Support Files/Pods-FocusCircle/Pods-FocusCircle.release.xcconfig"; sourceTree = "<group>"; };
 		B34F28871C4378B200E2655A /* String+FocusCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FocusCircle.swift"; sourceTree = "<group>"; };
 		B34F28891C448E4C00E2655A /* FocusCircle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FocusCircle-Bridging-Header.h"; sourceTree = "<group>"; };
 		B34F288E1C44F3BD00E2655A /* DatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
@@ -69,7 +77,7 @@
 		B380A4EC1C42351C004A38C9 /* TimerTextTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTextTableViewController.swift; sourceTree = "<group>"; };
 		B380A4EE1C4267B9004A38C9 /* UIAlertController+FocusCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+FocusCircle.swift"; sourceTree = "<group>"; };
 		B380A4F91C43FC04004A38C9 /* UIButton+FocusCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+FocusCircle.swift"; sourceTree = "<group>"; };
-		CD854782BA288C7AFA92D4AC /* Pods-FocusCircle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FocusCircle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FocusCircle/Pods-FocusCircle.debug.xcconfig"; sourceTree = "<group>"; };
+		BE373F437A7AECC5DD815D76 /* Pods-FocusCircleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FocusCircleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FocusCircleTests/Pods-FocusCircleTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFB749191A522FF67C6274F3 /* libPods-FocusCircle.a in Frameworks */,
+				BBE5C656A98EF3606F2C1D31 /* libPods-FocusCircle.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBDC705EF6C136F6E93315A3 /* libPods-FocusCircleTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,17 +101,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85723333D5A8E1ED4A7DA213 /* libPods-FocusCircleUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8F87CD5C38B095F2E0B1E91C /* Pods */ = {
+		17343368584A79053AE20AF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CD854782BA288C7AFA92D4AC /* Pods-FocusCircle.debug.xcconfig */,
-				0793252493E05B58812C1B30 /* Pods-FocusCircle.release.xcconfig */,
+				03F5C66E992C7C0C1312E360 /* libPods-FocusCircle.a */,
+				42D26D5DCD1DFAF318F470E1 /* libPods-FocusCircleTests.a */,
+				52A8264FF3AE57AF667F9BD5 /* libPods-FocusCircleUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4A86AD41B525C99AEB6FB17 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0F67A3A5F127E86E342A37EC /* Pods-FocusCircle.debug.xcconfig */,
+				920D5BACD25D1E0432A04A99 /* Pods-FocusCircle.release.xcconfig */,
+				BE373F437A7AECC5DD815D76 /* Pods-FocusCircleTests.debug.xcconfig */,
+				55728C91537A3D8E4910457F /* Pods-FocusCircleTests.release.xcconfig */,
+				47B74F41A6DC3397837EA20F /* Pods-FocusCircleUITests.debug.xcconfig */,
+				54A56AC8B3F4746AD82FE679 /* Pods-FocusCircleUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -114,8 +138,8 @@
 				B380A4BB1C390A7A004A38C9 /* FocusCircleTests */,
 				B380A4C61C390A7A004A38C9 /* FocusCircleUITests */,
 				B380A4A51C390A7A004A38C9 /* Products */,
-				8F87CD5C38B095F2E0B1E91C /* Pods */,
-				EF3364BE8F5DDFB7E28BF242 /* Frameworks */,
+				A4A86AD41B525C99AEB6FB17 /* Pods */,
+				17343368584A79053AE20AF4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -218,14 +242,6 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		EF3364BE8F5DDFB7E28BF242 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				613B633D6292FDCA8DCB8769 /* libPods-FocusCircle.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -233,12 +249,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B380A4CC1C390A7A004A38C9 /* Build configuration list for PBXNativeTarget "FocusCircle" */;
 			buildPhases = (
-				ABD6A70DF70261A0341DBA77 /* Check Pods Manifest.lock */,
+				C2006AD5BF0BD2C982F45043 /* [CP] Check Pods Manifest.lock */,
 				B380A4A01C390A7A004A38C9 /* Sources */,
 				B380A4A11C390A7A004A38C9 /* Frameworks */,
 				B380A4A21C390A7A004A38C9 /* Resources */,
-				06E45AF96B1DCA93C52E2429 /* Embed Pods Frameworks */,
-				56EE6AA853A58EC36D6CE8D0 /* Copy Pods Resources */,
+				5789A28F30F71B2F91D7B72A /* [CP] Embed Pods Frameworks */,
+				A6AF976E4E2E3726EB36478C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,9 +269,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B380A4CF1C390A7A004A38C9 /* Build configuration list for PBXNativeTarget "FocusCircleTests" */;
 			buildPhases = (
+				ACBA8129183B390F699561C1 /* [CP] Check Pods Manifest.lock */,
 				B380A4B41C390A7A004A38C9 /* Sources */,
 				B380A4B51C390A7A004A38C9 /* Frameworks */,
 				B380A4B61C390A7A004A38C9 /* Resources */,
+				82E4D0B2C019CC36E18A006B /* [CP] Embed Pods Frameworks */,
+				57B61BAF68C0CEF0C533B1F3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -271,9 +290,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B380A4D21C390A7A004A38C9 /* Build configuration list for PBXNativeTarget "FocusCircleUITests" */;
 			buildPhases = (
+				C7DCAB253D67FFA974D54391 /* [CP] Check Pods Manifest.lock */,
 				B380A4BF1C390A7A004A38C9 /* Sources */,
 				B380A4C01C390A7A004A38C9 /* Frameworks */,
 				B380A4C11C390A7A004A38C9 /* Resources */,
+				3CA2FB270DF3F7EA39AA0193 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -298,6 +319,7 @@
 					B380A4A31C390A7A004A38C9 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = TNZ7HD8PFQ;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -307,11 +329,13 @@
 					B380A4B71C390A7A004A38C9 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = TNZ7HD8PFQ;
+						LastSwiftMigration = 0800;
 						TestTargetID = B380A4A31C390A7A004A38C9;
 					};
 					B380A4C21C390A7A004A38C9 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = TNZ7HD8PFQ;
+						LastSwiftMigration = 0800;
 						TestTargetID = B380A4A31C390A7A004A38C9;
 					};
 				};
@@ -364,14 +388,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		06E45AF96B1DCA93C52E2429 /* Embed Pods Frameworks */ = {
+		3CA2FB270DF3F7EA39AA0193 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FocusCircleUITests/Pods-FocusCircleUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5789A28F30F71B2F91D7B72A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,14 +418,44 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FocusCircle/Pods-FocusCircle-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		56EE6AA853A58EC36D6CE8D0 /* Copy Pods Resources */ = {
+		57B61BAF68C0CEF0C533B1F3 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FocusCircleTests/Pods-FocusCircleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		82E4D0B2C019CC36E18A006B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FocusCircleTests/Pods-FocusCircleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A6AF976E4E2E3726EB36478C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,14 +463,44 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FocusCircle/Pods-FocusCircle-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		ABD6A70DF70261A0341DBA77 /* Check Pods Manifest.lock */ = {
+		ACBA8129183B390F699561C1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C2006AD5BF0BD2C982F45043 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C7DCAB253D67FFA974D54391 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -564,7 +663,7 @@
 		};
 		B380A4CD1C390A7A004A38C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CD854782BA288C7AFA92D4AC /* Pods-FocusCircle.debug.xcconfig */;
+			baseConfigurationReference = 0F67A3A5F127E86E342A37EC /* Pods-FocusCircle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -574,12 +673,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "FocusCircle/FocusCircle-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		B380A4CE1C390A7A004A38C9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0793252493E05B58812C1B30 /* Pods-FocusCircle.release.xcconfig */;
+			baseConfigurationReference = 920D5BACD25D1E0432A04A99 /* Pods-FocusCircle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -588,40 +688,47 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Amztion.FocusCircle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "FocusCircle/FocusCircle-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		B380A4D01C390A7A004A38C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE373F437A7AECC5DD815D76 /* Pods-FocusCircleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = FocusCircleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Amztion.FocusCircleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FocusCircle.app/FocusCircle";
 			};
 			name = Debug;
 		};
 		B380A4D11C390A7A004A38C9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55728C91537A3D8E4910457F /* Pods-FocusCircleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = FocusCircleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Amztion.FocusCircleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FocusCircle.app/FocusCircle";
 			};
 			name = Release;
 		};
 		B380A4D31C390A7A004A38C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47B74F41A6DC3397837EA20F /* Pods-FocusCircleUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = FocusCircleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Amztion.FocusCircleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = FocusCircle;
 				USES_XCTRUNNER = YES;
 			};
@@ -629,11 +736,13 @@
 		};
 		B380A4D41C390A7A004A38C9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54A56AC8B3F4746AD82FE679 /* Pods-FocusCircleUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = FocusCircleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Amztion.FocusCircleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = FocusCircle;
 				USES_XCTRUNNER = YES;
 			};

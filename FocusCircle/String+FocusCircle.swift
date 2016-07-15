@@ -9,7 +9,7 @@
 import Foundation
 
 extension String {
-    init(seconds: NSTimeInterval){
+    init(seconds: TimeInterval){
         let timeComponentFormat = "02.0"
         let timeComponent = seconds.convertIntoTimeComponent()
         
@@ -17,10 +17,8 @@ extension String {
     }
     
     func md5() -> String {
-        var digest = [UInt8](count: Int(CC_MD5_DIGEST_LENGTH), repeatedValue: 0)
-        if let data = self.dataUsingEncoding(NSUTF8StringEncoding) {
-            CC_MD5(data.bytes, CC_LONG(data.length), &digest)
-        }
+        var digest = [UInt8](repeating: 0,count: Int(CC_MD5_DIGEST_LENGTH))
+        CC_MD5(self.cString(using: String.Encoding.utf8), CC_LONG(CUnsignedInt(self.lengthOfBytes(using: String.Encoding.utf8))), &digest)
         
         var digestHex = ""
         for index in 0..<Int(CC_MD5_DIGEST_LENGTH) {

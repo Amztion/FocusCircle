@@ -9,12 +9,12 @@
 import UIKit
 
 extension UIButton {
-    func changeButtonToState(state: TimerState) {
+    func changeButtonToState(_ state: TimerState) {
         switch state {
-        case TimerState.Stopped, TimerState.Paused:
-            self.setImage(UIImage(named: "RunningIcon"), forState: UIControlState.Normal)
-        case TimerState.Running:
-            self.setImage(UIImage(named: "PauseIcon"), forState: UIControlState.Normal)
+        case TimerState.stopped, TimerState.paused:
+            self.setImage(UIImage(named: "RunningIcon"), for: UIControlState())
+        case TimerState.running:
+            self.setImage(UIImage(named: "PauseIcon"), for: UIControlState())
         }
     }
 }

@@ -29,14 +29,14 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     //MARK: TimerUIUpdateProtocol
-    func updateRemainingTimeUIAtIndex(index: Int, newRemainingTime: NSTimeInterval) {
-        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as? TimerTableViewCell {
+    func updateRemainTime(at index: Int, newRemainingTime: TimeInterval) {
+        if let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? TimerTableViewCell {
             cell.durationTimeLabel.text = String(seconds: newRemainingTime)
         }
     }
     
-    func updateTimerInfoUIAtIndex(index: Int, newName: String?, newDurationTime: NSTimeInterval?) {
-        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as? TimerTableViewCell {
+    func updateTimer(name newName: String?, durationTime newDurationTime: TimeInterval?, at index: Int) {
+        if let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? TimerTableViewCell {
             if let name = newName {
                 cell.nameLabel.text = name
             }
@@ -47,23 +47,23 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    func updateTimerStateUIAtIndex(index: Int, newState: TimerState) {
-        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as? TimerTableViewCell{
+    func updateTimer(state newState:TimerState, at index: Int) {
+        if let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? TimerTableViewCell{
             cell.controlButton.changeButtonToState(newState)
-            tableView.editing = false
+            tableView.isEditing = false
         }
     }
     
     //MARK: Control Button Operation
-    @IBAction func controlButtonTapped(sender: UIButton) {
+    @IBAction func controlButtonTapped(_ sender: UIButton) {
         if let cell = sender.superview?.superview as? UITableViewCell {
-            if let indexPath = tableView.indexPathForCell(cell) {
-                if let timerInfo = timerController.timerInfoAtIndex(indexPath.row){
+            if let indexPath = tableView.indexPath(for: cell) {
+                if let timerInfo = timerController.timerInfoAtIndex((indexPath as NSIndexPath).row){
                     switch timerInfo.state {
-                    case TimerState.Stopped, TimerState.Paused:
-                        timerController.startTimerAtIndex(indexPath.row)
-                    case TimerState.Running:
-                        timerController.pauseTimerAtIndex(indexPath.row)
+                    case TimerState.stopped, TimerState.paused:
+                        timerController.startTimerAtIndex((indexPath as NSIndexPath).row)
+                    case TimerState.running:
+                        timerController.pauseTimerAtIndex((indexPath as NSIndexPath).row)
                     }
                 }
             }
@@ -71,17 +71,17 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     //MARK: TableViewDataSource
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return timerController.numberOfTimers()
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let timerInfo = timerController.timerInfoAtIndex(indexPath.row) {
-            let cell = tableView.dequeueReusableCellWithIdentifier("TimerCell", forIndexPath: indexPath) as! TimerTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let timerInfo = timerController.timerInfoAtIndex((indexPath as NSIndexPath).row) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TimerCell", for: indexPath) as! TimerTableViewCell
             cell.nameLabel.text = timerInfo.name
             cell.durationTimeLabel.text = String(seconds: timerInfo.durationTime)
             cell.controlButton.changeButtonToState(timerInfo.state)
@@ -92,54 +92,54 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     //MARK: TableViewDelegate
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         var actionsArray = [UITableViewRowAction]()
-        let timerInfo = timerController.timerInfoAtIndex(indexPath.row)!
+        let timerInfo = timerController.timerInfoAtIndex((indexPath as NSIndexPath).row)!
         
-        let editRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "编辑") { (editRowAction, indexPath) -> Void in
-            let timerInfo = self.timerController.timerInfoAtIndex(indexPath.row)!
+        let editRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "编辑") { (editRowAction, indexPath) -> Void in
+            let timerInfo = self.timerController.timerInfoAtIndex((indexPath as NSIndexPath).row)!
             
-            if let timerTextNav = self.storyboard?.instantiateViewControllerWithIdentifier("TimerTextNav") as? UINavigationController {
+            if let timerTextNav = self.storyboard?.instantiateViewController(withIdentifier: "TimerTextNav") as? UINavigationController {
                 
                 let timerTextTableVC = timerTextNav.viewControllers.first! as! TimerTextTableViewController
                 
                 timerTextTableVC.editTimerWithTimerInfo(timerInfo, completionHandler: { [weak self] (name, durationTime) -> Void in
                     
                     if let newName = name {
-                        self?.timerController.renameTimerAtIndex(indexPath.row, newName: newName)
+                        self?.timerController.renameTimerAtIndex((indexPath as NSIndexPath).row, newName: newName)
                     }
                     
                     if let newDurationTime = durationTime {
-                        self?.timerController.modifyTimerAtIndex(indexPath.row, newDurationTime: newDurationTime)
+                        self?.timerController.modifyTimerAtIndex((indexPath as NSIndexPath).row, newDurationTime: newDurationTime)
                     }
                     
-                    self?.dismissViewControllerAnimated(true, completion: nil)
+                    self?.dismiss(animated: true, completion: nil)
                 })
-                self.presentViewController(timerTextNav, animated: true, completion: nil)
+                self.present(timerTextNav, animated: true, completion: nil)
             }
-            self.tableView.editing = false
+            self.tableView.isEditing = false
         }
         
-        let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Destructive, title: "删除") { (tableViewRowAction, indexPath) -> Void in
+        let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "删除") { (tableViewRowAction, indexPath) -> Void in
             
-            self.timerController.deleteTimerAtIndex(indexPath.row)
-            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-            self.tableView.editing = false
+            self.timerController.deleteTimerAtIndex((indexPath as NSIndexPath).row)
+            self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+            self.tableView.isEditing = false
         }
         
-        let resetRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "重置") { (tableViewRowAction, indexPath) -> Void in
+        let resetRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "重置") { (tableViewRowAction, indexPath) -> Void in
             
-            self.timerController.resetTimerAtIndex(indexPath.row)
-            self.tableView.editing = false
+            self.timerController.resetTimerAtIndex((indexPath as NSIndexPath).row)
+            self.tableView.isEditing = false
         }
         
         switch timerInfo.state {
-        case .Running:
+        case .running:
             actionsArray.append(resetRowAction)
-        case .Paused:
+        case .paused:
             actionsArray.append(deleteRowAction)
             actionsArray.append(resetRowAction)
-        case .Stopped:
+        case .stopped:
             actionsArray.append(deleteRowAction)
             actionsArray.append(editRowAction)
         }
@@ -148,19 +148,19 @@ class TimerViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 66
     }
     
     //MARK: Prepare For Segue
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if let timerTextNavVC = segue.destinationViewController as? UINavigationController{
             let timerTextTableVC = timerTextNavVC.viewControllers[0] as? TimerTextTableViewController
             timerTextTableVC?.addTimerWithCompletionHandler({ [weak self] (name, durationTime) -> Void in
                 self?.timerController.addNewTimerWithName(name!, durationTime: durationTime!)
-                self?.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
-                self?.dismissViewControllerAnimated(true, completion: nil)
+                self?.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: UITableViewRowAnimation.automatic)
+                self?.dismiss(animated: true, completion: nil)
             })
             
         }

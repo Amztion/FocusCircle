@@ -9,9 +9,9 @@
 import UIKit
 
 extension UIAlertController {
-    static func oneButtonAlertController(title: String?, message: String?, preferredStryle: UIAlertControllerStyle, buttonTitle: String = "好的") -> UIAlertController{
+    static func oneButtonAlertController(_ title: String?, message: String?, preferredStryle: UIAlertControllerStyle, buttonTitle: String = "好的") -> UIAlertController{
         let oneButtonAlertController = UIAlertController(title: title, message: message, preferredStyle: preferredStryle)
-        let buttonAction = UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.Default, handler: nil)
+        let buttonAction = UIAlertAction(title: buttonTitle, style: UIAlertActionStyle.default, handler: nil)
         oneButtonAlertController.addAction(buttonAction)
         return oneButtonAlertController
     }
